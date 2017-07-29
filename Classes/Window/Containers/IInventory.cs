@@ -51,5 +51,15 @@ namespace OQ.MineBot.PluginBase.Classes.Window.Containers
         /// <param name="id"></param>
         /// <returns></returns>
         bool Select(ushort id);
+        /// <summary>
+        /// Attempts to select an item from
+        /// the specified id list.
+        /// 
+        /// select - bring item to hotbar, if it's not
+        /// on there already and select it.
+        /// </summary>
+        /// <param name="id">Item id that was selected (-1 if none)</param>
+        /// <returns></returns>
+        ushort Select(ushort[] id);
     }
 }
