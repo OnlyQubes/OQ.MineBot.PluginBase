@@ -60,6 +60,6 @@ namespace OQ.MineBot.PluginBase.Classes.Window.Containers
         /// </summary>
         /// <param name="id">Item id that was selected (-1 if none)</param>
         /// <returns></returns>
-        ushort Select(ushort[] id);
+        int Select(ushort[] id);
     }
 }
