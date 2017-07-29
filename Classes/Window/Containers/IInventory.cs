@@ -34,7 +34,7 @@ namespace OQ.MineBot.PluginBase.Classes.Window.Containers
         /// <param name="include">Only items that can be stored</param>
         void Deposite(IWindow window, int[] exclude, int[] include = null);
         /// <summary>
-        /// Takes itesm from a windwo to the inventory.
+        /// Takes items from a window to the inventory.
         /// </summary>
         /// <param name="window"></param>
         /// <param name="exclude"></param>
