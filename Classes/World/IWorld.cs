@@ -1,20 +1,44 @@
-﻿using OQ.MineBot.PluginBase.Classes.Entity.Lists;
+﻿using System.Collections.Generic;
+using OQ.MineBot.PluginBase.Classes.Entity.Lists;
 using OQ.MineBot.PluginBase.Classes.Physics.Colliders;
 using OQ.MineBot.PluginBase.Pathfinding;
 
 namespace OQ.MineBot.PluginBase.Classes.World
 {
+    public struct ChunkLocation
+    {
+        public readonly int X;
+        public readonly int Z;
+
+        public ChunkLocation(int X, int Z)
+        {
+            this.X = X;
+            this.Z = Z;
+        }
+
+        /// <summary>
+        /// Serves as the default hash function. 
+        /// </summary>
+        /// <returns>
+        /// A hash code for the current object.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            return this.X * 16 + Z * 47;
+        }
+    }
+
     public interface IWorld
     {
         /// <summary>
         /// Is this world shared.
         /// </summary>
-        bool isShared { get; set; } 
-        
+        bool isShared { get; set; }
+
         /// <summary>
         /// All chunks of this world.
         /// </summary>
-        IChunkColumb[,] chunks { get; set; }
+        Dictionary<ChunkLocation, IChunkColumb> chunks { get; set; }
         
         #region Blocks 
 
