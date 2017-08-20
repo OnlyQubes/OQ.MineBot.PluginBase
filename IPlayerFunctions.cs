@@ -342,6 +342,7 @@ namespace OQ.MineBot.PluginBase
         /// <param name="blockPosition">Needs to be calculated manually.</param>
         /// <param name="face">Face on which we will place the block.</param>
         void BlockPlaceOnBlockFace(ILocation blockPosition, sbyte face);
+
         /// <summary>
         /// Attempts (because it tries to find a block to place
         ///  this on) to find the best block/face to place on.
@@ -350,8 +351,9 @@ namespace OQ.MineBot.PluginBase
         /// be used after this.
         /// </summary>
         /// <param name="target">Location that we need the block to be placed on.</param>
+        /// <param name="invalid">Blocks that are not a valid neighbour.</param>
         /// <returns></returns>
-        IFacedLocation FindValidNeighbour(ILocation target, bool canVertical = true);
+        IFacedLocation FindValidNeighbour(ILocation target, bool canVertical = true, ushort[] invalid = null);
         IFacedLocation FindValidFacingAwayNeighbour(ILocation target);
         
         /// <summary>

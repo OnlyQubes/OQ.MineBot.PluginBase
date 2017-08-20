@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using OQ.MineBot.GUI.Protocol.Movement.Maps;
 using OQ.MineBot.PluginBase.Classes.Physics.Colliders;
 using OQ.MineBot.PluginBase.Movement.Maps;
 
@@ -84,7 +85,7 @@ namespace OQ.MineBot.PluginBase.Classes.Physics
         /// </summary>
         /// <returns></returns>
         bool IsGrounded(ILocation[] _locations, out ILocation biggestY, IPosition playerPosition = null);
-        ILocation GetGroundedBlock();
+        ILocation GetGroundedBlock(MapOptions options);
 
         /// <summary>
         /// Get the ground blocks that are
