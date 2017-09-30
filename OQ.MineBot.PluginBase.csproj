@@ -50,6 +50,10 @@
     <Compile Include="Base\IPlugin.cs" />
     <Compile Include="Base\IRequestPlugin.cs" />
     <Compile Include="Base\IStartPlugin.cs" />
+    <Compile Include="Base\Permissions\EventPermissions.cs" />
+    <Compile Include="Base\Permissions\IPermittedConnection.cs" />
+    <Compile Include="Base\Permissions\IPermittedCredentials.cs" />
+    <Compile Include="Base\Permissions\IPermittedServer.cs" />
     <Compile Include="Base\PluginAuthor.cs" />
     <Compile Include="Base\PluginResponse.cs" />
     <Compile Include="Base\Settings\BoolSetting.cs" />
@@ -57,6 +61,7 @@
     <Compile Include="Base\Settings\IPluginSetting.cs" />
     <Compile Include="Base\Settings\LinkSetting.cs" />
     <Compile Include="Base\Settings\NumberSetting.cs" />
+    <Compile Include="Base\Settings\PathSetting.cs" />
     <Compile Include="Base\Settings\StringSetting.cs" />
     <Compile Include="Bot\IBotSettings.cs" />
     <Compile Include="Classes\Base\CancelToken.cs" />

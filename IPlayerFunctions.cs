@@ -53,6 +53,7 @@ namespace OQ.MineBot.PluginBase
         /// <param name="id"></param>
         /// <returns></returns>
         bool SendKeepAlive(int id);
+        bool SendKeepAlive(long id);
 
         /// <summary>
         /// Disconnects from the server.

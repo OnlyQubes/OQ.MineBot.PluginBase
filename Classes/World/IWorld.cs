@@ -322,5 +322,14 @@ namespace OQ.MineBot.PluginBase.Classes.World
         /// <param name="location"></param>
         /// <returns></returns>
         ICollider[] GetBlockCollider(ILocation location);
+
+        /// <summary>
+        /// Find the closest location with
+        /// any of the specified ids.
+        /// (On the same Y level)
+        /// </summary>
+        /// <param name="myLocation">Beginning location.</param>
+        /// <param name="ids"></param>
+        ILocation FindHorizontal(ILocation myLocation, ushort[] ids);
     }
 }

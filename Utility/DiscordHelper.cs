@@ -6,6 +6,8 @@ namespace OQ.MineBot.PluginBase.Utility
     {
         public static Action<string, string> __api_hook_dsc;
         public static Action<string, string, int> __api_hook_notdsc;
+        public static Action<string, int> __api_hook_alw;
+        public static Action<string, int> __api_hook_ale;
 
         /// <summary>
         /// Sends a discord message to the user.
@@ -28,6 +30,13 @@ namespace OQ.MineBot.PluginBase.Utility
         public static void AlertMessage(string name, string message, int priority)
         {
             __api_hook_notdsc(name, message, priority);
+        }
+
+        public static void Alert(string message, int id) {
+            __api_hook_alw(message, id);
+        }
+        public static void Error(string message, int id) {
+            __api_hook_alw(message, id);
         }
     }
 }
