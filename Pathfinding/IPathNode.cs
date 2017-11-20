@@ -51,6 +51,12 @@ namespace OQ.MineBot.PluginBase.Pathfinding
         /// Is this a liquid block?
         /// </summary>
         bool swim { get; set; }
+        /// <summary>
+        /// Array of blocks that need to be mined
+        /// for this movement to be valid.
+        /// NULL - if nothing to mine.
+        /// </summary>
+        ILocation[] toMine { get; set; }
 
         /// <summary>
         /// Node that created this one.

@@ -65,8 +65,8 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// Converts location to poisition.
         /// </summary>
         /// <returns></returns>
-        public IPosition ToPosition() {
-            return new Position(x+0.5, y, z+0.5);
+        public IPosition ToPosition(double addY = Double.NaN) {
+            return new Position(x+0.5, y + (double.IsNaN(addY)?0:addY), z+0.5);
         }
 
         /// <summary>
@@ -76,6 +76,15 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// <returns></returns>
         public ILocation Offset(int x, float y, int z) {
             return new Location(this.x + x, (int)Math.Ceiling(this.y + y), this.z + z);
+        }
+
+        /// <summary>
+        /// Returns a new location with
+        /// a height offset.
+        /// </summary>
+        /// <returns></returns>
+        public ILocation Offset(float y) {
+            return new Location(this.x, (int)Math.Ceiling(this.y + y), this.z);
         }
 
         /// <summary>

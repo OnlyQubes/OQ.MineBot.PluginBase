@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace OQ.MineBot.PluginBase.Classes
 {
@@ -33,13 +34,19 @@ namespace OQ.MineBot.PluginBase.Classes
         /// Converts location to poisition.
         /// </summary>
         /// <returns></returns>
-        IPosition ToPosition();
+        IPosition ToPosition(double addY = Double.NaN);
 
         /// <summary>
-        /// Returns a new ilocation with
+        /// Returns a new location with
         /// an offset.
         /// </summary>
         /// <returns></returns>
         ILocation Offset(int x, float y, int z);
+        /// <summary>
+        /// Returns a new location with
+        /// a height offset.
+        /// </summary>
+        /// <returns></returns>
+        ILocation Offset(float y);
     }
 }

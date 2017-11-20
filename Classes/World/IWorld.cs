@@ -2,6 +2,7 @@
 using OQ.MineBot.PluginBase.Classes.Entity.Lists;
 using OQ.MineBot.PluginBase.Classes.Physics.Colliders;
 using OQ.MineBot.PluginBase.Pathfinding;
+using OQ.MineBot.Protocols.Classes.Base;
 
 namespace OQ.MineBot.PluginBase.Classes.World
 {
@@ -87,6 +88,11 @@ namespace OQ.MineBot.PluginBase.Classes.World
         /// <param name="absoluteZ"></param>
         /// <returns></returns>
         ushort GetBlockId(int absoluteX, int absoluteY, int absoluteZ);
+        /// <summary>
+        /// Get a block from absoulte
+        /// cords.
+        /// </summary>
+        ushort GetBlockId(ILocation location);
         /// <summary>
         /// Get a block from a chunkcolumb.
         /// </summary>
@@ -309,6 +315,12 @@ namespace OQ.MineBot.PluginBase.Classes.World
         /// <param name="cost"></param>
         /// <returns></returns>
         bool IsWalkable(ILocation current, ILocation location, bool jumpRequired, out bool free, out int cost);
+        /// <summary>
+        /// Does not check if the blocks above the floor
+        /// are valid for movement.
+        /// </summary>
+        bool IsWalkableFloor(ILocation current, ILocation location, out int cost);
+        bool IsWalkable(ILocation location);
 
         /// <summary>
         /// Is the block in range of the player.
@@ -331,5 +343,10 @@ namespace OQ.MineBot.PluginBase.Classes.World
         /// <param name="myLocation">Beginning location.</param>
         /// <param name="ids"></param>
         ILocation FindHorizontal(ILocation myLocation, ushort[] ids);
+
+        /// <summary>
+        /// Is the player standing on this block.
+        /// </summary>
+        bool IsStandingOn(ILocation location, IPosition player);
     }
 }

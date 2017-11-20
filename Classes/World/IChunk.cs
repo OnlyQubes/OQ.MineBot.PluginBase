@@ -12,11 +12,14 @@
         /// All blocks of this chunk
         /// represented in X/Z.
         /// </summary>
-        ushort[,,] blocks { get; }
+        ushort[] blocks { get; }//ushort[,,] blocks { get; }
 
         /// <summary>
         /// Unloads the chunk.
         /// </summary>
         void Unload();
+
+        ushort GetBlock(int x, int y, int z);
+        void SetBlock(int x, int y, int z, ushort block);
     }
 }

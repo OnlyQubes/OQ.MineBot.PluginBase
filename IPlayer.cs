@@ -2,6 +2,7 @@
 using OQ.MineBot.PluginBase.Classes.Entity.Lists;
 using OQ.MineBot.PluginBase.Classes.Physics;
 using OQ.MineBot.PluginBase.Classes.World;
+using OQ.MineBot.PluginBase.Utility;
 
 namespace OQ.MineBot.PluginBase
 {
@@ -45,6 +46,10 @@ namespace OQ.MineBot.PluginBase
         /// Settings of the player.
         /// </summary>
         IBotSettings settings { get; set; }
+        /// <summary>
+        /// Tick manager for the player.
+        /// </summary>
+        ITickManager tickManager { get; set; }
 
         /// <summary>
         /// Player id. (Used to communicate

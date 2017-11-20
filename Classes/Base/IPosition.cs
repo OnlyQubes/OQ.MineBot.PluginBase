@@ -6,7 +6,7 @@
         double Y { get; set; }
         double Z { get; set; }
 
-        ILocation ToLocation(float add);
+        ILocation ToLocation(float add = 0);
 
         /// <summary>
         /// Is the current position

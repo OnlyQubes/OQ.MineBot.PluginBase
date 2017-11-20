@@ -332,6 +332,11 @@ namespace OQ.MineBot.PluginBase
         /// <param name="location"></param>
         /// <param name="onStateChanged">Called once the action is complete or cancelled.</param>
         IDigAction BlockDig(ILocation location, Action<IDigAction> onStateChanged = null);
+        /// <summary>
+        /// Equips best tool that we have in
+        /// the inventory for the target block.
+        /// </summary>
+        void SelectBestTool(ILocation target);
 
         /// <summary>
         /// Places the block ('blockData') on the

@@ -65,6 +65,10 @@
         /// Can mine through blocks.
         /// </summary>
         public bool Mine { get; set; }
+        /// <summary>
+        /// Avoid mining into water/lava.
+        /// </summary>
+        public bool SafeMine { get; set; } = true;
 
         /// <summary>
         /// Can the player fly?

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using OQ.MineBot.PluginBase.Classes.World;
 using OQ.MineBot.Protocols.Classes.Base;
 
 namespace OQ.MineBot.PluginBase.Classes.Base
@@ -8,7 +11,9 @@ namespace OQ.MineBot.PluginBase.Classes.Base
         public ILocation start;
         public int height, xSize, zSize;
 
-        public IRadius() { }
+        public IRadius() {
+        }
+
         public IRadius(ILocation start, ILocation end) {
 
             //Update values.
@@ -23,7 +28,7 @@ namespace OQ.MineBot.PluginBase.Classes.Base
         }
 
         public void UpdateHorizontal(ILocation start, ILocation end) {
-            
+
             //Get xWidths.
             int xMax = Math.Max(start.x, end.x);
             int xMin = Math.Min(start.x, end.x);
@@ -54,9 +59,30 @@ namespace OQ.MineBot.PluginBase.Classes.Base
             //Update the y/w/l.
             this.xSize = xMax - xMin;
             this.zSize = zMax - zMin;
-            this.height = (int)(yMax - yMin);
+            this.height = (int) (yMax - yMin);
             //Update the start position.
             this.start = new Location(xMin, yMin, zMin);
+        }
+
+        public ILocation GetClosestWalkable(IWorld world, ILocation toLocation, bool highestOnly = false) {
+
+            ILocation currentClosest = null;
+            float distance = 0;
+            float tempDistance = 0;
+            for (int x = start.x; x <= start.x + xSize; x++)
+                for (int z = start.z; z <= start.z + zSize; z++) {
+                    for (int y = (int) start.y + height; y >= (int) start.y + 1; y--) {
+                        var temp = new Location(x, y, z);
+                        if (world.IsWalkable(temp) &&
+                            (currentClosest == null || (distance > (tempDistance = toLocation.Distance(temp)) &&
+                                                        (!highestOnly || currentClosest.y <= temp.y)))) {
+                            currentClosest = temp;
+                            distance = tempDistance;
+                            break;
+                        }
+                    }
+                }
+            return currentClosest;
         }
     }
 }

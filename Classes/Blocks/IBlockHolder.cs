@@ -1,4 +1,5 @@
 ﻿using OQ.MineBot.PluginBase.Classes.Physics.Colliders;
+using OQ.MineBot.PluginBase.Classes.World;
 
 namespace OQ.MineBot.PluginBase.Classes.Blocks
 {
@@ -54,5 +55,24 @@ namespace OQ.MineBot.PluginBase.Classes.Blocks
         /// <param name="blockId"></param>
         /// <returns></returns>
         bool IsLadder(ushort blockId);
+
+        /// <summary>
+        /// Checks if the block at the location is safe to mine
+        /// (doesn't have any liquids or any other dangers
+        /// around it)
+        /// </summary>
+        /// <param name="location">Location of the block we want
+        /// to mine, all 5 (or 6 if isFall) around the block will
+        /// be checked if they are dangerous.</param>
+        /// <param name="isFall">Are we going to mine this block
+        /// and fall down at this blocks location? - Checks if
+        /// there are dangerous blocks below and checks if the
+        /// gap is supported by our fall level.</param>
+        /// <returns>
+        /// True - we can mine the block without any dangers.
+        /// False - should not mine this block. (might have 
+        /// liquids surrounding it)
+        /// </returns>
+        bool IsSafeToMine(IWorld world, ILocation location, bool isFall = false);
     }
 }
