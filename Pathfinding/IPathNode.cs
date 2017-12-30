@@ -1,4 +1,5 @@
-﻿using OQ.MineBot.PluginBase.Classes;
+﻿using System;
+using OQ.MineBot.PluginBase.Classes;
 
 namespace OQ.MineBot.PluginBase.Pathfinding
 {
@@ -9,6 +10,7 @@ namespace OQ.MineBot.PluginBase.Pathfinding
         /// to reach this point.
         /// </summary>
         int steps { get; set; }
+        int penalty { get; set; }
         /// <summary>
         /// Distance from the target.
         /// </summary>
@@ -57,6 +59,8 @@ namespace OQ.MineBot.PluginBase.Pathfinding
         /// NULL - if nothing to mine.
         /// </summary>
         ILocation[] toMine { get; set; }
+        ILocation[] toBuild { get; set; }
+        IPosition offset { get; set; }
 
         /// <summary>
         /// Node that created this one.

@@ -283,7 +283,8 @@ namespace OQ.MineBot.PluginBase
         /// <param name="target"></param>
         /// <param name="force">Should it cancel/override all
         /// other rotation requests?</param>
-        void LookAtBlock(ILocation target, bool force = false);
+        /// <param name="face">-1 for center of the block.</param>
+        void LookAtBlock(ILocation target, bool force = false, sbyte face = -1);
         /// <summary>
         /// Smoothly look at the target
         /// location.

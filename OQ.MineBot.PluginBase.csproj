@@ -63,6 +63,7 @@
     <Compile Include="Base\Settings\NumberSetting.cs" />
     <Compile Include="Base\Settings\PathSetting.cs" />
     <Compile Include="Base\Settings\StringSetting.cs" />
+    <Compile Include="Base\SharedGlobalSettings.cs" />
     <Compile Include="Bot\IBotSettings.cs" />
     <Compile Include="Classes\Base\CancelToken.cs" />
     <Compile Include="Classes\Base\IChat.cs" />

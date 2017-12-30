@@ -16,7 +16,8 @@
         {
             85, 107, 113, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193
         };
-
+        public static ushort[] BUILDING_BLOCKS = 
+        {4, 1, 3, 2, 5, 17, 24, 35, 45, 87, 98, 121, 125, 159, 155, 162, 172, 174, 179};
 
         public static IBlockHolder blockHolder { get; set; }
     }

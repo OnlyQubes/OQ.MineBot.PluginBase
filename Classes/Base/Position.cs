@@ -57,6 +57,12 @@ namespace OQ.MineBot.Protocols.Classes.Base
             return Math.Sqrt(Math.Pow(x, 2) + Math.Pow(z, 2));
         }
 
+        public IPosition Offset(IPosition offset) {
+
+            if (offset == null) return this;
+            return new Position(this.X + offset.X, this.Y + offset.Y, this.Z + offset.Z);
+        }
+
         /// <summary>
         /// Returns a string that represents the current object.
         /// </summary>

@@ -48,5 +48,13 @@ namespace OQ.MineBot.PluginBase.Classes
         /// </summary>
         /// <returns></returns>
         ILocation Offset(float y);
+        /// <summary>
+        /// Returns a new location with
+        /// a height offset.
+        /// </summary>
+        /// <returns></returns>
+        ILocation Offset(ILocation y);
+
+        ILocation Multiply(int mult);
     }
 }

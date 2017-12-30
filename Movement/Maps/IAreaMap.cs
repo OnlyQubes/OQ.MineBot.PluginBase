@@ -29,6 +29,7 @@ namespace OQ.MineBot.PluginBase.Movement.Maps
         /// (Reachable)
         /// </summary>
         bool Valid { get; set; }
+        bool Disposed { get; set; }
         /// <summary>
         /// Is the path search for this map
         /// completed.
@@ -49,7 +50,7 @@ namespace OQ.MineBot.PluginBase.Movement.Maps
         #region Events
 
         
-/// <summary>
+        /// <summary>
         /// Called when a path is complete.
         /// </summary>
         event MapEvents.GeneralUpdate Completed;
@@ -89,5 +90,11 @@ namespace OQ.MineBot.PluginBase.Movement.Maps
         IVector Tick();
 
         void CalculateFromNext(IWorld world,IEntity moveTarget);
+
+        /// <summary>
+        /// Is the map stil valid and the bot is moving.
+        /// </summary>
+        /// <returns></returns>
+        bool IsValidMoving();
     }
 }

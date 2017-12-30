@@ -88,6 +88,19 @@ namespace OQ.MineBot.Protocols.Classes.Base
         }
 
         /// <summary>
+        /// Returns a new location with
+        /// a height offset.
+        /// </summary>
+        /// <returns></returns>
+        public ILocation Offset(ILocation l) {
+            return new Location(this.x + l.x, (int)Math.Ceiling(this.y + l.y), this.z + l.z);
+        }
+
+        public ILocation Multiply(int mult) {
+            return new Location(this.x * mult, this.y * mult, this.z * mult);
+        }
+
+        /// <summary>
         /// Determines whether the specified objects are equal.
         /// </summary>
         /// <returns>

@@ -123,6 +123,7 @@ namespace OQ.MineBot.PluginBase.Classes.World
         /// <param name="blockID">Id of the blocks that we are sreaching.</param>
         /// <returns></returns>
         ILocation[] GetBlockLocations(double startX, double startY, double startZ, int radius, int yRadius, ushort blockID);
+        ILocation[] GetBlockLocations(double startX, double startY, double startZ, int radius, int yRadius, ushort[] blockID);
 
         /// <summary>
         /// Get a block from absoulte

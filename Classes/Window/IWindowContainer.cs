@@ -38,5 +38,9 @@ namespace OQ.MineBot.PluginBase.Classes.Window
         /// </summary>
         /// <param name="id"></param>
         void RemoveWindow(int id);
+        /// <summary>
+        /// Gets window from openWindows at index i.
+        /// </summary>
+        IWindow GetWindowAt(int i);
     }
 }

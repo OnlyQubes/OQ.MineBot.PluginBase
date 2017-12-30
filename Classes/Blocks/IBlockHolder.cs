@@ -74,5 +74,11 @@ namespace OQ.MineBot.PluginBase.Classes.Blocks
         /// liquids surrounding it)
         /// </returns>
         bool IsSafeToMine(IWorld world, ILocation location, bool isFall = false);
+        /// <summary>
+        /// Is lava/water or sand/gravel.
+        /// </summary>
+        /// <param name="getBlockId"></param>
+        /// <returns></returns>
+        bool IsDanger(ushort getBlockId);
     }
 }

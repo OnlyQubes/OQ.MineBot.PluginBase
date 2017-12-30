@@ -23,5 +23,7 @@
         /// <param name="target"></param>
         /// <returns></returns>
         double Distance(IPosition target);
+
+        IPosition Offset(IPosition offset);
     }
 }

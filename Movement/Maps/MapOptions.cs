@@ -64,7 +64,7 @@
         /// <summary>
         /// Can mine through blocks.
         /// </summary>
-        public bool Mine { get; set; }
+        public bool Mine { get; set; } = false;
         /// <summary>
         /// Avoid mining into water/lava.
         /// </summary>
@@ -101,6 +101,19 @@
         /// Blocks that the bot shouldn't step on.
         /// </summary>
         public ushort[] Unwalkable;
+
+        /// <summary>
+        /// Should keep a strict path.
+        /// (Keep height always the same, attempt
+        /// to do straight lines)
+        /// </summary>
+        public bool Strict { get; set; }
+        /// <summary>
+        /// Does not take pathing costs
+        /// into the path finding. 
+        /// (E.g.: ignores mining vs walking cost)
+        /// </summary>
+        public bool NoCost { get; set; }
     }
 
     public enum SearchQuality
