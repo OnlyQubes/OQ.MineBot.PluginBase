@@ -71,7 +71,7 @@ namespace OQ.MineBot.PluginBase.Classes.Base
             float tempDistance = 0;
             for (int x = start.x; x <= start.x + xSize; x++)
                 for (int z = start.z; z <= start.z + zSize; z++) {
-                    for (int y = (int) start.y + height; y >= (int) start.y + 1; y--) {
+                    for (int y = (int) start.y + height; y >= (int) start.y; y--) {
                         var temp = new Location(x, y, z);
                         if (world.IsWalkable(temp) &&
                             (currentClosest == null || (distance > (tempDistance = toLocation.Distance(temp)) &&

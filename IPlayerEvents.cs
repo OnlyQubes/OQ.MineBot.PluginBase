@@ -23,6 +23,7 @@ namespace OQ.MineBot.PluginBase
         /// in to a server.
         /// </summary>
         event IPlayerDelegates.PlayerDelegate onLoggedIn;
+        event IPlayerDelegates.OnEncryptionBegin onEncryptionBegin;
         /// <summary>
         /// Called once the player is
         /// disconencted from the server.
@@ -125,6 +126,7 @@ namespace OQ.MineBot.PluginBase
         public delegate void PlayerDelegate(IPlayer player);
         public delegate void PlayerReasonDelegate(IPlayer player, string reason);
         public delegate void OnGameJoinedDelegate(IPlayer player, int entityId, Dimensions dimension, Gamemodes gamemode);
+        public delegate void OnEncryptionBegin(IPlayer player, string serverId, byte[] key, byte[] token);
         public delegate void OnSpawnedDelegate(IPlayer player);
 
         public delegate void OnChatDelegate(IPlayer player, IChat message, byte position);
