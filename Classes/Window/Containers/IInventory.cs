@@ -33,6 +33,7 @@ namespace OQ.MineBot.PluginBase.Classes.Window.Containers
         /// <param name="exclude">Items that should not be stored</param>
         /// <param name="include">Only items that can be stored</param>
         void Deposite(IWindow window, int[] exclude, int[] include = null);
+
         /// <summary>
         /// Takes items from a window to the inventory.
         /// </summary>
@@ -51,6 +52,7 @@ namespace OQ.MineBot.PluginBase.Classes.Window.Containers
         /// <param name="id"></param>
         /// <returns></returns>
         bool Select(ushort id);
+
         /// <summary>
         /// Attempts to select an item from
         /// the specified id list.

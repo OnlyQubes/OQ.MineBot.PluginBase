@@ -56,6 +56,13 @@
     <Compile Include="Base\Permissions\IPermittedServer.cs" />
     <Compile Include="Base\PluginAuthor.cs" />
     <Compile Include="Base\PluginResponse.cs" />
+    <Compile Include="Base\Plugin\PluginAttribute.cs" />
+    <Compile Include="Base\Plugin\Tasks\IDeathListener.cs" />
+    <Compile Include="Base\Plugin\Tasks\IHealthListener.cs" />
+    <Compile Include="Base\Plugin\Tasks\IHungerListener.cs" />
+    <Compile Include="Base\Plugin\Tasks\IInventoryListener.cs" />
+    <Compile Include="Base\Plugin\Tasks\ITask.cs" />
+    <Compile Include="Base\Plugin\Tasks\ITickListener.cs" />
     <Compile Include="Base\Settings\BoolSetting.cs" />
     <Compile Include="Base\Settings\ComboSetting.cs" />
     <Compile Include="Base\Settings\IPluginSetting.cs" />
