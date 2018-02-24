@@ -12,11 +12,11 @@ namespace OQ.MineBot.PluginBase.Base.Plugin.Tasks
         therefore if your methods take >3ms then they
         should be running on a seperate thread)
     */
-    public class IInventoryListener
+    public interface IInventoryListener
     {
-        public virtual void OnInventoryChanged()        { }
-        public virtual void OnSlotChanged(ISlot slot)   { }
-        public virtual void OnItemAdded(ISlot slot)     { }
-        public virtual void OnItemRemoved(ISlot slot)   { }
+        void OnInventoryChanged();
+        void OnSlotChanged(ISlot slot);
+        void OnItemAdded(ISlot slot);
+        void OnItemRemoved(ISlot slot);
     }
 }

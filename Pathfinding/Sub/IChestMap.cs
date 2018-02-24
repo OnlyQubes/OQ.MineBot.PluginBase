@@ -1,4 +1,5 @@
-﻿using OQ.MineBot.PluginBase.Classes;
+﻿using System;
+using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Window;
 
 namespace OQ.MineBot.PluginBase.Pathfinding.Sub
@@ -8,7 +9,7 @@ namespace OQ.MineBot.PluginBase.Pathfinding.Sub
         /// <summary>
         /// Finds all chest near the player.
         /// </summary>
-        void UpdateChestList(IPlayer player);
+        void UpdateChestList(IPlayer player, Action callback);
 
         /// <summary>
         /// Attempts to find/path to/open a

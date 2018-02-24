@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using OQ.MineBot.PluginBase.Classes.Entity.Lists;
 using OQ.MineBot.PluginBase.Classes.Physics.Colliders;
 using OQ.MineBot.PluginBase.Pathfinding;
@@ -115,6 +116,7 @@ namespace OQ.MineBot.PluginBase.Classes.World
         /// <summary>
         /// Gets all block locations with a certain
         /// id.
+        /// ALTERNATIVE: FindAsync
         /// </summary>
         /// <param name="startX"></param>
         /// <param name="startY"></param>
@@ -344,6 +346,17 @@ namespace OQ.MineBot.PluginBase.Classes.World
         /// <param name="myLocation">Beginning location.</param>
         /// <param name="ids"></param>
         ILocation FindHorizontal(ILocation myLocation, ushort[] ids);
+
+        /// <summary>
+        /// Searches for the specified blocks in the provided area.
+        /// Alternative for 'GetBlockLocations'.
+        /// </summary>
+        /// <param name="width">Width of search. (lenght and width)</param>
+        /// <param name="height">Height of search. (up and down)</param>
+        /// <param name="id"></param>
+        /// <param name="callback">Call backwith result once done. (empty array if not found)</param>
+        void FindAsync(IPlayer player, ILocation location, int width, int height, ushort id, Action<ILocation[]> callback);
+        void FindAsync(IPlayer player, ILocation location, int width, int height, ushort[] id, Action<ILocation[]> callback);
 
         /// <summary>
         /// Is the player standing on this block.

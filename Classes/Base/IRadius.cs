@@ -65,6 +65,7 @@ namespace OQ.MineBot.PluginBase.Classes.Base
         }
 
         public ILocation GetClosestWalkable(IWorld world, ILocation toLocation, bool highestOnly = false) {
+            if (start == null) return null;
 
             ILocation currentClosest = null;
             float distance = 0;

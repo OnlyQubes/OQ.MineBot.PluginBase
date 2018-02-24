@@ -52,6 +52,7 @@ namespace OQ.MineBot.PluginBase.Classes.Window.Containers
         /// <param name="id"></param>
         /// <returns></returns>
         bool Select(ushort id);
+        bool Select(ushort id, int[] meta);
 
         /// <summary>
         /// Attempts to select an item from
@@ -63,5 +64,6 @@ namespace OQ.MineBot.PluginBase.Classes.Window.Containers
         /// <param name="id">Item id that was selected (-1 if none)</param>
         /// <returns></returns>
         int Select(ushort[] id);
+        bool IsFull();
     }
 }

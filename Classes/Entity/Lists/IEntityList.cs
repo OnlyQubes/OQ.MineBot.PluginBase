@@ -178,7 +178,7 @@ namespace OQ.MineBot.PluginBase.Classes.Entity.Lists
         /// <param name="player"></param>
         /// <param name="filter"></param>
         /// <returns></returns>
-        ILiving FindCloestTarget(ILocation player, TargetFilter filter);
+        ILiving FindClosestTarget(ILocation player, TargetFilter filter);
 
         /// <summary>
         /// Add the uuid names.

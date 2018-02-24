@@ -140,7 +140,7 @@ namespace OQ.MineBot.PluginBase
         public delegate void OnPlayerMovedDelegate(IPlayer player);
         public delegate void OnPlayerSprintUpdateDelegate(IPlayer player, bool isSprinting);
 
-        public delegate void OnInventoryChangedDelegate(IPlayer player, bool changed, bool removed, ushort id, int countDifference);
+        public delegate void OnInventoryChangedDelegate(IPlayer player, bool changed, bool removed, ushort id, int countDifference, ISlot slot);
 
         public delegate void OnExplosionDelegate(IPlayer player, float X, float Y, float Z);
 

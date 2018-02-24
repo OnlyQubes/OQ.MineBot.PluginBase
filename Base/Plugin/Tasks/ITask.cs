@@ -1,5 +1,6 @@
 ﻿using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Window.Containers;
+using OQ.MineBot.PluginBase.Classes.World;
 
 namespace OQ.MineBot.PluginBase.Base.Plugin.Tasks
 {
@@ -15,8 +16,18 @@ namespace OQ.MineBot.PluginBase.Base.Plugin.Tasks
         public IPlayerStatus    status      { get; set; }   // Refference to quickly access players status.
         public IPlayerFunctions actions     { get; set; }   // Refference to quickly access player functions.
         public IInventory       inventory   { get; set; }   // Refference to quickly access players inventory.
+        public IWorld           world       { get; set; }   // Refference to quickly access players world.
 
         public virtual void Start()     { }
         public virtual void Stop()      { }
+
+        /// <summary>
+        /// Determines if any of the listeners will be
+        /// called for this task (for this tick only).
+        /// 
+        /// True  - listeners will be invoked normally.
+        /// Flase - no listener will be invoked.
+        /// </summary>
+        public abstract bool Exec();
     }
 }
