@@ -17,7 +17,7 @@ The plugin attribute is used to define the name, description and current version
 When creating a request plugin the main class should implement the [IRequestPlugin interface](https://github.com/OnlyQubes/OQ.MineBot.PluginBase/blob/master/Base/Plugin/IRequestPlugin.cs). This class should also have the Plugin attribute (explained above) and there should only one class of this type per plugin. This type of plugins are enabled through right clicking bots in the accounts tab (see gif below) and don't have a checkbox in the plugins tab, where as the *IStartPlugin* is enabled through the plugin tab.
 When right clicking an account a single plugin can have more than one functions [(see picture)](https://i.imgur.com/wYvFZIM.png).
 
-The functions have to implement [IRequestFunction]().
+The functions have to implement [IRequestFunction](https://github.com/OnlyQubes/OQ.MineBot.PluginBase/blob/master/Base/Plugin/IRequestPlugin.cs). This gives the plugin access to the bots player entity.
 
 ### Inherited method
 * `IRequestFunction[] GetFunctions()` (IRequestPlugin): should return all the functions that will be displayed in the right click menu.
