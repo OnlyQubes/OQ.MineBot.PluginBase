@@ -152,6 +152,7 @@ Start plugins have checkmarks in the plugins tab. Once the checkmark is ticket '
 
 # Tasks
 ### Description
+Plugin tasks should be seperated in different classes, e.g.: Sugarcane farmer: Farm task, Store items task. All plugin tasks should be registered by *IStartPlugin OnStart()* method. When registering tasks the plugin should pass all the settings as to the constructor (see official plugins). Tasks should implement different listeners, instead of registering events manually (add events only if a pre-made listener isn't available). ITask classes have to override `bool Exec()`, which will determined if the listener events get triggered. If `Exec()` returns false then no listener events will be called until true is returned.
 ### Listeners
 * ITickListener: `OnTick()`
   * The method 'OnTick' will be called each tick (~50ms) until the bot gets disconnected or the plugin is stopped.
