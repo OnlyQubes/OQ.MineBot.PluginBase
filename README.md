@@ -1,5 +1,6 @@
-##Start plugin
+## Start plugin
 ### Description
+
 
 ### Code example
 ```
@@ -55,3 +56,5 @@
 ```
 
 ### Examples
+* [Area miner](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/AreaMiner)
+  * [Area miner tasks](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/AreaMiner/Tasks) 
