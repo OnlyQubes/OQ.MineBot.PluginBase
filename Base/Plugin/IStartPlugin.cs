@@ -11,7 +11,7 @@ namespace OQ.MineBot.PluginBase.Base.Plugin
         /// </summary>
         public Action<ITask> RegisterTask;
 
-        public virtual PluginResponse OnEnable (IBotSettings botSettings) { return null; }
+        public virtual PluginResponse OnEnable (IBotSettings botSettings) { return new PluginResponse(true); }
         public virtual void           OnDisable() { }
 
         public virtual void           OnStart()   { }
