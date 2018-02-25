@@ -1,6 +1,6 @@
 ## Start plugin
 ### Description
-
+A Start plugin class is the ones that implement [IStartPlugin](https://github.com/OnlyQubes/OQ.MineBot.PluginBase/blob/master/Base/Plugin/IStartPlugin.cs), this is the main class of the plugin, meaning it should be marked with the attribute *\[Plugin\]*, and there should be only one of these per plugin. Plugins of this type use the [ITask interface](https://github.com/OnlyQubes/OQ.MineBot.PluginBase/blob/master/Base/Plugin/Tasks/ITask.cs) to control each bot once it logs in to the server. The class that implements *IStartPlugin* it self does not have any reference or control over the bot, thus *ITask* classes are necessary and should be registered in 'OnStart()' with the method 'RegisterTask()' (see example below).
 
 ### Code example
 ```c#
@@ -8,8 +8,8 @@
   public class ExamplePlugin : IStartPlugin {
     
     public override void OnLoad(int version, int subversion, int buildversion) {
-            this.Setting = new IPluginSetting[1];
-            Setting[0] = new StringSetting("Message", "explanation", "default message");
+      this.Setting = new IPluginSetting[1];
+      Setting[0] = new StringSetting("Message", "explanation", "default message");
     }
     
     public override PluginResponse OnEnable(IBotSettings botSettings) {
