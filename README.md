@@ -153,5 +153,44 @@ Start plugins have checkmarks in the plugins tab. Once the checkmark is ticket '
 # Tasks
 ### Description
 ### Listeners
+* ITickListener: `OnTick()`
+  * The method 'OnTick' will be called each tick (~50ms) until the bot gets disconnected or the plugin is stopped.
+* IDeathListener: `OnDeath()`
+  * The method 'OnDeath()' will be called once the bots health is equal or below 0.
+* IHealthListener: `OnHealthChanged(int health)`
+  * The method 'OnHealthChanged' will be called once the bots health is changed.
+* IHungerListener: `OnHungerChanged(int hunger)`
+  * The method 'OnHungerChanged' will be called once the bots health is changed.
+* IInventoryListener: `OnInventoryChanged()`, `OnSlotChanged(ISlot slot)`, `OnItemAdded(ISlot slot)`, `OnItemRemoved(ISlot slot)`
+  * 'OnInventoryChanged' - called everytime the players inventory changes.
+  * 'OnItemChanged' - called every time a slot changes (e.g.: item picked up, item removed, item count incremented)
+  * 'OnItemAdded' - called once an item gets added to the inventory. (has to be a new item, does not get called if item is put into an existing stack)
+  * 'OnItemRemoved' - called once an item gets removed from the inventory.
 ### Code example
+```c#
+  public class Eat : ITask, IHungerListener {
+    private readonly int minFood;
+    public Eat(int minFood) {
+      this.mindFood = minFood;
+    }
+    
+    // Exec only if not dead and not eating.
+    public override bool Exec() {
+      return !status.entity.isDead && !status.eating;
+    }
+    
+    public void OnHungerChanged(int hunger) {
+      if (hunger > m_minFood) return;
+      EatFood();
+    }
+    
+    private void EatFood() {
+      ...
+    }
+  }
+```
+
 ### Examples
+* [Sugarcane farmer - Farm task](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/SugarcaneFarmerPlugin/Tasks/Farm.cs)
+* [Sugarcane farmer - Store task](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/SugarcaneFarmerPlugin/Tasks/Store.cs)
+###### *[all official plugins](https://github.com/OnlyQubes/OQ.MineBot.Plugins)*
