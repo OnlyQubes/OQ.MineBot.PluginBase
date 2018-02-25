@@ -14,6 +14,16 @@ The plugin attribute is used to define the name, description and current version
 
 # Request plugin
 ### Description
+When creating a request plugin the main class should implement the [IRequestPlugin interface](https://github.com/OnlyQubes/OQ.MineBot.PluginBase/blob/master/Base/Plugin/IRequestPlugin.cs). This class should also have the Plugin attribute (explained above) and there should only one class of this type per plugin. This type of plugins are enabled through right clicking bots in the accounts tab (see gif below) and don't have a checkbox in the plugins tab, where as the *IStartPlugin* is enabled through the plugin tab.
+When right clicking an account a single plugin can have more than one functions [(see picture)](https://i.imgur.com/wYvFZIM.png).
+
+The functions have to implement [IRequestFunction]().
+
+### Inherited method
+* `IRequestFunction[] GetFunctions()` (IRequestPlugin): should return all the functions that will be displayed in the right click menu.
+* `PluginResponse OnRequest(IPlayer player)`(IRequestFunction): called once a single account is right click in the accounts tab and this plugins function gets selected. This should execute a specific function on the player.
+* `PluginResponse OnRequest(IPlayer player)`(IRequestFunction): called once more than one accounts are selected and this plugins function gets selected.
+
 ### Code example
 ```c#
   [Plugin(1, "Example plugin", "This is a description for this plugin.")]
@@ -44,7 +54,7 @@ The plugin attribute is used to define the name, description and current version
       
       // Calle if more than one account is selected.
       public PluginResponse OnRequest(IPlayer[] players) {
-        Console.WriteLine("Action requested for " + players.Length);
+        Console.WriteLine("Action requested for " + players.Length + " bots");
         return new PluginResponse(true);
       }
     }
