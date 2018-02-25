@@ -15,10 +15,48 @@ The plugin attribute is used to define the name, description and current version
 # Request plugin
 ### Description
 ### Code example
+```c#
+  [Plugin(1, "Example plugin", "This is a description for this plugin.")]
+  public class ExamplePlugin : IRequestPlugin {
+  
+    // Must be overriden, should be used to define settings if there are any.
+    public override void OnLoad(int version, int subversion, int buildversion) {}
+  
+    // Must return all requestable functions.
+    // (all functions that will be displayed once an account is right clicked)
+    public override IRequestFunction[] GetFunctions() {
+      return new IRequestFunction[] {
+        new EnableFunction(), 
+      };
+    }
+    
+    public class EnableFunction : IRequestFunction
+    {
+      public string GetName() {
+        return "Enable";
+      }
+      
+      // Called once a single account is selected.
+      public PluginResponse OnRequest(IPlayer player) {
+        Console.WriteLine("Action requested for " + player.status.username);
+        return new PluginResponse(true);
+      }
+      
+      // Calle if more than one account is selected.
+      public PluginResponse OnRequest(IPlayer[] players) {
+        Console.WriteLine("Action requested for " + players.Length);
+        return new PluginResponse(true);
+      }
+    }
+  }
+```
+
 ### Examples
 * [Chat spy](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/ChatSpyPlugin)
   * [Chat spy main class](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/ChatSpyPlugin/PluginCore.cs)
 ###### *[all official plugins](https://github.com/OnlyQubes/OQ.MineBot.Plugins)*
+
+
 
 # Start plugin
 ### Description
@@ -36,7 +74,9 @@ Start plugins have checkmarks in the plugins tab. Once the checkmark is ticket '
   [Plugin(1, "Example plugin", "This is a description for this plugin.")]
   public class ExamplePlugin : IStartPlugin {
     
+    // Must be overriden by every plugin.
     public override void OnLoad(int version, int subversion, int buildversion) {
+      // Should be used to define all the settings.
       this.Setting = new IPluginSetting[1];
       Setting[0] = new StringSetting("Message", "explanation", "default message");
     }
