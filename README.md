@@ -1,6 +1,11 @@
 
 <h2>Start plugin</h2>
 <h3>Description</h3>
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
 <h3>Code sample</h3>
 `
   [Plugin(1, "Example plugin", "This is a description for this plugin.")]
