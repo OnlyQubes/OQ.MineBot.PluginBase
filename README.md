@@ -2,12 +2,11 @@
 
 ## Start plugin
 ### Description
-A Start plugin class is the one that implement [IStartPlugin](https://github.com/OnlyQubes/OQ.MineBot.PluginBase/blob/master/Base/Plugin/IStartPlugin.cs), this is the main class of the plugin, meaning it should be marked with the attribute *\[Plugin\]* (explained above), and there should be only one of these per plugin. Plugins of this type use the [ITask interface](https://github.com/OnlyQubes/OQ.MineBot.PluginBase/blob/master/Base/Plugin/Tasks/ITask.cs) to control each bot once it logs in to the server. The class that implements *IStartPlugin* it self does not have any reference or control over the bot, thus *ITask* classes are necessary and should be registered in 'OnStart()' with the method 'RegisterTask()' (see example below).
-
+* A Start plugin class is the one that implement [IStartPlugin](https://github.com/OnlyQubes/OQ.MineBot.PluginBase/blob/master/Base/Plugin/IStartPlugin.cs), this is the main class of the plugin, meaning it should be marked with the attribute *\[Plugin\]* (explained above), and there should be only one of these per plugin. Plugins of this type use the [ITask interface](https://github.com/OnlyQubes/OQ.MineBot.PluginBase/blob/master/Base/Plugin/Tasks/ITask.cs) to control each bot once it logs in to the server. The class that implements *IStartPlugin* it self does not have any reference or control over the bot, thus *ITask* classes are necessary and should be registered in 'OnStart()' with the method 'RegisterTask()' (see example below).
 Start plugins have checkmarks in the plugins tab. Once the checkmark is ticket 'OnEnable()' gets called, an instance copy of this plugin is created for each currently connected bot (and later for the bots that connected) and lastly 'OnStart()' gets called, which should register all its Tasks. The checkmark can be unticked, which in turn will call 'OnDisable()' on the main instance of the plugin and will call 'OnStop' on each instance copy and 'Stop' on each registered task.
 
-#### Inherited methods:
-`PluginResponse OnEnable (IBotSettings botSettings)` - gets called only when the checkbox in the plugins tab is ticked. By overriding this method you can cancel the enablance of this plugin by returning the following piece of code `new PluginResponse(false, "error message")`, this would display an error message to the user and would untick the checkbox. However if you want the plugin to continue its normal flow then `new PluginResponse(true)` should be returned.
+ * #### Inherited methods:
+  * `PluginResponse OnEnable (IBotSettings botSettings)` - gets called only when the checkbox in the plugins tab is ticked. By overriding this method you can cancel the enablance of this plugin by returning the following piece of code `new PluginResponse(false, "error message")`, this would display an error message to the user and would untick the checkbox. However if you want the plugin to continue its normal flow then `new PluginResponse(true)` should be returned.
 (In official plugins this is used to check if all the required settings are enabled)
 
 ### Code example
