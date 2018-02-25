@@ -3,7 +3,7 @@
 
 
 ### Code example
-```
+```c#
   [Plugin(1, "Example plugin", "This is a description for this plugin.")]
   public class ExamplePlugin : IStartPlugin {
     
@@ -69,4 +69,4 @@
   * [Shield aura main class](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/ShieldPlugin/PluginCore.cs)
   * [Shield aura tasks](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/ShieldPlugin/Tasks)
   
-*[all official plugins](https://github.com/OnlyQubes/OQ.MineBot.Plugins)*
+###### *[all official plugins](https://github.com/OnlyQubes/OQ.MineBot.Plugins)*
