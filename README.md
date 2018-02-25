@@ -7,8 +7,11 @@ A Start plugin class is the one that implement [IStartPlugin](https://github.com
 Start plugins have checkmarks in the plugins tab. Once the checkmark is ticket 'OnEnable()' gets called, an instance copy of this plugin is created for each currently connected bot (and later for the bots that connected) and lastly 'OnStart()' gets called, which should register all its Tasks. The checkmark can be unticked, which in turn will call 'OnDisable()' on the main instance of the plugin and will call 'OnStop' on each instance copy and 'Stop' on each registered task.
 
 #### Inherited methods:
-* `PluginResponse OnEnable (IBotSettings botSettings)` - gets called only when the checkbox in the plugins tab is ticked. By overriding this method you can cancel the enablance of this plugin by returning the following piece of code `new PluginResponse(false, "error message")`, this would display an error message to the user and would untick the checkbox. However if you want the plugin to continue its normal flow then `new PluginResponse(true)` should be returned.
+* `PluginResponse OnEnable (IBotSettings botSettings)`: called only when the checkbox in the plugins tab is ticked. By overriding this method you can cancel the enablance of this plugin by returning the following piece of code `new PluginResponse(false, "error message")`, this would display an error message to the user and would untick the checkbox. However if you want the plugin to continue its normal flow then `new PluginResponse(true)` should be returned.
 (In official plugins this is used to check if all the required settings are enabled)
+* `void OnDisable()`: called only when the plugin is disabled through the plugins tab. This will not get called if the plugin is disabled through macros or any other source.
+* `void OnStart()`: called when the plugin is started. This gets called after 'OnEnable', once per connected bot (whereas 'OnEnable' gets called only once). This should register all the tasks that will control the bot, as this class has no access to the bot entity it self. (for examples see official plugins)
+* `void OnStop()`: called when the plugin is stopped. This gets called after 'OnStop', once per connected bot (whereas 'OnDisable' gets called only once).
 
 ### Code example
 ```c#
