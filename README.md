@@ -68,4 +68,5 @@
 * [Shield aura](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/ShieldPlugin)
   * [Shield aura main class](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/ShieldPlugin/PluginCore.cs)
   * [Shield aura tasks](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/ShieldPlugin/Tasks)
+  
 *[all official plugins](https://github.com/OnlyQubes/OQ.MineBot.Plugins)*
