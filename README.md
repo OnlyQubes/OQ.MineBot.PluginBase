@@ -1,9 +1,8 @@
 
 <h2>Start plugin</h2>
 <h3>Description</h3>
-<p></p>
 <h3>Code sample</h3>
-```c#
+```ruby
   [Plugin(1, "Example plugin", "This is a description for this plugin.")]
   public class ExamplePlugin : IStartPlugin {
     
@@ -54,7 +53,3 @@
     }
   }
 ```
-<h3>Examples</h3>
-
-* Start plugin ([IStartPlugin](Base/Plugin/IStartPlugin.cs))
-* Request plugin ([IRequestPlugin](Base/Plugin/IRequestPlugin.cs))
