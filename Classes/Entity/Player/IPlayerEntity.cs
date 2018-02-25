@@ -47,7 +47,7 @@
         /// Is the player currenly
         /// starving?
         /// </summary>
-        bool isStarting { get; set; }
+        bool isStarving { get; set; }
 
         /// <summary>
         /// Is the player currently crouching.

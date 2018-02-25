@@ -52,7 +52,6 @@
     <Compile Include="Base\Permissions\IPermittedCredentials.cs" />
     <Compile Include="Base\Permissions\IPermittedServer.cs" />
     <Compile Include="Base\Plugin\IRequestPlugin.cs" />
-    <Compile Include="Base\Plugin\Listeners\IStartListener.cs" />
     <Compile Include="Base\Plugin\PluginResponse.cs" />
     <Compile Include="Base\Plugin\IPlugin.cs" />
     <Compile Include="Base\Plugin\IStartPlugin.cs" />
