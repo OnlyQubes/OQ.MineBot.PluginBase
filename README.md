@@ -2,7 +2,7 @@
 <h2>Start plugin</h2>
 <h3>Description</h3>
 <h3>Code sample</h3>
-```ruby
+`
   [Plugin(1, "Example plugin", "This is a description for this plugin.")]
   public class ExamplePlugin : IStartPlugin {
     
@@ -52,4 +52,4 @@
       actions.Chat(message);
     }
   }
-```
+`
