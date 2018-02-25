@@ -1,3 +1,7 @@
+##Start plugin
+### Description
+
+### Code example
 ```
   [Plugin(1, "Example plugin", "This is a description for this plugin.")]
   public class ExamplePlugin : IStartPlugin {
@@ -49,3 +53,5 @@
     }
   }
 ```
+
+### Examples
