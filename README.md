@@ -57,4 +57,15 @@
 
 ### Examples
 * [Area miner](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/AreaMiner)
-  * [Area miner tasks](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/AreaMiner/Tasks) 
+  * [Area miner main class](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/AreaMiner/PluginCore.cs)
+  * [Area miner tasks](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/AreaMiner/Tasks)
+* [Sugarcane farmer](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/SugarcaneFarmerPlugin)
+  * [Sugarcane farmer main class](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/SugarcaneFarmerPlugin/PluginCore.cs)
+  * [Sugarcane farmer tasks](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/SugarcaneFarmerPlugin/Tasks)
+* [Auto eat](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/AutoEatPlugin/)
+  * [Auto eat main class](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/AutoEatPlugin/PluginCore.cs)
+  * [Auto eat tasks](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/AutoEatPlugin/Tasks)
+* [Shield aura](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/ShieldPlugin)
+  * [Shield aura main class](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/ShieldPlugin/PluginCore.cs)
+  * [Shield aura tasks](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/ShieldPlugin/Tasks)
+*[all official plugins](https://github.com/OnlyQubes/OQ.MineBot.Plugins)*
