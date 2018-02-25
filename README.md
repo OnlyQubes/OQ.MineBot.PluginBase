@@ -1,4 +1,4 @@
-## Plugin attribute
+# Plugin attribute
 ### Description
 The plugin attribute is used to define the name, description and current version of the plugin. The version is also used for plugin update notifications, thus increasing the version by 1 every update is a good idea. The following code snippet shows the snippet of the plugin attribute:
 `[Plugin(<version>, <name>, <description>)]`
@@ -12,8 +12,15 @@ The plugin attribute is used to define the name, description and current version
 ```
 ###### *[see examples in official plugins](https://github.com/OnlyQubes/OQ.MineBot.Plugins)*
 
+# Request plugin
+### Description
+### Code example
+### Examples
+* [Chat spy](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/ChatSpyPlugin)
+  * [Chat spy main class](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/ChatSpyPlugin/PluginCore.cs)
+###### *[all official plugins](https://github.com/OnlyQubes/OQ.MineBot.Plugins)*
 
-## Start plugin
+# Start plugin
 ### Description
 A Start plugin class is the one that implement [IStartPlugin](https://github.com/OnlyQubes/OQ.MineBot.PluginBase/blob/master/Base/Plugin/IStartPlugin.cs), this is the main class of the plugin, meaning it should be marked with the attribute *\[Plugin\]* (explained above), and there should be only one of these per plugin. Plugins of this type use the [ITask interface](https://github.com/OnlyQubes/OQ.MineBot.PluginBase/blob/master/Base/Plugin/Tasks/ITask.cs) to control each bot once it logs in to the server. The class that implements *IStartPlugin* it self does not have any reference or control over the bot, thus *ITask* classes are necessary and should be registered in 'OnStart()' with the method 'RegisterTask()' (see example below).
 
@@ -93,7 +100,8 @@ Start plugins have checkmarks in the plugins tab. Once the checkmark is ticket '
 
 
 
-## Tasks
+# Tasks
 ### Description
+### Listeners
 ### Code example
 ### Examples
