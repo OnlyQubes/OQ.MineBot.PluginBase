@@ -357,10 +357,15 @@ namespace OQ.MineBot.PluginBase.Classes.World
         /// <param name="callback">Call backwith result once done. (empty array if not found)</param>
         void FindAsync(IPlayer player, ILocation location, int width, int height, ushort id, Action<ILocation[]> callback);
         void FindAsync(IPlayer player, ILocation location, int width, int height, ushort[] id, Action<ILocation[]> callback);
+        /// <param name="isValid">Function used to check if the block is valid or should
+        /// we check further. If invalid return false.</param>
+        /// <param name="callback">NULL location if not found.</param>
+        void FindFirstAsync(IPlayer player, ILocation location, int width, int height, ushort[] ids, Func<ILocation, bool> isValid, Action<ILocation> callback);
 
         /// <summary>
         /// Is the player standing on this block.
         /// </summary>
         bool IsStandingOn(ILocation location, IPosition player);
+
     }
 }

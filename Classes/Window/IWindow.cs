@@ -5,6 +5,9 @@ namespace OQ.MineBot.PluginBase.Classes.Window
 {
     public interface IWindow
     {
+        event WindowDelegates.SlotDelegate onSlotChanged;
+        event WindowDelegates.DropDelegate onSlotDropped;
+
         /// <summary>
         /// Id of this window.
         /// </summary>
@@ -128,5 +131,11 @@ namespace OQ.MineBot.PluginBase.Classes.Window
         /// <param name="callback"></param>
         /// <returns></returns>
         short ClickHotbarShortcut(short hotbarIndex, short inventoryIndex, Action<bool> callback);
+    }
+
+    public class WindowDelegates
+    {
+        public delegate void SlotDelegate(ISlot slot);
+        public delegate void DropDelegate(int index, bool stack);
     }
 }

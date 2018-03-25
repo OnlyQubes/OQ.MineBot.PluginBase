@@ -119,6 +119,12 @@ namespace OQ.MineBot.PluginBase
         /// an entities velocity.
         /// </summary>
         event IPlayerDelegates.OnEntityVelocity onEntityVelocity;
+
+        /// <summary>
+        /// Called pre player update, allows
+        /// to cancel all physics.
+        /// </summary>
+        event IPlayerDelegates.OnPlayerUpdate onPlayerUpdate;
     }
 
     public class IPlayerDelegates
@@ -148,5 +154,7 @@ namespace OQ.MineBot.PluginBase
 
         public delegate void OnObjectSpawned(IWorldObject worldObject, double X, double Y, double Z, byte pitch, byte yaw);
         public delegate void OnEntityVelocity(int entityId, short x, short y, short z);
+
+        public delegate void OnPlayerUpdate(IStopToken cancel);
     }
 }

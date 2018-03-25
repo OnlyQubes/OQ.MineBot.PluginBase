@@ -5,6 +5,9 @@ namespace OQ.MineBot.PluginBase.Classes.Window
 {
     public interface IWindowContainer
     {
+        event WindowContainerDelegates.WindowDelegate onWindowAddedEvent;
+        event WindowContainerDelegates.WindowRemovedDelegate onWindowRemovedEvent;
+
         /// <summary>
         /// Players inventory.
         /// </summary>
@@ -42,5 +45,11 @@ namespace OQ.MineBot.PluginBase.Classes.Window
         /// Gets window from openWindows at index i.
         /// </summary>
         IWindow GetWindowAt(int i);
+    }
+
+    public class WindowContainerDelegates
+    {
+        public delegate void WindowDelegate(IWindow window);
+        public delegate void WindowRemovedDelegate(int id);
     }
 }
