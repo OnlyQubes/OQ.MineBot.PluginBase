@@ -203,11 +203,17 @@ namespace OQ.MineBot.PluginBase.Classes.Entity.Lists
         /// <param name="uuid"></param>
         /// <returns></returns>
         UUID FindNameByUuid(string uuid);
+
         /// <summary>
         /// Gets a random user from the tab list.
         /// </summary>
         /// <returns></returns>
         string RandomName();
+
+        /// <summary>
+        /// Does the uuid belong to a bot.
+        /// </summary>
+        bool IsBot(string uuid);
     }
 
     /// <summary>

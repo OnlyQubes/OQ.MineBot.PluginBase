@@ -85,5 +85,9 @@ namespace OQ.MineBot.PluginBase.Classes.Base
                 }
             return currentClosest;
         }
+
+        public override string ToString() {
+            return ("Radius { start: "+start+"\t:: end: "+(start.x + xSize)+"/¬/"+ (start.z + zSize) + "}");    
+        }
     }
 }

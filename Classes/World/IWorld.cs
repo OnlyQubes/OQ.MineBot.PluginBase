@@ -303,7 +303,7 @@ namespace OQ.MineBot.PluginBase.Classes.World
         /// <param name="position"></param>
         /// <param name="location"></param>
         /// <returns></returns>
-        bool DiagonalReach(IPosition position, ILocation location);
+        bool DiagonalReach(ILocation position, ILocation location);
 
         /// <summary>
         /// Checks if the block can be

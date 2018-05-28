@@ -390,7 +390,7 @@ namespace OQ.MineBot.PluginBase
         /// Attempt to eat the item
         /// that is currently held.
         /// </summary>
-        Task EatAsync();
+        void EatAsync();
 
         /// <summary>
         /// Start the sprinting process.
@@ -524,6 +524,13 @@ namespace OQ.MineBot.PluginBase
         /// </summary>
         /// <returns>Was the path reached.</returns>
         bool WaitMoveDirection(IStopToken token, Direction direction, MapOptions options = null);
+
+        /// <summary>
+        /// Get the closest face of a block
+        /// from our location.
+        /// </summary>
+        /// <returns>0 - default</returns>
+        sbyte FindClosestFace(IPosition playerPosition, ILocation target);
     }
 
     public enum LookSpeed

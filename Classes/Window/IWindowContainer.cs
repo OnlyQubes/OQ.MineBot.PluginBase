@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using OQ.MineBot.PluginBase.Classes.Window.Containers;
 
 namespace OQ.MineBot.PluginBase.Classes.Window
@@ -45,6 +46,13 @@ namespace OQ.MineBot.PluginBase.Classes.Window
         /// Gets window from openWindows at index i.
         /// </summary>
         IWindow GetWindowAt(int i);
+
+        /// <summary>
+        /// Closes all windows one by one. 
+        /// Calls callback once done.
+        /// </summary>
+        /// <param name="callback"></param>
+        void CloseAllWindowsAsync(Action callback);
     }
 
     public class WindowContainerDelegates
