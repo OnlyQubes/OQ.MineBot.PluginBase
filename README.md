@@ -1,11 +1,11 @@
 # Plugin attribute
 ### Description
 The plugin attribute is used to define the name, description and current version of the plugin. The version is also used for plugin update notifications, thus increasing the version by 1 every update is a good idea. The following code snippet shows the snippet of the plugin attribute:
-`[Plugin(<version>, <name>, <description>)]`
+`[Plugin(<version>, <name>, <description>, <[optional] showcase url>)]`
 
 ### Example
 ```c#
-  [Plugin(1, "Plugin Name", "Plugin Description")]
+  [Plugin(1, "Plugin Name", "Plugin Description", "https://youtube.com/.. (optional)")]
   public class Core {
     ...
   }
@@ -87,8 +87,7 @@ Start plugins have checkmarks in the plugins tab. Once the checkmark is ticket '
     // Must be overriden by every plugin.
     public override void OnLoad(int version, int subversion, int buildversion) {
       // Should be used to define all the settings.
-      this.Setting = new IPluginSetting[1];
-      Setting[0] = new StringSetting("Message", "explanation", "default message");
+      this.Settings.Add(new StringSetting("Message", "explanation", "default message"));
     }
     
     public override PluginResponse OnEnable(IBotSettings botSettings) {
