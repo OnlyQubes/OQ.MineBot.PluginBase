@@ -1,6 +1,6 @@
 ﻿namespace OQ.MineBot.PluginBase.Base
 {
-    public class PathSetting: IPluginSetting
+    public class StringSetting : IPluginSetting
     {
         /// <summary>
         /// Name of the settings.
@@ -17,7 +17,15 @@
         /// </summary>
         public object value { get; set; }
 
-        public PathSetting(string name, string description, string value) {
+        /// <summary>
+        /// Contains a refference of the parent
+        /// setting if it's in a Setting group.
+        /// </summary>
+        public IPluginSetting parent { get; set; }
+        public string saveName { get; set; }
+
+
+        public StringSetting(string name, string description, string value) {
             this.name = name;
             this.description = description;
             this.value = value;

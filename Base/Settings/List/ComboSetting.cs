@@ -1,6 +1,6 @@
 ﻿namespace OQ.MineBot.PluginBase.Base
 {
-    public class NumberSetting : IPluginSetting
+    public class ComboSetting : IParentSetting, IPluginSetting
     {
         /// <summary>
         /// Name of the settings.
@@ -28,18 +28,23 @@
             }
             set { _value = value; }
         }
+
+        /// <summary>
+        /// Contains a refference of the parent
+        /// setting if it's in a Setting group.
+        /// </summary>
+        public IPluginSetting parent { get; set; }
+        public string saveName { get; set; }
+
         private object _value;
 
-        public int min, max, add;
+        public string[] values;
 
-        public NumberSetting(string name, string description, int value, int min, int max, int add = 1) {
+        public ComboSetting(string name, string description, string[] values, int index) {
             this.name = name;
             this.description = description;
-            this.value = value;
-
-            this.min = min;
-            this.max = max;
-            this.add = add;
+            this.value = index;
+            this.values = values;
         }
 
         /// <summary>

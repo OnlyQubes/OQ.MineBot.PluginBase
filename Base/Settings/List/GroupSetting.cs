@@ -1,6 +1,6 @@
 ﻿namespace OQ.MineBot.PluginBase.Base
 {
-    public class LinkSetting : IPluginSetting
+    public class GroupSetting : IParentSetting, IPluginSetting
     {
         /// <summary>
         /// Name of the settings.
@@ -15,13 +15,29 @@
         /// <summary>
         /// Default value of the setting.
         /// </summary>
-        public object value { get; set; }
+        public object value {
+            get { return false; }
+            set { return; }
+        }
+        public bool isOpen;
 
-        public LinkSetting(string name, string description, string value)
-        {
+        /// <summary>
+        /// Contains a refference of the parent
+        /// setting if it's in a Setting group.
+        /// </summary>
+        public IPluginSetting parent { get; set; }
+        public string saveName { get; set; }
+
+        private object _value;
+
+        public GroupSetting(string name, string description) {
             this.name = name;
             this.description = description;
-            this.value = value;
+            this.value = name;
+        }
+
+        public void Add(IPluginSetting setting) {
+            this.Add(value, setting);
         }
 
         /// <summary>
@@ -30,8 +46,7 @@
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T Get<T>()
-        {
+        public T Get<T>() {
             return (T)value;
         }
     }

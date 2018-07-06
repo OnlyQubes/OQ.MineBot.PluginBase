@@ -11,6 +11,11 @@
         /// Metadata for this monster.
         /// </summary>
         IEntityMetadata metadata { get; set; }
+
+        /// <summary>
+        /// Is this a passive mob.
+        /// </summary>
+        bool IsFriendly();
     }
 
     public enum MobType

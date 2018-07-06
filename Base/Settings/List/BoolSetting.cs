@@ -1,6 +1,6 @@
 ﻿namespace OQ.MineBot.PluginBase.Base
 {
-    public class ComboSetting : IPluginSetting
+    public class BoolSetting : IParentSetting, IPluginSetting
     {
         /// <summary>
         /// Name of the settings.
@@ -15,28 +15,31 @@
         /// <summary>
         /// Default value of the setting.
         /// </summary>
-        public object value
-        {
-            get
-            {
-                if (_value.GetType() != typeof (int)) {
-                    int temp;
-                    if (int.TryParse((string)_value, out temp))
+        public object value {
+            get {
+                if (_value.GetType() != typeof(bool)) {
+                    bool temp;
+                    if (bool.TryParse((string)_value, out temp))
                         return temp;
                 }
                 return _value;
             }
             set { _value = value; }
         }
+
+        /// <summary>
+        /// Contains a refference of the parent
+        /// setting if it's in a Setting group.
+        /// </summary>
+        public IPluginSetting parent { get; set; }
+        public string saveName { get; set; }
+
         private object _value;
 
-        public string[] values;
-
-        public ComboSetting(string name, string description, string[] values, int index) {
+        public BoolSetting(string name, string description, bool value) {
             this.name = name;
             this.description = description;
-            this.value = index;
-            this.values = values;
+            this.value = value;
         }
 
         /// <summary>

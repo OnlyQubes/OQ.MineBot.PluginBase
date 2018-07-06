@@ -6,9 +6,12 @@ namespace OQ.MineBot.PluginBase.Base.Plugin
     {
         /// <summary>
         /// All settings should be stored here.
-        /// (NULL if there shouldn't be any settings)
         /// </summary>
-        public IPluginSetting[] Setting { get; set; }
+        public readonly SettingCollection Setting = new SettingCollection();
+
+        public IPluginSetting At(int index) {
+            return Setting.At(index);
+        } 
 
         /// <summary>
         /// Should be used to check compatability with the

@@ -34,6 +34,18 @@ namespace OQ.MineBot.PluginBase
         bool eating { get; set; }
 
         /// <summary>
+        /// Is the player currently switching worlds/respawning.
+        /// (E.g. going from overworld to nether)
+        /// (aka Loading world)
+        /// </summary>
+        bool switchingWorlds { get; set; }
+
+        /// <summary>
+        /// Ping to server and back.
+        /// </summary>
+        int ping { get; set; }
+        
+        /// <summary>
         /// Currently selected hand.
         /// </summary>
         int hand { get; set; }
@@ -55,6 +67,7 @@ namespace OQ.MineBot.PluginBase
         /// are stored here.
         /// </summary>
         IWindowContainer containers { get; set; }
+
 
         /// <summary>
         /// Called once the account is logged in.

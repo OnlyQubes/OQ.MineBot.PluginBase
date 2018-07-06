@@ -26,10 +26,25 @@ namespace OQ.MineBot.PluginBase.Base.Plugin
         /// </summary>
         public string Description { get; set; }
 
+        /// <summary>
+        /// Url to a showcase of the plugin.
+        /// This is optinal, if provided it will appear in the
+        /// plugin settings as a hyperlink.
+        /// (E.g.: "https://www.youtube.com/video?...")
+        /// </summary>
+        public string ShowcaseAddress { get; set; }
+
         public PluginAttribute(int Version, string Name, string Description) {
             this.Version = Version;
             this.Name = Name;
             this.Description = Description;
+        }
+
+        public PluginAttribute(int Version, string Name, string Description, string ShowcaseAddress) {
+            this.Version = Version;
+            this.Name = Name;
+            this.Description = Description;
+            this.ShowcaseAddress = ShowcaseAddress;
         }
     }
 }

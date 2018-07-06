@@ -162,6 +162,13 @@ namespace OQ.MineBot.PluginBase.Classes.Entity.Lists
         /// <returns></returns>
         ILiving FindClosestMob(double x, double y, double z);
         /// <summary>
+        /// If passive is true then only passive mobs will be returned,
+        /// if it's false then only aggresive mobs will be returned.
+        /// (If you want both use the function FindClosestMob(x, y, z) instead)
+        /// </summary>
+        ILiving FindClosestMob(double x, double y, double z, bool passive);
+
+        /// <summary>
         /// Finds the closest player to
         /// the given x/y/z.
         /// </summary>

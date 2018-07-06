@@ -161,6 +161,14 @@ namespace OQ.MineBot.Protocols.Classes.Base
         public override string ToString() {
             return this.x + "/" + this.y + "/" + this.z;
         }
+
+        public static ILocation Parse(string value) {
+
+            var split = value.Split('/');
+            if (split.Length != 3) return null;
+
+            return new Location(int.Parse(split[0]), int.Parse(split[1]), int.Parse(split[2]));
+        }
     }
 
     public class LocationComparer : IEqualityComparer<ILocation>

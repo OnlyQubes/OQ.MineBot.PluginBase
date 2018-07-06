@@ -184,7 +184,7 @@ namespace OQ.MineBot.PluginBase
         /// slots.
         /// </summary>
         IChestMap CreateChestMap();
-
+        
         /// <summary>
         /// Drops single item from inventory.
         /// </summary>
@@ -531,6 +531,11 @@ namespace OQ.MineBot.PluginBase
         /// </summary>
         /// <returns>0 - default</returns>
         sbyte FindClosestFace(IPosition playerPosition, ILocation target);
+
+        /// <summary>
+        /// Hits the drop (Q) button.
+        /// </summary>
+        void DropHeld(bool stack = false);
     }
 
     public enum LookSpeed
