@@ -104,7 +104,7 @@ Start plugins have checkmarks in the plugins tab. Once the checkmark is ticket '
     public override void OnStart() {
       // This should be used to register the tasks for the bot, see below.
       // (Note: called after 'OnEnable')
-      RegisterTask(new DeathMessage(Setting[0].Get<string>()));
+      RegisterTask(new DeathMessage(Setting.At(0).Get<string>()));
     }
     
     public override void OnStop() {
@@ -146,6 +146,81 @@ Start plugins have checkmarks in the plugins tab. Once the checkmark is ticket '
   * [Shield aura main class](https://github.com/OnlyQubes/OQ.MineBot.Plugins/blob/master/ShieldPlugin/PluginCore.cs)
   * [Shield aura tasks](https://github.com/OnlyQubes/OQ.MineBot.Plugins/tree/master/ShieldPlugin/Tasks)
 ###### *[all official plugins](https://github.com/OnlyQubes/OQ.MineBot.Plugins)*
+
+
+# Plugin settings
+### Description
+Plugins can have settings that the plugin users are able to edit, the plugin setting menu can be opened by double clicking the plugin in the bot. If a plugin doesn't have any settings double clicking a plugin won't do anything.
+
+### Types
+* `BlockCollectionSetting` - returns `BlockIdCollection` which is a list of block ids and metadatas. [Preview](https://i.imgur.com/4rr8IPG.png)
+* `BoolSetting` - returns a boolean value.
+* `ComboSetting` - returns index of selected item.
+* `LinkSetting` - displays a hyperlink that when clicked will open the browser and redirect to specified url.
+* `LocationSetting` - returns an ILocation.
+* `NumberSetting` - returns a number.
+* `PathSetting` - allows the user to select a path to a file on his computer (E.g.: C:\hello.txt).
+* `StringListSetting` - returns a string value which should be split by SPACE (control has ',.' blacklisted, so the user is forced to use a space).
+* `StringSetting` - returns a string value.
+
+### Code example
+```c#
+  // Adding a plugin setting:
+  ...
+    public override void OnLoad(int version, int subversion, int buildversion) {
+      // Should be used to define all the settings.
+      this.Settings.Add(new StringSetting("Message", "explanation", "default message"));
+    }
+  ...
+  
+  // Reading plugin setting:
+    public override void OnStart() {
+      RegisterTask(new DeathMessage(Setting.At(0).Get<string>()));  // '0' is index number of the settings 'Message'.
+    }
+  ...
+```
+
+```c#
+  // Settings can be grouped:
+  ...
+    public override void OnLoad(int version, int subversion, int buildversion) {
+      // Should be used to define all the settings.
+      var group = new GroupSetting("My group", "Group description");
+      group.Add(new StringSetting("Message", "explanation", "default message"));
+      group.Add(new StringSetting("Message 2", "explanation", "default message"));
+      this.Settings.Add(group);
+    }
+  ...
+  
+    // Reading group plugin setting:
+    public override void OnStart() {
+    
+      var group = Setting.Get("My group") as IParentSetting; // Get group.
+      RegisterTask(new DeathMessage(blocks.GetValue<string>("Message"))); 
+    }
+  ...
+```
+```c#
+  // Settings can be shown depending on other setting values:
+  // This only works with 'BoolSetting' and 'ComboSetting'!
+  ...
+    public override void OnLoad(int version, int subversion, int buildversion) {
+      // Should be used to define all the settings.
+      var mySetting = new BoolSetting("Show?", "Should the plugin setting 'Message' be shown?", "show");
+      group.Add(new StringSetting("Message", "explanation", "default message"), mysetting, true); // Shown when mySetting is true.
+      group.Add(new StringSetting("Message", "explanation", "default message"), mysetting, false); // Shown when mySetting is false.
+      this.Settings.Add(group);
+    }
+  ...
+  
+    // Reading group plugin setting:
+    public override void OnStart() {
+    
+      var group = Setting.Get("My group") as IParentSetting; // Get group.
+      RegisterTask(new DeathMessage(blocks.GetValue<string>("Message"))); 
+    }
+  ...
+```
 
 
 
