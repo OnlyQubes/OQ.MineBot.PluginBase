@@ -71,5 +71,8 @@
         /// </summary>
         /// <returns></returns>
         bool canReconnect();
+
+        /* Global: */
+        void SetGlobalSpeed(double d, double s);
     }
 }

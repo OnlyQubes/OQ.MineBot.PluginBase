@@ -22,7 +22,8 @@ namespace OQ.MineBot.PluginBase.Base
             get { return _value; }
             set
             {
-                if (value is string) _value = Location.Parse((string)value) ?? new Location(0, 0, 0);
+                if (value is string)
+                    _value = Location.Parse((string)value) ?? new Location(0, 0, 0);
                 else _value = value;
             }
         }
@@ -39,6 +40,7 @@ namespace OQ.MineBot.PluginBase.Base
         public LocationSetting(string name, string description) {
             this.name = name;
             this.description = description;
+            value = new Location(0, 0, 0);
         }
         public LocationSetting(string name, string description, ILocation value) {
             this.name = name;

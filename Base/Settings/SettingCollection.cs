@@ -24,7 +24,7 @@ namespace OQ.MineBot.PluginBase.Base
             foreach (var entry in data) {
                 var entryData = entry.Value.GetCollection();
                 foreach (var second in entryData)
-                    all.Add(second.Value);
+                    Add(second.Value);
             }
         }
 

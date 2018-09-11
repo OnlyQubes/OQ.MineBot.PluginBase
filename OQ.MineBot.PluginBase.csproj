@@ -81,6 +81,7 @@
     <Compile Include="Classes\Base\BlockID.cs" />
     <Compile Include="Classes\Base\BlockIdCollection.cs" />
     <Compile Include="Classes\Base\CancelToken.cs" />
+    <Compile Include="Classes\Base\Enchantment.cs" />
     <Compile Include="Classes\Base\IChat.cs" />
     <Compile Include="Classes\Base\IFacedLocation.cs" />
     <Compile Include="Classes\Base\ILocation.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Classes\Base\IVector.cs" />
     <Compile Include="Classes\Base\Location.cs" />
     <Compile Include="Classes\Base\Position.cs" />
+    <Compile Include="Classes\Base\RayHit.cs" />
     <Compile Include="Classes\Base\UUID.cs" />
     <Compile Include="Classes\Blocks\BlocksGlobal.cs" />
     <Compile Include="Classes\Blocks\IBlock.cs" />
@@ -150,6 +152,7 @@
     <Compile Include="Classes\World\IChunk.cs" />
     <Compile Include="Classes\World\IChunkColumb.cs" />
     <Compile Include="Classes\World\IWorld.cs" />
+    <Compile Include="IControls .cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="IPlayerEvents.cs" />
     <Compile Include="IPlayerFunctions.cs" />

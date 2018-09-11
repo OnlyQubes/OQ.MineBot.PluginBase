@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OQ.MineBot.GUI.Protocol.Movement.Maps;
 using OQ.MineBot.PluginBase.Classes;
+using OQ.MineBot.PluginBase.Classes.Base;
 using OQ.MineBot.PluginBase.Classes.Blocks;
 using OQ.MineBot.PluginBase.Classes.Entity;
 using OQ.MineBot.PluginBase.Classes.Items;
@@ -536,6 +537,14 @@ namespace OQ.MineBot.PluginBase
         /// Hits the drop (Q) button.
         /// </summary>
         void DropHeld(bool stack = false);
+
+        /// <summary>
+        /// Forward raycast.
+        /// </summary>
+        /// <param name="entity">Can the raycast include entities.</param>
+        /// <param name="world">Can the raycast include blocks.</param>
+        /// <returns>RayHit if hit anything, else null</returns>
+        RayHit Raycast(bool entity = true, bool world = true);
     }
 
     public enum LookSpeed

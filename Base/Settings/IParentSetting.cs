@@ -35,7 +35,7 @@ namespace OQ.MineBot.PluginBase.Base
         }
 
         public SettingGroup GetGroup(object meValue) {
-            if (!collection.ContainsKey(meValue)) return null;
+            if (meValue == null || !collection.ContainsKey(meValue)) return null;
             return collection[meValue];
         }
 

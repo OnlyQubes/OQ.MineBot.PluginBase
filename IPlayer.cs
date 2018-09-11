@@ -50,6 +50,10 @@ namespace OQ.MineBot.PluginBase
         /// Tick manager for the player.
         /// </summary>
         ITickManager tickManager { get; set; }
+        /// <summary>
+        /// High level controls.
+        /// </summary>
+        IControls controls { get; set; }
 
         /// <summary>
         /// Player id. (Used to communicate
