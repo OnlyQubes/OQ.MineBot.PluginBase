@@ -87,7 +87,7 @@ Start plugins have checkmarks in the plugins tab. Once the checkmark is ticket '
     // Must be overriden by every plugin.
     public override void OnLoad(int version, int subversion, int buildversion) {
       // Should be used to define all the settings.
-      this.Settings.Add(new StringSetting("Message", "explanation", "default message"));
+      this.Setting.Add(new StringSetting("Message", "explanation", "default message"));
     }
     
     public override PluginResponse OnEnable(IBotSettings botSettings) {
@@ -117,7 +117,7 @@ Start plugins have checkmarks in the plugins tab. Once the checkmark is ticket '
     
     private readonly string message;
     
-    public SayHello(string message) {
+    public DeathMessage(string message) {
       this.message = message;
     }
     
