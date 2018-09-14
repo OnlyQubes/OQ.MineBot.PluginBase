@@ -152,7 +152,7 @@
     <Compile Include="Classes\World\IChunk.cs" />
     <Compile Include="Classes\World\IChunkColumb.cs" />
     <Compile Include="Classes\World\IWorld.cs" />
-    <Compile Include="IControls .cs" />
+    <Compile Include="IControls.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="IPlayerEvents.cs" />
     <Compile Include="IPlayerFunctions.cs" />
