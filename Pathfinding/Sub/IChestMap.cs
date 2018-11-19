@@ -17,6 +17,14 @@ namespace OQ.MineBot.PluginBase.Pathfinding.Sub
         /// </summary>
         /// <returns>True if found empty chest 
         /// and opened it, else false</returns>
-        IWindow Open(IPlayer player, IStopToken token);
+        IWindow Open(IPlayer player, IStopToken token, ChestStatus status);
+
+    }
+
+    public enum ChestStatus
+    {
+        Empty,
+        Full,
+        Misc
     }
 }

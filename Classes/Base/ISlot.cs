@@ -25,8 +25,6 @@ namespace OQ.MineBot.PluginBase.Classes
         /// </summary>
         object nbt { get; set; }
 
-        ISlot Read(Stream stream, object token, ref int bytesRead);
-
         /// <summary>
         /// Does this item have any nbt data?
         /// </summary>

@@ -256,7 +256,8 @@ namespace OQ.MineBot.PluginBase
         /// each opened container.
         /// </summary>
         /// <param name="index"></param>
-        void ClickContainerSlot(short index, GameWindowButton mode);
+        bool ClickContainerSlot(short index, GameWindowButton mode);
+        void ClickContainerSlot(int windowId, short index, GameWindowButton mode, short curId = -1);
 
         /// <summary>
         /// Makes the player use the 

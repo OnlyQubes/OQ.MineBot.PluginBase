@@ -1,4 +1,5 @@
 ﻿using OQ.MineBot.PluginBase.Bot;
+using OQ.MineBot.PluginBase.Classes.Crafting;
 using OQ.MineBot.PluginBase.Classes.Entity.Lists;
 using OQ.MineBot.PluginBase.Classes.Physics;
 using OQ.MineBot.PluginBase.Classes.World;
@@ -54,6 +55,10 @@ namespace OQ.MineBot.PluginBase
         /// High level controls.
         /// </summary>
         IControls controls { get; set; }
+        /// <summary>
+        /// Crafting.
+        /// </summary>
+        ICrafting crafting { get; set; }
 
         /// <summary>
         /// Player id. (Used to communicate

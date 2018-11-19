@@ -99,6 +99,9 @@
     <Compile Include="Classes\Blocks\IBlock.cs" />
     <Compile Include="Classes\Blocks\IBlockHolder.cs" />
     <Compile Include="Classes\Blocks\IDigAction.cs" />
+    <Compile Include="Classes\Crafting\ICrafting.cs" />
+    <Compile Include="Classes\Crafting\IRecipe.cs" />
+    <Compile Include="Classes\Crafting\RecipeDictionary.cs" />
     <Compile Include="Classes\Entity\Effects\Effect.cs" />
     <Compile Include="Classes\Entity\Effects\IEffectContainer.cs" />
     <Compile Include="Classes\Entity\Filter\TargetFilter.cs" />

@@ -64,6 +64,8 @@ namespace OQ.MineBot.PluginBase.Classes.Window.Containers
         /// <param name="id">Item id that was selected (-1 if none)</param>
         /// <returns></returns>
         int Select(ushort[] id);
+
         bool IsFull();
+        bool IsEmpty();
     }
 }

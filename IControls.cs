@@ -18,18 +18,18 @@
         /// true - sends the click packet instantly.
         /// false - waits until the next physics tick.
         /// </param>
-        void ClickMouseButton(MouseButton button, bool instant = false, MouseClickMod mod = null);
+        void ClickMouseButton(MouseButton button, bool instant = false, MouseClickMod mod = null, bool bestTool = false);
 
         /// <summary>
         /// Holds the mouse button pressed down
         /// until ReleaseMouseButton is called.
         /// </summary>
-        void HoldMouseButton(MouseButton button, MouseClickMod mod = null);
+        void HoldMouseButton(MouseButton button, MouseClickMod mod = null, bool bestTool = false);
         /// <summary>
         /// Spam the mouse button
         /// until ReleaseMouseButton is called.
         /// </summary>
-        void SpamMouseButton(MouseButton button, MouseClickMod mod = null);
+        void SpamMouseButton(MouseButton button, MouseClickMod mod = null, bool bestTool = false);
         
         /// <summary>
         /// Stop holding/spam clicking all mouse buttons.
@@ -48,6 +48,9 @@
         public bool mouseLeftButton { get; set; }
         // Is the right button being spam clicked/held down.
         public bool mouseRightButton { get; set; }
+
+        // Should the bot select the best tool when mining/attacking entity.
+        public bool selectBestTool { get; set; }
     }
 
     public class MouseClickMod

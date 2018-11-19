@@ -29,11 +29,15 @@ namespace OQ.MineBot.PluginBase.Base
         }
 
         public IPluginSetting Get(string name) {
-            if (collection.ContainsKey(name)) return collection[name];
+            //if (collection.ContainsKey(name)) return collection[name];
+            for (var i = 0; i < all.Count; i++)
+                if (all[i].name == name) return all[i];
             throw new KeyNotFoundException("Could not find plugin setting with the name '"+name+"'.");
         }
         public T GetValue<T>(string name) {
-            if (collection.ContainsKey(name)) return collection[name].Get<T>();
+            //if (collection.ContainsKey(name)) return collection[name].Get<T>();
+            for (var i = 0; i < all.Count; i++)
+                if (all[i].name == name) return all[i].Get<T>();
             throw new KeyNotFoundException("Could not find plugin setting with the name '" + name + "'.");
         }
 

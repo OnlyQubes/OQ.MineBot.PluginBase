@@ -131,7 +131,12 @@ namespace OQ.MineBot.PluginBase.Classes.Window
         /// <param name="callback"></param>
         /// <returns></returns>
         short ClickHotbarShortcut(short hotbarIndex, short inventoryIndex, Action<bool> callback);
-
+        
+        void LeftClick(int index, Action<bool> callback);
+        void RightClick(int index, Action<bool> callback);
+        void ShiftLeftClick(int index, Action<bool> callback);
+        bool IsFull();
+        bool IsEmpty();
     }
 
     public class WindowDelegates

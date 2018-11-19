@@ -29,6 +29,11 @@
         public bool Look { get; set; } = true;
 
         /// <summary>
+        /// REQUIES Look to be true.
+        /// </summary>
+        public bool SmoothLook { get; set; } = false;
+
+        /// <summary>
         /// Can the bot sprint.
         /// </summary>
         public bool Sprint { get; set; } = true;
@@ -114,6 +119,13 @@
         /// (E.g.: ignores mining vs walking cost)
         /// </summary>
         public bool NoCost { get; set; }
+
+        /// <summary>
+        /// EXPERIMENTAL FEATURE!
+        /// Allows the bot to segment pathfinding,
+        /// meaning it will be able to navigate much longer distances.
+        /// </summary>
+        public bool Segment { get; set; }
     }
 
     public enum SearchQuality
