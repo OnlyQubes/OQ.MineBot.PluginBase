@@ -1,6 +1,6 @@
 # Plugin attribute
 ### Description
-The plugin attribute is used to define the name, description and current version of the plugin. The version is also used for plugin update notifications, thus increasing the version by 1 every update is a good idea. The following code snippet shows the snippet of the plugin attribute:
+The plugin attribute is used to define the name, description and current version of the plugin. The version is also used for plugin update notifications, thus increasing the version by 1 every update is a good idea. If you want the plugins to use the convenient in-bot update feature, the version will have to be incremented. The following code snippet shows the snippet of the plugin attribute:
 `[Plugin(<version>, <name>, <description>, <[optional] showcase url>)]`
 
 ### Example
