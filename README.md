@@ -1,3 +1,5 @@
+### Don't know how to set up the Visual Studio environment? [Click here](https://streamable.com/jsfap) for a tutorial.
+
 # Plugin attribute
 ### Description
 The plugin attribute is used to define the name, description and current version of the plugin. The version is also used for plugin update notifications, thus increasing the version by 1 every update is a good idea. If you want the plugins to use the convenient in-bot update feature, the version will have to be incremented. The following code snippet shows the snippet of the plugin attribute:
@@ -169,7 +171,7 @@ Plugins can have settings that the plugin users are able to edit, the plugin set
   ...
     public override void OnLoad(int version, int subversion, int buildversion) {
       // Should be used to define all the settings.
-      this.Settings.Add(new StringSetting("Message", "explanation", "default message"));
+      this.Setting.Add(new StringSetting("Message", "explanation", "default message"));
     }
   ...
   
@@ -188,7 +190,7 @@ Plugins can have settings that the plugin users are able to edit, the plugin set
       var group = new GroupSetting("My group", "Group description");
       group.Add(new StringSetting("Message", "explanation", "default message"));
       group.Add(new StringSetting("Message 2", "explanation", "default message"));
-      this.Settings.Add(group);
+      this.Setting.Add(group);
     }
   ...
   
@@ -209,7 +211,7 @@ Plugins can have settings that the plugin users are able to edit, the plugin set
       var mySetting = new BoolSetting("Show?", "Should the plugin setting 'Message' be shown?", "show");
       group.Add(new StringSetting("Message", "explanation", "default message"), mysetting, true); // Shown when mySetting is true.
       group.Add(new StringSetting("Message", "explanation", "default message"), mysetting, false); // Shown when mySetting is false.
-      this.Settings.Add(group);
+      this.Setting.Add(group);
     }
   ...
   
