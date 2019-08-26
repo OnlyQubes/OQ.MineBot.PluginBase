@@ -1,7 +1,9 @@
 ﻿using OQ.MineBot.PluginBase.Bot;
 using OQ.MineBot.PluginBase.Classes.Crafting;
 using OQ.MineBot.PluginBase.Classes.Entity.Lists;
+using OQ.MineBot.PluginBase.Classes.Entity.Player;
 using OQ.MineBot.PluginBase.Classes.Physics;
+using OQ.MineBot.PluginBase.Classes.Window;
 using OQ.MineBot.PluginBase.Classes.World;
 using OQ.MineBot.PluginBase.Utility;
 

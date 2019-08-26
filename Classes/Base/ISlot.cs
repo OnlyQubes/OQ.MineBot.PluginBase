@@ -1,8 +1,25 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using OQ.MineBot.PluginBase.Classes.Base;
 
 namespace OQ.MineBot.PluginBase.Classes
 {
+    public static class SlotType
+    {
+        public static Type slotType;
+
+        public static ISlot Create(short id, sbyte count = 1) {
+            // Sanitise inputs.
+            if (count > 64) count = 64;
+            if (count < -1) count = -1;
+
+            ISlot instance = (ISlot)Activator.CreateInstance(slotType);
+            instance.id = id;
+            instance.count = count;
+            return instance;
+        }
+    }
+
     public interface ISlot
     {
         /// <summary>

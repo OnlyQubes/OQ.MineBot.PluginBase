@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using OQ.MineBot.PluginBase.Classes.Crafting.Exposed;
 
 namespace OQ.MineBot.PluginBase.Classes.Crafting
 {

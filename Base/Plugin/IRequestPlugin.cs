@@ -18,8 +18,9 @@
         /// for the plugin to start on this player.
         /// </summary>
         /// <param name="player"></param>
+        /// <param name="macro">Did a macro invoke this call.</param>
         /// <returns></returns>
-        PluginResponse OnRequest(IPlayer player);
+        PluginResponse OnRequest(IPlayer player, bool macro = false);
 
         /// <summary>
         /// Called once the user requested

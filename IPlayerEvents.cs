@@ -72,6 +72,10 @@ namespace OQ.MineBot.PluginBase
         /// this player.
         /// </summary>
         event IPlayerDelegates.OnBlockChangedDelegate onBlockChanged;
+        /// <summary>
+        /// Called once a chunk is loaded.
+        /// </summary>
+        event IPlayerDelegates.OnChunlLoadedDelegate onChunkLoaded;
 
         /// <summary>
         /// Called once our palyer is moved.
@@ -125,6 +129,22 @@ namespace OQ.MineBot.PluginBase
         /// to cancel all physics.
         /// </summary>
         event IPlayerDelegates.OnPlayerUpdate onPlayerUpdate;
+
+        /// <summary>
+        /// Called when the bot's experience gets changed by the server.
+        /// </summary>
+        event IPlayerDelegates.OnExperienceChanged onExperienceChanged;
+
+        /// <summary>
+        /// Called when the server sends the bot a resource pack url and hash.
+        /// </summary>
+        event IPlayerDelegates.OnResourcePackReceived onResourcePackReceived;
+
+        /// <summary>
+        /// Called once the servers sends an entith attach packet.
+        /// (Supported only on 1.8.*)
+        /// </summary>
+        event IPlayerDelegates.OnEntityAttached onEntityAttached;
     }
 
     public class IPlayerDelegates
@@ -142,6 +162,7 @@ namespace OQ.MineBot.PluginBase
         public delegate void OnStartedStartvingDelegate(IPlayer player);
 
         public delegate void OnBlockChangedDelegate(IPlayer player, ILocation location, ushort oldId, ushort newId);
+        public delegate void OnChunlLoadedDelegate(IPlayer player, ILocation location);
 
         public delegate void OnPlayerMovedDelegate(IPlayer player);
         public delegate void OnPlayerSprintUpdateDelegate(IPlayer player, bool isSprinting);
@@ -156,5 +177,11 @@ namespace OQ.MineBot.PluginBase
         public delegate void OnEntityVelocity(int entityId, short x, short y, short z);
 
         public delegate void OnPlayerUpdate(IStopToken cancel);
+
+        public delegate void OnExperienceChanged(int level, int totalExperience);
+
+        public delegate void OnResourcePackReceived(string url, string hash);
+
+        public delegate void OnEntityAttached(int entityId, int vehicleId, bool leash);
     }
 }

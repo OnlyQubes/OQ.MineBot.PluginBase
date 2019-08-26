@@ -1,5 +1,9 @@
 ﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Player
 {
+    /*
+     * Entity used to describe OTHER players.
+     */
+
     public interface IPlayerEntity : ILiving
     {
         /// <summary>
@@ -62,6 +66,15 @@
         /// Hotbar selected item index.
         /// </summary>
         short selectedSlot { get; set; }
+
+        /// <summary>
+        /// Current level of the player.
+        /// </summary>
+        int level { get; set; }
+        /// <summary>
+        /// Total experience of the player.
+        /// </summary>
+        int totalExperience { get; set; }
     }
 
     public enum Gamemodes

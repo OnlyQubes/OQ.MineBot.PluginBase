@@ -35,4 +35,5 @@ namespace OQ.MineBot.PluginBase
         void KeepAliveCallback();
         void PassiveAliveCallback();
     }
+
 }

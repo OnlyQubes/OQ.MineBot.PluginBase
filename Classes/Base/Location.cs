@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using OQ.MineBot.PluginBase.Classes;
+using OQ.MineBot.PluginBase.Classes.Protocol;
 
 namespace OQ.MineBot.Protocols.Classes.Base
 {
@@ -23,6 +24,19 @@ namespace OQ.MineBot.Protocols.Classes.Base
             this.y = y;
             this.z = z;
         }
+        public Location(long data)
+        {
+            if (ProtocolGlobalSettings.PROTOCOL > 477) {
+                this.x = (int)(data >> 38);
+                this.y = data & 0xFFF;
+                this.z = (int)((data << 26 >> 38));
+            }
+            else {
+                this.x = (int)(data >> 38);
+                this.y = ((data >> 26) & 0xFFF);
+                this.z = (int)((data << 38 >> 38));
+            }
+        }
 
         /// <summary>
         /// Calculate total difference
@@ -38,6 +52,15 @@ namespace OQ.MineBot.Protocols.Classes.Base
             var _z = z - other.z;
 
             return (float)Math.Abs(Math.Sqrt(Math.Pow(_x, 2) + Math.Pow(_y, 2) + Math.Pow(_z, 2)));
+        }
+
+        public float DistanceHorizontal(ILocation other) {
+            if (other == null) return 0;
+
+            var _x = x - other.x;
+            var _z = z - other.z;
+
+            return (float)Math.Abs(Math.Sqrt(Math.Pow(_x, 2) + Math.Pow(_z, 2)));
         }
 
         /// <summary>
@@ -56,8 +79,9 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// </summary>
         /// <returns></returns>
         public byte[] ToBytes() {
-
-            var tempValue = (((long)x & 0x3FFFFFF) << 38) | (((long)y & 0xFFF) << 26) | ((long)z & 0x3FFFFFF);
+            var tempValue = ProtocolGlobalSettings.PROTOCOL > 477
+                ? ((((long) x & 0x3FFFFFF) << 38) | (((long)z & 0x3FFFFFF) << 12) | ((long)y & 0xFFF))
+                : ((((long) x & 0x3FFFFFF) << 38) | (((long) y & 0xFFF) << 26) | ((long) z & 0x3FFFFFF));
             return GetEndianedBytes(tempValue);
         }
 

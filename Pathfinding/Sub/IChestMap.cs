@@ -25,6 +25,7 @@ namespace OQ.MineBot.PluginBase.Pathfinding.Sub
     {
         Empty,
         Full,
-        Misc
+        NotFull,
+        Misc,
     }
 }

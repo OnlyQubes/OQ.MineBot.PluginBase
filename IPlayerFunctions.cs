@@ -132,6 +132,7 @@ namespace OQ.MineBot.PluginBase
         /// to the server.
         /// </summary>
         void SendClientSettings(bool enabledChat, bool enableColors);
+        void SendPluginMessage(string pluginName, byte[] pluginData);
 
         /// <summary>
         /// Players the "player swing" animation.
@@ -278,6 +279,8 @@ namespace OQ.MineBot.PluginBase
         /// <param name="force">Should it cancel/override all
         /// other rotation requests?</param>
         void LookAt(IPosition target, bool force = false);
+        IRotation GetLookAtRotation(IPosition position, IPosition target);
+        IRotation GetLookAtBlock(IPosition player, IPosition target, sbyte face);
         /// <summary>
         /// Makes the player look towars
         /// the specified block.
@@ -393,6 +396,10 @@ namespace OQ.MineBot.PluginBase
         /// that is currently held.
         /// </summary>
         void EatAsync();
+        /// <summary>
+        /// Select food and attempt to eat the item.
+        /// </summary>
+        void EatAsync(ushort[] ids);
 
         /// <summary>
         /// Start the sprinting process.
@@ -482,6 +489,7 @@ namespace OQ.MineBot.PluginBase
         /// </summary>
         /// <returns>Was the path reached.</returns>
         IAsyncMap AsyncMoveDirection(IStopToken token, Direction direction, MapOptions options = null);
+        ILocation GetMoveDirection(ILocation location, IRotation rotation, Direction direction);
 
         /// <summary>
         /// [Blocks main running thead until the path is reached]
@@ -520,6 +528,8 @@ namespace OQ.MineBot.PluginBase
         /// </summary>
         /// <returns>Was the path reached.</returns>
         bool WaitMoveToRange(ILocation target, IStopToken token, MapOptions options = null);
+        bool WaitMoveToRange(ILocation target, sbyte face, IStopToken token, MapOptions options = null);
+        void MoveToRangeAsync(ILocation target, IStopToken token, MapOptions options = null, Action<bool, IAsyncMap> callback = null);
         /// <summary>
         /// [Blocks main running thead until the path is reached.]
         /// Moves to a block based on looking direction.
@@ -546,6 +556,24 @@ namespace OQ.MineBot.PluginBase
         /// <param name="world">Can the raycast include blocks.</param>
         /// <returns>RayHit if hit anything, else null</returns>
         RayHit Raycast(bool entity = true, bool world = true);
+
+        /// <summary>
+        /// Sets the given slotIndex to the given slotData.
+        /// In minecraft this acts as taking an item from the creative
+        /// inventory and placing it in your normal inventory.
+        /// THIS WORKS ONLY FOR CREATIVE MODE.
+        /// </summary>
+        /// <param name="slotData">Use SlotType.Create().</param>
+        void CreativeSetSlot(short slotIndex, ISlot slotData);
+
+        void SendResourcePackState(string hash, int state);
+
+        void JumpBuild(ushort[] blocks, Action<bool> callback);
+
+        /// <param name="sideway">Positive to the left of the player</param>
+        /// <param name="forward">Positive forward</param>
+        /// <param name="flags">1: jump, 2: unmount</param>
+        void SteerVehicle(float sideway, float forward, byte flags);
     }
 
     public enum LookSpeed

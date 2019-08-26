@@ -49,6 +49,16 @@
             this.max = max;
             this.add = add;
         }
+        public NumberSetting(string displayName, string internalName, string description, int value, int min, int max, int add = 1) {
+            this.name = displayName;
+            this.saveName = internalName;
+            this.description = description;
+            this.value = value;
+
+            this.min = min;
+            this.max = max;
+            this.add = add;
+        }
 
         /// <summary>
         /// Get the setting

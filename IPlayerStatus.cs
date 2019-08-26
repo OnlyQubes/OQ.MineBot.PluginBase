@@ -44,7 +44,7 @@ namespace OQ.MineBot.PluginBase
         /// Ping to server and back.
         /// </summary>
         int ping { get; set; }
-        
+
         /// <summary>
         /// Currently selected hand.
         /// </summary>

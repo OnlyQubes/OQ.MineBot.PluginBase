@@ -4,6 +4,7 @@
     {
         public const int LADDER_ID = 65;
         public const int VINE_ID = 106;
+        public const int COBWEB_ID = 30;
         public static int[] DOORS =
         {
             64, 71, 193, 194, 195, 196, 197

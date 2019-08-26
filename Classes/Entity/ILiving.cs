@@ -25,5 +25,10 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
         /// are stored here.
         /// </summary>
         IEffectContainer effects { get; set; }
+
+        /// <summary>
+        /// Vehicle that the entity is attached to.
+        /// </summary>
+        int vehicleId { get; set; }
     }
 }

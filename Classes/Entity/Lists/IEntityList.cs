@@ -106,7 +106,7 @@ namespace OQ.MineBot.PluginBase.Classes.Entity.Lists
         /// <param name="z"></param>
         /// <param name="yaw"></param>
         /// <param name="ptich"></param>
-        void SetPosition(int id, double x, double y, double z, byte yaw, byte ptich);
+        void SetPosition(int id, double x, double y, double z, byte yaw, byte pitch);
         /// <summary>
         /// Add the x/y/z to the current
         /// entities position.
@@ -216,6 +216,11 @@ namespace OQ.MineBot.PluginBase.Classes.Entity.Lists
         /// </summary>
         /// <returns></returns>
         string RandomName();
+        /// <summary>
+        /// Gets a random user from the tab list.
+        /// </summary>
+        /// <returns></returns>
+        string RandomBotName();
 
         /// <summary>
         /// Does the uuid belong to a bot.

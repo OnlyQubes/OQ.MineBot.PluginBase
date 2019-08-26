@@ -87,7 +87,7 @@ namespace OQ.MineBot.PluginBase.Classes.Base
         }
 
         public override string ToString() {
-            return ("Radius { start: "+start+"\t:: end: "+(start.x + xSize)+"/¬/"+ (start.z + zSize) + "}");    
+            return ("Radius { start: "+start+"\t:: end: "+(start.x + xSize)+"/"+(start.y+height)+"/"+ (start.z + zSize) + "}");    
         }
     }
 }

@@ -41,6 +41,12 @@
             this.description = description;
             this.value = value;
         }
+        public BoolSetting(string displayName, string internalName, string description, bool value) {
+            this.name = displayName;
+            this.saveName = internalName;
+            this.description = description;
+            this.value = value;
+        }
 
         /// <summary>
         /// Get the setting

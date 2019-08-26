@@ -28,5 +28,13 @@
         /// <param name="id"></param>
         /// <returns></returns>
         short[] FindIds(int id);
+
+        /// <summary>
+        /// Find a slot by id. This returns the slot
+        /// that has the highest count of item.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>-1 if not found.</returns>
+        short FindIdMax(int id);
     }
 }

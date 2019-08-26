@@ -74,6 +74,10 @@
         /// Avoid mining into water/lava.
         /// </summary>
         public bool SafeMine { get; set; } = true;
+        /// <summary>
+        /// Avoid moving into lava.
+        /// </summary>
+        public bool SafeMove { get; set; } = false;
 
         /// <summary>
         /// Can the player fly?

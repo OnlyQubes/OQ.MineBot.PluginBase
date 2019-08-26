@@ -137,6 +137,7 @@ namespace OQ.MineBot.PluginBase.Classes.Window
         void ShiftLeftClick(int index, Action<bool> callback);
         bool IsFull();
         bool IsEmpty();
+        ISlot[] GetAll();
     }
 
     public class WindowDelegates

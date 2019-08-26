@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Reflection;
 
-namespace OQ.MineBot.PluginBase.Classes.Crafting
+
+[assembly: Obfuscation(Exclude = false, Feature = "namespace ('OQ.MineBot.PluginBase.Classes.Crafting.Exposed'):-rename")]
+
+namespace OQ.MineBot.PluginBase.Classes.Crafting.Exposed
 {
     public class IRecipe
     {
@@ -9,7 +13,7 @@ namespace OQ.MineBot.PluginBase.Classes.Crafting
         // Items that the recipe requires.
         public short[,] inputs { get; private set; }
 
-        public bool requiresCraftingTable => inputs.GetLength(0) == 3 && GetMaComponentDistance() == 3;
+        public bool requiresCraftingTable => inputs?.GetLength(0) == 3 && GetMaComponentDistance() == 3;
 
         private int GetMaComponentDistance() {
             int maxVertical = -1, minVertical = -1, maxHorizontal = -1, minHorizontal = -1;
@@ -33,14 +37,15 @@ namespace OQ.MineBot.PluginBase.Classes.Crafting
         }
 
         public short[,] GetInputs(CraftingSlotType type) {
+            if (inputs == null) return null;
             if(requiresCraftingTable && type == CraftingSlotType.Inventory) throw new Exception("Recipe requires crafting table, but inventory is open.");
 
             if (!requiresCraftingTable && type == CraftingSlotType.Table)
                 return new short[3, 3]
                 {
                     {0, 0, 0},
-                    {inputs[0, 0], inputs[1, 0], 0},
-                    {inputs[0, 1], inputs[1, 1], 0},
+                    {inputs[0, 0], inputs[0, 1], 0},
+                    {inputs[1, 0], inputs[1, 1], 0},
                 };
 
             // No conversion required.

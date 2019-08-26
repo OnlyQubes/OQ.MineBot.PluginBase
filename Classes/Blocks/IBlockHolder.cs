@@ -43,6 +43,7 @@ namespace OQ.MineBot.PluginBase.Classes.Blocks
         /// <param name="id"></param>
         /// <returns></returns>
         bool IsLiquid(ushort id);
+        bool CanBePlacedOn(ushort id);
         /// <summary>
         /// How harmful is the block.
         /// </summary>
@@ -55,6 +56,13 @@ namespace OQ.MineBot.PluginBase.Classes.Blocks
         /// <param name="blockId"></param>
         /// <returns></returns>
         bool IsLadder(ushort blockId);
+
+        /// <summary>
+        /// Can this block be mined?
+        /// </summary>
+        /// <param name="blockId"></param>
+        /// <returns></returns>
+        bool IsMinable(ushort blockId);
 
         /// <summary>
         /// Checks if the block at the location is safe to mine
@@ -80,5 +88,7 @@ namespace OQ.MineBot.PluginBase.Classes.Blocks
         /// <param name="getBlockId"></param>
         /// <returns></returns>
         bool IsDanger(ushort getBlockId);
+
+        bool IsBlockSubset(ushort id1, ushort id2);
     }
 }

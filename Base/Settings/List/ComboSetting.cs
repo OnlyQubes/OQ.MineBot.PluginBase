@@ -46,6 +46,13 @@
             this.value = index;
             this.values = values;
         }
+        public ComboSetting(string displayName, string internalName, string description, string[] values, int index) {
+            this.name = displayName;
+            this.saveName = internalName;
+            this.description = description;
+            this.value = index;
+            this.values = values;
+        }
 
         /// <summary>
         /// Get the setting

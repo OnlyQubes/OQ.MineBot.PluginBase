@@ -67,6 +67,8 @@
     <Compile Include="Base\Settings\List\BoolSetting.cs" />
     <Compile Include="Base\Settings\List\ComboSetting.cs" />
     <Compile Include="Base\Settings\IPluginSetting.cs" />
+    <Compile Include="Base\Settings\List\DescriptionSetting.cs" />
+    <Compile Include="Base\Settings\List\DiscordWebhookSetting.cs" />
     <Compile Include="Base\Settings\List\LinkSetting.cs" />
     <Compile Include="Base\Settings\List\LocationSetting.cs" />
     <Compile Include="Base\Settings\List\NumberSetting.cs" />
@@ -83,6 +85,8 @@
     <Compile Include="Classes\Base\CancelToken.cs" />
     <Compile Include="Classes\Base\Enchantment.cs" />
     <Compile Include="Classes\Base\IChat.cs" />
+    <Compile Include="Classes\Base\IChatAction.cs" />
+    <Compile Include="Classes\Base\IChatFormatted.cs" />
     <Compile Include="Classes\Base\IFacedLocation.cs" />
     <Compile Include="Classes\Base\ILocation.cs" />
     <Compile Include="Classes\Base\IPosition.cs" />
@@ -144,6 +148,8 @@
     <Compile Include="Classes\Physics\Colliders\ICubeCollider.cs" />
     <Compile Include="Classes\Physics\IPlayerPhysics.cs" />
     <Compile Include="Classes\Physics\PrecomputedRotationList.cs" />
+    <Compile Include="Classes\Protocol\IPluginChannel.cs" />
+    <Compile Include="Classes\Protocol\ProtocolGlobalSettings.cs" />
     <Compile Include="Classes\Window\Containers\IInventory.cs" />
     <Compile Include="Classes\Window\Containers\ISearchableContainer.cs" />
     <Compile Include="Classes\Window\Containers\Subcontainers\IPlayerInnerInventory.cs" />

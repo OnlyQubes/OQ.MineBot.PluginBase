@@ -40,7 +40,8 @@ namespace OQ.MineBot.PluginBase.Classes.Window.Containers
         /// <param name="window"></param>
         /// <param name="exclude"></param>
         /// <param name="include"></param>
-        void Take(IWindow window, int[] exclude, int[] include);
+        /// <param name="count">How many stacks of items to take. -1 for all.</param>
+        void Take(IWindow window, int[] exclude, int[] include, int count = -1, int minStackSize = -1);
 
         /// <summary>
         /// Attempts to select an item with
@@ -53,6 +54,14 @@ namespace OQ.MineBot.PluginBase.Classes.Window.Containers
         /// <returns></returns>
         bool Select(ushort id);
         bool Select(ushort id, int[] meta);
+        /// <summary>
+        /// Attempts to select an item with
+        /// the specified id.
+        /// Picks the slot that has the highest count.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        int SelectMax(ushort[] id);
 
         /// <summary>
         /// Attempts to select an item from

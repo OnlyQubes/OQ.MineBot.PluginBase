@@ -1,6 +1,6 @@
 ﻿namespace OQ.MineBot.PluginBase.Base
 {
-    public class LinkSetting : IPluginSetting
+    public class DiscordWebhookSetting : IPluginSetting
     {
         /// <summary>
         /// Name of the settings.
@@ -15,8 +15,7 @@
         /// <summary>
         /// Default value of the setting.
         /// </summary>
-        public object value { get { return _value; } set { } }
-        private object _value;
+        public object value { get; set; }
 
         /// <summary>
         /// Contains a refference of the parent
@@ -25,12 +24,10 @@
         public IPluginSetting parent { get; set; }
         public string saveName { get; set; }
 
-
-        public LinkSetting(string name, string description, string value)
-        {
+        public DiscordWebhookSetting(string name, string description, string value) {
             this.name = name;
             this.description = description;
-            _value = value;
+            this.value = value;
         }
 
         /// <summary>

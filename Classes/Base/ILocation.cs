@@ -16,6 +16,7 @@ namespace OQ.MineBot.PluginBase.Classes
         /// <param name="other"></param>
         /// <returns></returns>
         float Distance(ILocation other);
+        float DistanceHorizontal(ILocation other);
         /// <summary>
         /// Check if 2 locations have
         /// the same values.

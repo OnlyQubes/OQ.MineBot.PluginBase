@@ -30,6 +30,12 @@
             this.description = description;
             this.value = value;
         }
+        public PathSetting(string displayName, string internalName, string description, string value) {
+            this.name = displayName;
+            this.saveName = internalName;
+            this.description = description;
+            this.value = value;
+        }
 
         /// <summary>
         /// Get the setting

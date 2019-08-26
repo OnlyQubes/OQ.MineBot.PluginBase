@@ -1,9 +1,6 @@
-﻿using OQ.MineBot.PluginBase.Classes;
-using OQ.MineBot.Protocols.Classes.Base;
-
-namespace OQ.MineBot.PluginBase.Base
+﻿namespace OQ.MineBot.PluginBase.Base
 {
-    public class LocationSetting: IParentSetting, IPluginSetting
+    public class DescriptionSetting : IPluginSetting
     {
         /// <summary>
         /// Name of the settings.
@@ -20,12 +17,7 @@ namespace OQ.MineBot.PluginBase.Base
         /// </summary>
         public object value {
             get { return _value; }
-            set
-            {
-                if (value is string)
-                    _value = Location.Parse((string)value) ?? new Location(0, 0, 0);
-                else _value = value;
-            }
+            set { _value = value; }
         }
 
         /// <summary>
@@ -37,21 +29,9 @@ namespace OQ.MineBot.PluginBase.Base
 
         private object _value;
 
-        public LocationSetting(string name, string description) {
+        public DescriptionSetting(string name, string description) {
             this.name = name;
             this.description = description;
-            value = new Location(0, 0, 0);
-        }
-        public LocationSetting(string name, string description, ILocation value) {
-            this.name = name;
-            this.description = description;
-            this.value = value;
-        }
-        public LocationSetting(string displayName, string internalName, string description, ILocation value) {
-            this.name = displayName;
-            this.saveName = internalName;
-            this.description = description;
-            this.value = value;
         }
 
         /// <summary>

@@ -24,9 +24,14 @@
         public IPluginSetting parent { get; set; }
         public string saveName { get; set; }
 
-
         public StringSetting(string name, string description, string value) {
             this.name = name;
+            this.description = description;
+            this.value = value;
+        }
+        public StringSetting(string displayName, string internalName, string description, string value) {
+            this.name = displayName;
+            this.saveName = internalName;
             this.description = description;
             this.value = value;
         }
