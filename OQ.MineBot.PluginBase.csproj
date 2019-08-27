@@ -163,6 +163,7 @@
     <Compile Include="Classes\World\IWorld.cs" />
     <Compile Include="IControls.cs" />
     <Compile Include="IBotContext.cs" />
+    <Compile Include="IPlayerController.cs" />
     <Compile Include="IPlayerEvents.cs" />
     <Compile Include="IPlayerFunctions.cs" />
     <Compile Include="IPlayerManager.cs" />

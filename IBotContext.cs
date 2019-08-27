@@ -9,63 +9,61 @@ using OQ.MineBot.PluginBase.Utility;
 
 namespace OQ.MineBot.PluginBase
 {
-    public interface IBotContext
+    public abstract class IBotContext
     {
+        /// <summary>
+        /// Settings of the player.
+        /// </summary>
+        public abstract IBotSettings Settings { get; }
+
         /// <summary>
         /// Packet sending should be hooked
         /// to this. So that the bot could do
         /// packet sending withouth interacting
         /// with the actualy packets.
         /// </summary>
-        IPlayerFunctions functions { get; set; }
-        /// <summary>
-        /// Player events based on the packets
-        /// should be stored here.
-        /// </summary>
-        IPlayerStatus status { get; set; }
+        public abstract IPlayerFunctions Functions { get; }
         /// <summary>
         /// Status of the player.
         /// </summary>
-        IPlayerEvents events { get; set; }
-        /// <summary>
-        /// Manages the ticks of the player.
-        /// (E.g.: movement, keep alive checks)
-        /// </summary>
-        IPlayerManager manager { get; set; }
+        public abstract IPlayerEvents Events { get; }
+
         /// <summary>
         /// World that the player is loaded
         /// into.
         /// </summary>
-        IWorld world { get; set; }
+        public abstract IWorld World { get; }
         /// <summary>
         /// All entities.
         /// </summary>
-        IEntityList entities { get; set; }
+        public abstract IEntityList Entities { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public abstract IPlayerController Player { get; }
+
+        /// <summary>
+        /// Player events based on the packets
+        /// should be stored here.
+        /// </summary>
+        public abstract IPlayerStatus Status { get; }
         /// <summary>
         /// Physics engine for the player.
         /// </summary>
-        IPlayerPhysics physicsEngine { get; set; }
-        /// <summary>
-        /// Settings of the player.
-        /// </summary>
-        IBotSettings settings { get; set; }
-        /// <summary>
-        /// Tick manager for the player.
-        /// </summary>
-        ITickManager tickManager { get; set; }
+        public abstract IPlayerPhysics PhysicsEngine { get; }
         /// <summary>
         /// High level controls.
         /// </summary>
-        IControls controls { get; set; }
+        public abstract IControls Controls { get; }
         /// <summary>
         /// Crafting.
         /// </summary>
-        ICrafting crafting { get; set; }
+        public abstract ICrafting Crafting { get; }
 
         /// <summary>
-        /// Player id. (Used to communicate
-        /// with the plugin server.)
+        /// Tick manager for the player.
         /// </summary>
-        byte[] playerChannel { get; set; }
+        public abstract ITickManager TickManager { get; }
     }
 }

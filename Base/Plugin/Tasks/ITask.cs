@@ -10,17 +10,17 @@ namespace OQ.MineBot.PluginBase.Base.Plugin.Tasks
         /// This token can be used to check if the
         /// plugin has been disabled.
         /// </summary>
-        public IStopToken token { get; set; }
+        public IStopToken Token { get; set; }
 
-        public IBotContext context { get; set; }
+        public IBotContext Context { get; set; }
 
-        public IPlayerStatus    status      { get; set; }   // Refference to quickly access players status.
-        public IPlayerFunctions actions     { get; set; }   // Refference to quickly access player functions.
-        public IWorld           world       { get; set; }   // Refference to quickly access players world.
-        public IInventory       inventory
+        public IPlayerStatus    Status      { get; set; }   // Refference to quickly access players status.
+        public IPlayerFunctions Actions     { get; set; }   // Refference to quickly access player functions.
+        public IWorld           World       { get; set; }   // Refference to quickly access players world.
+        public IInventory       Inventory
         {
-            get { return context.status.containers.inventory; }
-            set { context.status.containers.inventory = value; }
+            get { return Context.Status.containers.inventory; }
+            set { Context.Status.containers.inventory = value; }
         } // Refference to quickly access players inventory.
 
         public virtual void Start()     { }
