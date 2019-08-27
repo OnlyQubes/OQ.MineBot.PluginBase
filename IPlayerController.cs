@@ -1,4 +1,5 @@
-﻿using OQ.MineBot.PluginBase.Classes.Crafting;
+﻿using OQ.MineBot.PluginBase.Classes;
+using OQ.MineBot.PluginBase.Classes.Crafting;
 using OQ.MineBot.PluginBase.Classes.Physics;
 
 namespace OQ.MineBot.PluginBase
@@ -12,5 +13,8 @@ namespace OQ.MineBot.PluginBase
 
         public abstract ICrafting Crafting { get; }
         public abstract IControls Controls { get; }
+
+        public abstract IPosition GetPosition();
+        public abstract ILocation GetLocation();
     }
 }

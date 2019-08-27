@@ -49,18 +49,6 @@ namespace OQ.MineBot.PluginBase
         /// Currently selected hand.
         /// </summary>
         int hand { get; set; }
-
-        /// <summary>
-        /// State of the packets.
-        /// (Login - loggin in to the server,
-        /// game - in game)
-        /// </summary>
-        PacketState packetState { get; set; }
-
-        /// <summary>
-        /// Our player entity.
-        /// </summary>
-        IPlayerEntity entity { get; set; }
     }
 
     public enum PacketState
