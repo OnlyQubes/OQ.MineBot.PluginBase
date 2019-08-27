@@ -14,7 +14,7 @@ namespace OQ.MineBot.PluginBase.Base.Plugin.Tasks
 
         public IBotContext Context { get; set; }
 
-        public IPlayerStatus    Status      { get; set; }   // Refference to quickly access players status.
+        public IPlayerState    State      { get; set; }   // Refference to quickly access players status.
         public IPlayerFunctions Actions     { get; set; }   // Refference to quickly access player functions.
         public IWorld           World       { get; set; }   // Refference to quickly access players world.
         public IInventory       Inventory

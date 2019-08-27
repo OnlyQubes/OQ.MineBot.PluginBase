@@ -6,7 +6,7 @@ namespace OQ.MineBot.PluginBase
 {
     public abstract class IPlayerController
     {
-        public abstract IPlayerStatus Status { get; }
+        public abstract IPlayerState State { get; }
 
         public abstract IPlayerManager Manager { get; }
         public abstract IPlayerPhysics PhysicsEngine { get; }
@@ -14,7 +14,10 @@ namespace OQ.MineBot.PluginBase
         public abstract ICrafting Crafting { get; }
         public abstract IControls Controls { get; }
 
+        public abstract string GetUuid();
+        public abstract string GetUsername();
+
         public abstract IPosition GetPosition();
-        public abstract ILocation GetLocation();
+        public abstract ILocation GetLocation(); // GetPosition.ToLocation(0);
     }
 }

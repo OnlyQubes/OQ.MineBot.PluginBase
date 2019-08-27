@@ -167,7 +167,7 @@
     <Compile Include="IPlayerEvents.cs" />
     <Compile Include="IPlayerFunctions.cs" />
     <Compile Include="IPlayerManager.cs" />
-    <Compile Include="IPlayerStatus.cs" />
+    <Compile Include="IPlayerState.cs" />
     <Compile Include="Movement\Events\MapEvents.cs" />
     <Compile Include="Movement\Geometry\IAreaCuboid.cs" />
     <Compile Include="Movement\Maps\IAreaMap.cs" />
