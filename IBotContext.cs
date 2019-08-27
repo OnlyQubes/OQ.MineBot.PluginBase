@@ -19,8 +19,8 @@ namespace OQ.MineBot.PluginBase
         /// <summary>
         /// Packet sending should be hooked
         /// to this. So that the bot could do
-        /// packet sending withouth interacting
-        /// with the actualy packets.
+        /// packet sending without interacting
+        /// with the actually packets.
         /// </summary>
         public abstract IPlayerFunctions Functions { get; }
         /// <summary>
@@ -37,29 +37,16 @@ namespace OQ.MineBot.PluginBase
         /// All entities.
         /// </summary>
         public abstract IEntityList Entities { get; }
+        /// <summary>
+        /// Players inventory and all open containers
+        /// are stored here.
+        /// </summary>
+        public abstract IWindowContainer Containers { get; }
 
         /// <summary>
         /// 
         /// </summary>
         public abstract IPlayerController Player { get; }
-
-        /// <summary>
-        /// Player events based on the packets
-        /// should be stored here.
-        /// </summary>
-        public abstract IPlayerStatus Status { get; }
-        /// <summary>
-        /// Physics engine for the player.
-        /// </summary>
-        public abstract IPlayerPhysics PhysicsEngine { get; }
-        /// <summary>
-        /// High level controls.
-        /// </summary>
-        public abstract IControls Controls { get; }
-        /// <summary>
-        /// Crafting.
-        /// </summary>
-        public abstract ICrafting Crafting { get; }
 
         /// <summary>
         /// Tick manager for the player.

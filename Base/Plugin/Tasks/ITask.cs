@@ -19,8 +19,8 @@ namespace OQ.MineBot.PluginBase.Base.Plugin.Tasks
         public IWorld           World       { get; set; }   // Refference to quickly access players world.
         public IInventory       Inventory
         {
-            get { return Context.Status.containers.inventory; }
-            set { Context.Status.containers.inventory = value; }
+            get { return Context.Containers.inventory; }
+            set { Context.Containers.inventory = value; }
         } // Refference to quickly access players inventory.
 
         public virtual void Start()     { }

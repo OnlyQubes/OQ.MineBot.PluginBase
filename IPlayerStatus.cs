@@ -61,20 +61,6 @@ namespace OQ.MineBot.PluginBase
         /// Our player entity.
         /// </summary>
         IPlayerEntity entity { get; set; }
-
-        /// <summary>
-        /// Players inventory and all open containers
-        /// are stored here.
-        /// </summary>
-        IWindowContainer containers { get; set; }
-
-
-        /// <summary>
-        /// Called once the account is logged in.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="uuid"></param>
-        void LoginCallback(string name, string uuid);
     }
 
     public enum PacketState
