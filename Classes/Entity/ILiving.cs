@@ -6,30 +6,21 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
         /// <summary>
         /// Rotation of the entity.
         /// </summary>
-        public IRotation rotation { get; set; }
+        public IRotation Rotation { get; set; }
 
         /// <summary>
-        /// How many ticks is the entity
-        /// alive for.
+        /// Has this entity been moved at least once?
         /// </summary>
-        public abstract int ticks { get; }
+        public bool HasMoved { get; set; }
 
         /// <summary>
-        /// All effects on the entity
-        /// are stored here.
+        /// All effects on the entity are stored here.
         /// </summary>
-        public IEffectContainer effects { get; set; }
-
-        /// <summary>
-        /// Has this entity been moved
-        /// at least once?
-        /// </summary>
-        public bool moved { get; set; }
-
+        public IEffectContainer Effects { get; set; }
 
         /// <summary>
         /// Vehicle that the entity is attached to.
         /// </summary>
-        public int vehicleId { get; set; }
+        public int VehicleId { get; set; }
     }
 }

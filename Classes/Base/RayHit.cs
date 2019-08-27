@@ -35,7 +35,7 @@ namespace OQ.MineBot.PluginBase.Classes.Base
         public RayHit(ILocation location, ILiving entity) {
             this.location = location;
             this.type  = HitType.Entity;
-            this.position = entity.location;
+            this.position = entity.Position;
             this.entity = entity;
         }
     }

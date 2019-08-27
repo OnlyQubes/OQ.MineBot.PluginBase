@@ -5,17 +5,17 @@
         /// <summary>
         /// Type of the monster entity.
         /// </summary>
-        public MobType type { get; set; }
+        public MobType MobType { get; set; }
 
         /// <summary>
         /// Metadata for this monster.
         /// </summary>
-        public IEntityMetadata metadata { get; set; }
+        public IEntityMetadata Metadata { get; set; }
 
         /// <summary>
         /// Is this a passive mob.
         /// </summary>
-        public abstract bool IsFriendly();
+        public abstract bool IsPassive();
     }
 
     public enum MobType
