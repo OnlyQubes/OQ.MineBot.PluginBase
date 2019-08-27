@@ -45,7 +45,7 @@ namespace OQ.MineBot.PluginBase.Classes.Entity.Lists
         IPlayerEntity GetClosestPlayer(double x, double y, double z, bool includeBots = false, Func<IPlayerEntity, bool> optionalValidityCheck = null);
 
         IEnumerable<ILiving> GetEntities(bool includePlayers = false);
-        ILiving GetEntity(int id);
+        ILiving GetEntity(int entityId);
         ILiving GetClosestEntity(bool includePlayers = false, Func<ILiving, bool> optionalValidityCheck = null);
         ILiving GetClosestEntity(IPosition position, bool includePlayers = false, Func<ILiving, bool> optionalValidityCheck = null);
         ILiving GetClosestEntity(ILocation position, bool includePlayers = false, Func<ILiving, bool> optionalValidityCheck = null);
