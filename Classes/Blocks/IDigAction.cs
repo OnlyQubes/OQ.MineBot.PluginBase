@@ -39,7 +39,7 @@ namespace OQ.MineBot.PluginBase.Classes.Blocks
         /// <summary>
         /// Cancels the event.
         /// </summary>
-        /// <param name="player"></param>
-        void Cancel(IPlayer player);
+        /// <param name="context"></param>
+        void Cancel(IBotContext context);
     }
 }

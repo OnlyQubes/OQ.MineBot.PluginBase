@@ -32,8 +32,8 @@ namespace OQ.MineBot.PluginBase
         /// Set the player for this
         /// class.
         /// </summary>
-        /// <param name="player"></param>
-        void RegisterPlayer(IPlayer player);
+        /// <param name="context"></param>
+        void RegisterPlayer(IBotContext context);
 
         /// <summary>
         /// Start the packet compression/decompression

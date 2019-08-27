@@ -9,7 +9,7 @@ namespace OQ.MineBot.PluginBase.Pathfinding.Sub
         /// <summary>
         /// Finds all chest near the player.
         /// </summary>
-        void UpdateChestList(IPlayer player, Action callback);
+        void UpdateChestList(Action callback);
 
         /// <summary>
         /// Attempts to find/path to/open a
@@ -17,7 +17,7 @@ namespace OQ.MineBot.PluginBase.Pathfinding.Sub
         /// </summary>
         /// <returns>True if found empty chest 
         /// and opened it, else false</returns>
-        IWindow Open(IPlayer player, IStopToken token, ChestStatus status);
+        IWindow Open(IStopToken token, ChestStatus status);
 
     }
 

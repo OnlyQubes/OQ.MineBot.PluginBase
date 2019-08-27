@@ -9,7 +9,7 @@ using OQ.MineBot.PluginBase.Utility;
 
 namespace OQ.MineBot.PluginBase
 {
-    public interface IPlayer
+    public interface IBotContext
     {
         /// <summary>
         /// Packet sending should be hooked

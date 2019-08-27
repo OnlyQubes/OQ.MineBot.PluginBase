@@ -12,15 +12,15 @@ namespace OQ.MineBot.PluginBase.Base.Plugin.Tasks
         /// </summary>
         public IStopToken token { get; set; }
 
-        public IPlayer player { get; set; }
+        public IBotContext context { get; set; }
 
         public IPlayerStatus    status      { get; set; }   // Refference to quickly access players status.
         public IPlayerFunctions actions     { get; set; }   // Refference to quickly access player functions.
         public IWorld           world       { get; set; }   // Refference to quickly access players world.
         public IInventory       inventory
         {
-            get { return player.status.containers.inventory; }
-            set { player.status.containers.inventory = value; }
+            get { return context.status.containers.inventory; }
+            set { context.status.containers.inventory = value; }
         } // Refference to quickly access players inventory.
 
         public virtual void Start()     { }

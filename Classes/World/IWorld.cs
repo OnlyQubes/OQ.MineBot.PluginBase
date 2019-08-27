@@ -227,7 +227,7 @@ namespace OQ.MineBot.PluginBase.Classes.World
         /// <summary>
         /// Unloads all of the chunks.
         /// </summary>
-        void Unload(IPlayer player);
+        void Unload(IBotContext context);
         /// <summary>
         /// Unloads all types of chunks,
         /// even if it is a shared world.
@@ -355,12 +355,12 @@ namespace OQ.MineBot.PluginBase.Classes.World
         /// <param name="height">Height of search. (up and down)</param>
         /// <param name="id"></param>
         /// <param name="callback">Call backwith result once done. (empty array if not found)</param>
-        void FindAsync(IPlayer player, ILocation location, int width, int height, ushort id, Action<ILocation[]> callback);
-        void FindAsync(IPlayer player, ILocation location, int width, int height, ushort[] id, Action<ILocation[]> callback);
+        void FindAsync(IBotContext context, ILocation location, int width, int height, ushort id, Action<ILocation[]> callback);
+        void FindAsync(IBotContext context, ILocation location, int width, int height, ushort[] id, Action<ILocation[]> callback);
         /// <param name="isValid">Function used to check if the block is valid or should
         /// we check further. If invalid return false.</param>
         /// <param name="callback">NULL location if not found.</param>
-        void FindFirstAsync(IPlayer player, ILocation location, int width, int height, ushort[] ids, Func<ILocation, bool> isValid, Action<ILocation> callback);
+        void FindFirstAsync(IBotContext context, ILocation location, int width, int height, ushort[] ids, Func<ILocation, bool> isValid, Action<ILocation> callback);
 
         /// <summary>
         /// Is the player standing on this block.

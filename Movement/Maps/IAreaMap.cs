@@ -37,11 +37,6 @@ namespace OQ.MineBot.PluginBase.Movement.Maps
         bool Searched { get; set; }
 
         /// <summary>
-        /// Which player is using this map.
-        /// </summary>
-        IPlayer Player { get; }
-
-        /// <summary>
         /// Token that sets if the 
         /// bot is stopped.
         /// </summary>
