@@ -5,9 +5,9 @@ namespace OQ.MineBot.PluginBase.Classes
 {
     public interface ILocation : IEqualityComparer<ILocation>
     {
-        int x { get; set; }
-        float y { get; set; }
-        int z { get; set; }
+        int   X { get; set; }
+        float Y { get; set; }
+        int   Z { get; set; }
 
         /// <summary>
         /// Calculate total difference

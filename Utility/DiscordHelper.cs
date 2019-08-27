@@ -37,7 +37,7 @@ namespace OQ.MineBot.PluginBase.Utility
         }
 
         public static void Alert(string message, int id) {
-            __api_hook_alw(message, id);
+            __api_hook_ale(message, id);
         }
         public static void Error(string message, int id) {
             __api_hook_alw(message, id);

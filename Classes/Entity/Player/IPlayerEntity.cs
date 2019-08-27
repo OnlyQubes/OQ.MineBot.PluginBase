@@ -7,11 +7,6 @@
     public abstract class IPlayerEntity : ILiving
     {
         /// <summary>
-        /// Id of the player.
-        /// </summary>
-        public string uuid { get; set; }
-
-        /// <summary>
         /// Metadata of the player.
         /// </summary>
         public IEntityMetadata metadata { get; set; }
@@ -24,6 +19,10 @@
         /// Is the player currently sprinting.
         /// </summary>
         public abstract bool isSprinting { get; }
+
+        public abstract bool IsBot();
+        public abstract string GetName();
+        public abstract string GetUuid();
     }
 
     public enum Directions

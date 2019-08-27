@@ -1,7 +1,10 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using OQ.MineBot.PluginBase.Classes.Base;
 using OQ.MineBot.PluginBase.Classes.Entity.Filter;
+using OQ.MineBot.PluginBase.Classes.Entity.Mob;
+using OQ.MineBot.PluginBase.Classes.Entity.Player;
 using OQ.MineBot.PluginBase.Classes.Physics;
 
 namespace OQ.MineBot.PluginBase.Classes.Entity.Lists
@@ -17,221 +20,49 @@ namespace OQ.MineBot.PluginBase.Classes.Entity.Lists
         /// </summary>
         event EntityDelegate onEntityRemoved;
         /// <summary>
-        /// Called once an entity is moved by
-        /// the server.
+        /// Called once an entity is moved by the server.
         /// (also includes player movements)
         /// </summary>
-        event EntityInformationDelegate onEntityMove;
+        event EntityInformationDelegate onEntityMoved;
         /// <summary>
-        /// Called once a player is moved by
-        /// the srever.
+        /// Called once a player is moved by the server.
         /// </summary>
-        event EntityInformationDelegate onPlayerMove;
-        /// <summary>
-        /// Called once a name is added.
-        /// </summary>
-        event NameDelegate onNameAdded;
+        event EntityInformationDelegate onPlayerMoved;
 
-        /// <summary>
-        /// All entities that we receive from
-        /// the server should be stored here.
-        /// (E.g.: other players, mobs)
-        /// </summary>
-        ConcurrentDictionary<int, ILiving> entityList { get; set; }
+        IEnumerable<IPlayerEntity> GetBots();
+        IPlayerEntity GetClosestBot();
+        IPlayerEntity GetClosestBot(IPosition position);
+        IPlayerEntity GetClosestBot(ILocation position);
+        IPlayerEntity GetClosestBot(double x, double y, double z);
 
-        /// <summary>
-        /// A shared list (shared refferences with 
-        /// entityList) of all players that we receive.
-        /// </summary>
-        ConcurrentDictionary<int, ILiving> playerList { get; set; }
+        IEnumerable<IPlayerEntity> GetPlayers(bool includeBots);
+        IPlayerEntity GetPlayer(int entityId);
+        IPlayerEntity GetPlayer(string name );
+        IPlayerEntity GetPlayerByUuid(string uuid);
+        IPlayerEntity GetClosestPlayer(bool includeBots = false, Func<IPlayerEntity, bool> optionalValidityCheck = null);
+        IPlayerEntity GetClosestPlayer(IPosition position, bool includeBots = false, Func<IPlayerEntity, bool> optionalValidityCheck = null);
+        IPlayerEntity GetClosestPlayer(ILocation position, bool includeBots = false, Func<IPlayerEntity, bool> optionalValidityCheck = null);
+        IPlayerEntity GetClosestPlayer(double x, double y, double z, bool includeBots = false, Func<IPlayerEntity, bool> optionalValidityCheck = null);
 
-        /// <summary>
-        /// A list of all the uuids and names of
-        /// the players. (TAB Menu)
-        /// 
-        /// String - Uuid
-        /// UUID   - Uuid and name
-        /// </summary>
-        ConcurrentDictionary<string, UUID> uuidList { get; set; }
-
-            /// <summary>
-        /// Get an entity instance by id.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        IEnumerable<ILiving> GetEntities(bool includePlayers = false);
         ILiving GetEntity(int id);
-        /// <summary>
-        /// Get a player instance by id.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        ILiving GetPlayer(int id);
+        ILiving GetClosestEntity(bool includePlayers = false, Func<ILiving, bool> optionalValidityCheck = null);
+        ILiving GetClosestEntity(IPosition position, bool includePlayers = false, Func<ILiving, bool> optionalValidityCheck = null);
+        ILiving GetClosestEntity(ILocation position, bool includePlayers = false, Func<ILiving, bool> optionalValidityCheck = null);
+        ILiving GetClosestEntity(double x, double y, double z, bool includePlayers = false, Func<ILiving, bool> optionalValidityCheck = null);
 
-        /// <summary>
-        /// Add an entity to our 
-        /// world entities.
-        /// (If entity with same id already
-        /// exists, this, new entity overrides it)
-        /// </summary>
-        /// <param name="entity"></param>
-        void AddEntity(ILiving entity);
+        IEnumerable<IMobEntity> GetMobs(MobType type = MobType.All);
+        IMobEntity GetClosestMob(MobType type = MobType.All, Func<IMobEntity, bool> optionalValidityCheck = null);
+        IMobEntity GetClosestMob(IPosition position, MobType type = MobType.All, Func<IMobEntity, bool> optionalValidityCheck = null);
+        IMobEntity GetClosestMob(ILocation position, MobType type = MobType.All, Func<IMobEntity, bool> optionalValidityCheck = null);
+        IMobEntity GetClosestMob(double x, double y, double z, MobType type = MobType.All, Func<IMobEntity, bool> optionalValidityCheck = null);
 
-        /// <summary>
-        /// Remove an entity by its id.
-        /// </summary>
-        /// <param name="id"></param>
-        void RemoveEntity(int id);
-        /// <summary>
-        /// Remove an array of entities.
-        /// </summary>
-        /// <param name="ids"></param>
-        void RemoveEntity(int[] ids);
-        /// <summary>
-        /// Remove this entity.
-        /// </summary>
-        /// <param name="entity"></param>
-        void RemoveEntity(ILiving entity);
-
-        /// <summary>
-        /// Removes all entities.
-        /// </summary>
-        void RemoveAllEntities();
-
-        /// <summary>
-        /// Set the entities position and rotation.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <param name="yaw"></param>
-        /// <param name="ptich"></param>
-        void SetPosition(int id, double x, double y, double z, byte yaw, byte pitch);
-        /// <summary>
-        /// Add the x/y/z to the current
-        /// entities position.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        void RelativeMove(int id, double x, double y, double z);
-        /// <summary>
-        /// Set the entities rotation.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="yaw"></param>
-        /// <param name="pitch"></param>
-        void HeadRotate(int id, byte yaw, byte pitch);
-        /// <summary>
-        /// Relative move and rotate the
-        /// entities head.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <param name="yaw"></param>
-        /// <param name="pitch"></param>
-        void RelativeMoveAndRotate(int id, double x, double y, double z, byte yaw, byte pitch);
-
-        /// <summary>
-        /// Sets an entities metadata to the
-        /// given metadata.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="metadata"></param>
-        void SetMetadata(int id, IEntityMetadata metadata);
-
-        /// <summary>
-        /// Finds the closest entity to
-        /// the given x/y/z.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <returns></returns>
-        ILiving FindClosest(double x, double y, double z);
-        /// <summary>
-        /// Finds the closest mob to
-        /// the given x/y/z.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <returns></returns>
-        ILiving FindClosestMob(double x, double y, double z);
-        /// <summary>
-        /// If passive is true then only passive mobs will be returned,
-        /// if it's false then only aggresive mobs will be returned.
-        /// (If you want both use the function FindClosestMob(x, y, z) instead)
-        /// </summary>
-        ILiving FindClosestMob(double x, double y, double z, bool passive);
-
-        /// <summary>
-        /// Finds the closest player to
-        /// the given x/y/z.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <returns></returns>
-        ILiving FindClosestPlayer(double x, double y, double z);
-
-        /// <summary>
-        /// Finds the closest valid
-        /// target near our player.
-        /// </summary>
-        /// <param name="player"></param>
-        /// <param name="filter"></param>
-        /// <returns></returns>
-        ILiving FindClosestTarget(ILocation player, TargetFilter filter);
-
-        /// <summary>
-        /// Add the uuid names.
-        /// </summary>
-        /// <param name="players"></param>
-        void AddNames(UUID[] players);
-        /// <summary>
-        /// Remove the uuid names.
-        /// </summary>
-        /// <param name="players"></param>
-        void RemoveNames(UUID[] players);
-
-        /// <summary>
-        /// Atempts to get a uuid by name.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        UUID FindUuidByName(string name);
-        /// <summary>
-        /// Atempts to get a name by uuid.
-        /// </summary>
-        /// <param name="uuid"></param>
-        /// <returns></returns>
-        UUID FindNameByUuid(string uuid);
-
-        /// <summary>
-        /// Gets a random user from the tab list.
-        /// </summary>
-        /// <returns></returns>
-        string RandomName();
-        /// <summary>
-        /// Gets a random user from the tab list.
-        /// </summary>
-        /// <returns></returns>
-        string RandomBotName();
-
-        /// <summary>
-        /// Does the uuid belong to a bot.
-        /// </summary>
-        bool IsBot(string uuid);
+        void _AddEntity(ILiving entity);
+        void _RemoveEntity(int entityId);
+        void _AddPlayerEntity(IPlayerEntity entity);
+        void _RemovePlayerEntity(int entityId);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="entity"></param>
     /// <param name="token">This event can be canceled using this token.</param>
     public delegate void EntityDelegate(IEntity entity, EventCancelToken token);
     public delegate void EntityInformationDelegate(IEntity entity);

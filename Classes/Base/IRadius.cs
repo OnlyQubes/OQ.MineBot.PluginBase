@@ -30,31 +30,31 @@ namespace OQ.MineBot.PluginBase.Classes.Base
         public void UpdateHorizontal(ILocation start, ILocation end) {
 
             //Get xWidths.
-            int xMax = Math.Max(start.x, end.x);
-            int xMin = Math.Min(start.x, end.x);
+            int xMax = Math.Max(start.X, end.X);
+            int xMin = Math.Min(start.X, end.X);
             //Get zWidths.
-            int zMax = Math.Max(start.z, end.z);
-            int zMin = Math.Min(start.z, end.z);
+            int zMax = Math.Max(start.Z, end.Z);
+            int zMin = Math.Min(start.Z, end.Z);
 
             //Update the y/w/l.
             this.xSize = xMax - xMin;
             this.zSize = zMax - zMin;
             //Update the start position.
-            this.start = new Location(xMin, this.start.y, zMin);
+            this.start = new Location(xMin, this.start.Y, zMin);
         }
 
         private void Recalculate(ILocation end) {
 
             //Get total y.
-            float yMax = Math.Max(start.y, end.y);
-            float yMin = Math.Min(start.y, end.y);
+            float yMax = Math.Max(start.Y, end.Y);
+            float yMin = Math.Min(start.Y, end.Y);
 
             //Get xWidths.
-            int xMax = Math.Max(start.x, end.x);
-            int xMin = Math.Min(start.x, end.x);
+            int xMax = Math.Max(start.X, end.X);
+            int xMin = Math.Min(start.X, end.X);
             //Get zWidths.
-            int zMax = Math.Max(start.z, end.z);
-            int zMin = Math.Min(start.z, end.z);
+            int zMax = Math.Max(start.Z, end.Z);
+            int zMin = Math.Min(start.Z, end.Z);
 
             //Update the y/w/l.
             this.xSize = xMax - xMin;
@@ -70,13 +70,13 @@ namespace OQ.MineBot.PluginBase.Classes.Base
             ILocation currentClosest = null;
             float distance = 0;
             float tempDistance = 0;
-            for (int x = start.x; x <= start.x + xSize; x++)
-                for (int z = start.z; z <= start.z + zSize; z++) {
-                    for (int y = (int) start.y + height; y >= (int) start.y; y--) {
+            for (int x = start.X; x <= start.X + xSize; x++)
+                for (int z = start.Z; z <= start.Z + zSize; z++) {
+                    for (int y = (int) start.Y + height; y >= (int) start.Y; y--) {
                         var temp = new Location(x, y, z);
                         if (world.IsWalkable(temp) &&
                             (currentClosest == null || (distance > (tempDistance = toLocation.Distance(temp)) &&
-                                                        (!highestOnly || currentClosest.y <= temp.y)))) {
+                                                        (!highestOnly || currentClosest.Y <= temp.Y)))) {
                             currentClosest = temp;
                             distance = tempDistance;
                             break;
@@ -87,7 +87,7 @@ namespace OQ.MineBot.PluginBase.Classes.Base
         }
 
         public override string ToString() {
-            return ("Radius { start: "+start+"\t:: end: "+(start.x + xSize)+"/"+(start.y+height)+"/"+ (start.z + zSize) + "}");    
+            return ("Radius { start: "+start+"\t:: end: "+(start.X + xSize)+"/"+(start.Y+height)+"/"+ (start.Z + zSize) + "}");    
         }
     }
 }

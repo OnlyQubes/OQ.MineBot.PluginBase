@@ -20,6 +20,9 @@
 
     public enum MobType
     {
+        All = int.MaxValue,
+        Passive = int.MaxValue-1,
+        Aggressive = int.MaxValue-2,
         Mob = 48,
         Monster = 49,
         Creeper = 50,
