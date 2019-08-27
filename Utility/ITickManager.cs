@@ -84,6 +84,6 @@ namespace OQ.MineBot.PluginBase.Utility
     /// </summary>
     public static class TickManagerExtensionFunctions
     {
-        public static bool NotEating(IBotContext context) { return !context.Player.Status.eating; }
+        public static bool NotEating(IBotContext context) { return !context.Player.Status.Eating; }
     }
 }
