@@ -1,20 +1,20 @@
 ﻿namespace OQ.MineBot.PluginBase.Classes.Entity
 {
-    public interface IEntity
+    public abstract class IEntity
     {
         /// <summary>
         /// Id of the entity.
         /// </summary>
-        int entityId { get; set; }
+        public int entityId { get; set; }
 
         /// <summary>
         /// Position of the entity.
         /// </summary>
-        IPosition location { get; set; }
+        public IPosition location { get; set; }
 
         /// <summary>
         /// Is this entity unloaded?
         /// </summary>
-        bool unloaded { get; set; }
+        public bool unloaded { get; set; }
     }
 }

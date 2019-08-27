@@ -1,21 +1,21 @@
 ﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Mob
 {
-    public interface IMobEntity : ILiving
+    public abstract class IMobEntity : ILiving
     {
         /// <summary>
         /// Type of the monster entity.
         /// </summary>
-        MobType type { get; set; }
+        public MobType type { get; set; }
 
         /// <summary>
         /// Metadata for this monster.
         /// </summary>
-        IEntityMetadata metadata { get; set; }
+        public IEntityMetadata metadata { get; set; }
 
         /// <summary>
         /// Is this a passive mob.
         /// </summary>
-        bool IsFriendly();
+        public abstract bool IsFriendly();
     }
 
     public enum MobType
