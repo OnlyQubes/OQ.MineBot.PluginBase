@@ -4,56 +4,50 @@ using OQ.MineBot.PluginBase.Classes.Window.Containers;
 
 namespace OQ.MineBot.PluginBase
 {
-    public interface IPlayerStatus
+    public abstract class IPlayerStatus
     {
         /// <summary>
         /// Is the player connected
         /// to a server.
         /// </summary>
-        bool loggedIn { get; set; }
+        public bool loggedIn { get; protected set; }
 
         /// <summary>
         /// Has the player spawned and
         /// is he controllable?
         /// </summary>
-        bool spawned { get; set; }
+        public bool spawned { get; protected set; }
+
+        /// <summary>
+        /// Ping to server and back.
+        /// </summary>
+        public int ping { get; protected set; }
 
         /// <summary>
         /// Username of the player.
         /// </summary>
-        string username { get; set; }
+        public string username { get; protected set; }
 
         /// <summary>
         /// Uuid of the player.
         /// </summary>
-        string uuid { get; set; }
-
-        /// <summary>
-        /// Is the player currently eating?
-        /// </summary>
-        bool eating { get; set; }
+        public string uuid { get; protected set; }
 
         /// <summary>
         /// Is the player currently switching worlds/respawning.
         /// (E.g. going from overworld to nether)
         /// (aka Loading world)
         /// </summary>
-        bool switchingWorlds { get; set; }
+        public bool switchingWorlds { get; protected set; }
 
         /// <summary>
-        /// Ping to server and back.
+        /// Is the player currently eating?
         /// </summary>
-        int ping { get; set; }
+        public bool eating { get; protected set; }
 
         /// <summary>
         /// Currently selected hand.
         /// </summary>
-        int hand { get; set; }
-    }
-
-    public enum PacketState
-    {
-        Login,
-        Game
+        public int hand { get; protected set; }
     }
 }
