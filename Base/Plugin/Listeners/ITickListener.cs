@@ -1,4 +1,6 @@
-﻿namespace OQ.MineBot.PluginBase.Base.Plugin.Tasks
+﻿using System.Threading.Tasks;
+
+namespace OQ.MineBot.PluginBase.Base.Plugin.Tasks
 {
     /*
         The method 'OnTick' will be called each
@@ -9,6 +11,6 @@
         should be running on a seperate thread)
     */
     public interface ITickListener {
-        void OnTick();
+        Task OnTick();
     }
 }

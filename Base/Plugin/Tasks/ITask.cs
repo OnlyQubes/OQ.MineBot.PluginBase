@@ -1,4 +1,5 @@
-﻿using OQ.MineBot.PluginBase.Classes;
+﻿using System.Threading.Tasks;
+using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Window.Containers;
 using OQ.MineBot.PluginBase.Classes.World;
 
@@ -23,8 +24,8 @@ namespace OQ.MineBot.PluginBase.Base.Plugin.Tasks
             set { Context.Containers.inventory = value; }
         } // Refference to quickly access players inventory.
 
-        public virtual void Start()     { }
-        public virtual void Stop()      { }
+        public virtual async Task Start()     { }
+        public virtual async Task Stop()      { }
 
         /// <summary>
         /// Determines if any of the listeners will be
