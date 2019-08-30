@@ -556,6 +556,7 @@ namespace OQ.MineBot.PluginBase
         /// <param name="world">Can the raycast include blocks.</param>
         /// <returns>RayHit if hit anything, else null</returns>
         RayHit Raycast(bool entity = true, bool world = true);
+        RayHit RaycastTowards(IPosition target, bool entity = true, bool world = true, double? reach = null);
 
         /// <summary>
         /// Sets the given slotIndex to the given slotData.

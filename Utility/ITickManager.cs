@@ -1,11 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using OQ.MineBot.PluginBase.Classes;
 
 namespace OQ.MineBot.PluginBase.Utility
 {
     public interface ITickManager
     {
+        /// <summary>
+        /// This function will sleep for X amount of ticks
+        /// and allows to work with ticks instead of milliseconds.
+        /// 
+        /// Should be called like this:
+        /// await Context.TickManager.Sleep(10);
+        /// </summary>
+        /// <returns></returns>
+        Task Sleep(int ticks);
+
         /// <summary>
         /// Registers an action to the tick counter,
         /// which will execute the action once enough

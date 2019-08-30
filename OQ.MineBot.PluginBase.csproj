@@ -116,6 +116,7 @@
     <Compile Include="Classes\Entity\Mob\IMobEntity.cs" />
     <Compile Include="Classes\Entity\Player\IPlayerEntity.cs" />
     <Compile Include="Classes\Entity\Player\ISelfPlayerEntity.cs" />
+    <Compile Include="Classes\Enums\BodyParts.cs" />
     <Compile Include="Classes\Items\Groups\Equipment\IBoots.cs" />
     <Compile Include="Classes\Items\Groups\Equipment\IChestplate.cs" />
     <Compile Include="Classes\Items\Groups\Equipment\IHelmet.cs" />
