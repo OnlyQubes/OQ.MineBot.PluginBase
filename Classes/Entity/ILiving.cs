@@ -22,5 +22,8 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
         /// Vehicle that the entity is attached to.
         /// </summary>
         public int VehicleId { get; set; }
+
+        public abstract void Attack();
+        public abstract void Interact();
     }
 }

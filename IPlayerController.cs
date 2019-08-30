@@ -19,10 +19,12 @@ namespace OQ.MineBot.PluginBase
 
         public abstract IPosition GetPosition();
         public abstract ILocation GetLocation(); // GetPosition.ToLocation(0);
+        public abstract IRotation GetRotation();
 
         public abstract float GetHealth();
         public abstract float GetFood();
         public abstract float GetFoodSaturation();
+        public abstract bool  IsDead();
 
         public abstract int GetExperienceLevel();
         public abstract int GetExperience();
