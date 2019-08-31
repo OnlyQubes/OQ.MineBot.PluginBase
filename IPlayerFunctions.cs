@@ -12,6 +12,7 @@ using OQ.MineBot.PluginBase.Classes.Items;
 using OQ.MineBot.PluginBase.Classes.Physics;
 using OQ.MineBot.PluginBase.Classes.Window;
 using OQ.MineBot.PluginBase.Classes.Window.Containers.Subcontainers;
+using OQ.MineBot.PluginBase.Movement.Events;
 using OQ.MineBot.PluginBase.Movement.Maps;
 using OQ.MineBot.PluginBase.Pathfinding;
 using OQ.MineBot.PluginBase.Pathfinding.Sub;
@@ -536,6 +537,8 @@ namespace OQ.MineBot.PluginBase
         /// </summary>
         /// <returns>Was the path reached.</returns>
         bool WaitMoveDirection(IStopToken token, Direction direction, MapOptions options = null);
+
+        IMoveTask MoveToAsyncTask(IPosition startLocation, IPosition target, MapOptions options = null);
 
         /// <summary>
         /// Get the closest face of a block

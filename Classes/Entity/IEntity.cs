@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using OQ.MineBot.PluginBase.Classes.Enums;
+using OQ.MineBot.PluginBase.Movement.Events;
 
 namespace OQ.MineBot.PluginBase.Classes.Entity
 {
@@ -32,5 +33,7 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
 
         public abstract Task LookAt(BodyParts bodyPart = BodyParts.Body);
         public abstract bool HasLineOfSight(BodyParts bodyPart = BodyParts.Body);
+
+        public abstract IMoveTask MoveTo();
     }
 }

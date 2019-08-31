@@ -171,13 +171,17 @@
     <Compile Include="IPlayerManager.cs" />
     <Compile Include="IPlayerState.cs" />
     <Compile Include="Movement\Events\MapEvents.cs" />
+    <Compile Include="Movement\Events\MoveResult.cs" />
+    <Compile Include="Movement\Events\IMoveTask.cs" />
     <Compile Include="Movement\Geometry\IAreaCuboid.cs" />
     <Compile Include="Movement\Maps\IAreaMap.cs" />
     <Compile Include="Movement\Maps\IAsyncMap.cs" />
     <Compile Include="Movement\Maps\MapOptions.cs" />
     <Compile Include="Pathfinding\HeapItem.cs" />
+    <Compile Include="Pathfinding\ICachedPath.cs" />
     <Compile Include="Pathfinding\IPathNode.cs" />
     <Compile Include="Pathfinding\PathFinderGlobals.cs" />
+    <Compile Include="Pathfinding\PathResult.cs" />
     <Compile Include="Pathfinding\Sub\IChestMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\DiscordHelper.cs" />
