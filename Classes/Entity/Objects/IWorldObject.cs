@@ -1,4 +1,4 @@
-﻿namespace OQ.MineBot.PluginBase.Classes.Objects
+﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Objects
 {
     public interface IWorldObject
     {

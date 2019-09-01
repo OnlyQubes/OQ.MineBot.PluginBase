@@ -1,15 +1,8 @@
-﻿namespace OQ.MineBot.PluginBase.Classes.Objects.List
+﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Objects.List
 {
-    public class ProjectileObject : IWorldObject
+    public class ItemFrameObject : IWorldObject
     {
-        /// <summary>
-        /// Entity id of the shooter.
-        /// </summary>
-        public int ShooterId { get; set; }
-
-        public ProjectileObject(ObjectTypes type) {
-            this.m_type = type;
-        }
+        public Facing FrameFacing { get; set; }
 
         /// <summary>
         /// Entity id of this object.
@@ -21,9 +14,8 @@
         /// </summary>
         /// <returns></returns>
         public ObjectTypes GetType() {
-            return m_type;
+            return ObjectTypes.ItemFrames;
         }
-        private ObjectTypes m_type;
 
         /// <summary>
         /// Makes a copy of a world object.
@@ -32,5 +24,13 @@
         public IWorldObject Copy() {
             return (IWorldObject)MemberwiseClone();
         }
+    }
+
+    public enum Facing
+    {
+        South,
+        West, 
+        North,
+        East
     }
 }

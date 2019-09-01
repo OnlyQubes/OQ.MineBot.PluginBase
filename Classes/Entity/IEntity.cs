@@ -25,7 +25,7 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
         /// <summary>
         /// Time that this entity has existed for the bot.
         /// </summary>
-        public DateTime Spawned = DateTime.Now;
+        protected DateTime Spawned = DateTime.Now;
 
         public int GetAge() {
             return (int) (DateTime.Now.Subtract(Spawned).TotalMilliseconds / 50);

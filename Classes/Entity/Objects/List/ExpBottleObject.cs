@@ -1,7 +1,6 @@
-﻿namespace OQ.MineBot.PluginBase.Classes.Objects.List
+﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Objects.List
 {
-    public class ItemObject : IWorldObject
-    {
+    public class ExpBottleObject : IWorldObject {
         /// <summary>
         /// Entity id of this object.
         /// </summary>
@@ -12,7 +11,7 @@
         /// </summary>
         /// <returns></returns>
         public ObjectTypes GetType() {
-            return ObjectTypes.ItemStack;
+            return ObjectTypes.ThrownExpBottle;
         }
 
         /// <summary>

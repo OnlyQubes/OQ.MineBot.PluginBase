@@ -34,5 +34,10 @@ namespace OQ.MineBot.PluginBase
         /// Currently selected hand.
         /// </summary>
         public int Hand { get; protected set; }
+
+        /// <summary>
+        /// Is the player currently crouching?
+        /// </summary>
+        public bool IsCrouching { get; set; }
     }
 }

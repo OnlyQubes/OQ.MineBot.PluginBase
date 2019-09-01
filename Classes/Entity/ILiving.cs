@@ -23,6 +23,9 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
         /// </summary>
         public int VehicleId { get; set; }
 
+        public abstract float GetHealth();
+        public abstract bool IsDead();
+
         public abstract void Attack();
         public abstract void Interact();
     }

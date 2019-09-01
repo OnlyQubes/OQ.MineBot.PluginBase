@@ -1,6 +1,9 @@
-﻿using OQ.MineBot.PluginBase.Classes;
+﻿using System.Threading.Tasks;
+using OQ.MineBot.GUI.Protocol.Movement.Maps;
+using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Crafting;
 using OQ.MineBot.PluginBase.Classes.Physics;
+using OQ.MineBot.PluginBase.Pathfinding;
 
 namespace OQ.MineBot.PluginBase
 {
@@ -28,5 +31,8 @@ namespace OQ.MineBot.PluginBase
 
         public abstract int GetExperienceLevel();
         public abstract int GetExperience();
+
+        public abstract Task<ICachedPath> CreateReusablePath(IPosition start, IPosition end, MapOptions options = null);
+        public abstract Task<ICachedPath> CreateReusablePath(ILocation start, ILocation end, MapOptions options = null);
     }
 }

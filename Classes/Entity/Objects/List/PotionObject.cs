@@ -1,12 +1,6 @@
-﻿namespace OQ.MineBot.PluginBase.Classes.Objects.List
+﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Objects.List
 {
-    public class FallingBlockObject : IWorldObject
-    {
-        /// <summary>
-        /// What type is the block.
-        /// </summary>
-        public int BlockType { get; set; }
-
+    public class PotionObject : IWorldObject {
         /// <summary>
         /// Entity id of this object.
         /// </summary>
@@ -17,7 +11,7 @@
         /// </summary>
         /// <returns></returns>
         public ObjectTypes GetType() {
-            return ObjectTypes.FallingObject;
+            return ObjectTypes.ThrownPotion;
         }
 
         /// <summary>

@@ -1,8 +1,12 @@
-﻿namespace OQ.MineBot.PluginBase.Classes.Objects.List
+﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Objects.List
 {
-    public class ItemFrameObject : IWorldObject
+    // Includes also spectal arrows.
+    public class ArrowObject : IWorldObject
     {
-        public Facing FrameFacing { get; set; }
+        /// <summary>
+        /// The entity ID of the shooter + 1 (Subtract 1 to get the actual entity ID)
+        /// </summary>
+        public int EntityId { get; set; }
 
         /// <summary>
         /// Entity id of this object.
@@ -14,7 +18,7 @@
         /// </summary>
         /// <returns></returns>
         public ObjectTypes GetType() {
-            return ObjectTypes.ItemFrames;
+            return ObjectTypes.TippedArrow;
         }
 
         /// <summary>
@@ -24,13 +28,5 @@
         public IWorldObject Copy() {
             return (IWorldObject)MemberwiseClone();
         }
-    }
-
-    public enum Facing
-    {
-        South,
-        West, 
-        North,
-        East
     }
 }

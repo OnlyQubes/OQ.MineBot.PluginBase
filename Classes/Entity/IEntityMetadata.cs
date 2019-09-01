@@ -9,5 +9,8 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
         /// should be stored here.
         /// </summary>
         Dictionary<int, object> metadata { get; set; }
+
+        void Update(IEntityMetadata entityMetadata);
+        object TryGetValue(int id);
     }
 }

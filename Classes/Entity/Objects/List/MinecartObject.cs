@@ -1,11 +1,11 @@
-﻿namespace OQ.MineBot.PluginBase.Classes.Objects.List
+﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Objects.List
 {
-    public class FishingFloatObject : IWorldObject
+    public class MinecartObject : IWorldObject
     {
         /// <summary>
-        /// Entity id of the owner.
+        /// What's the functionallity of the minecart.
         /// </summary>
-        public int Owner { get; set; }
+        public MinecartType MinecartType { get; set; }
 
         /// <summary>
         /// Entity id of this object.
@@ -17,7 +17,7 @@
         /// </summary>
         /// <returns></returns>
         public ObjectTypes GetType() {
-            return ObjectTypes.FishingHook;
+            return ObjectTypes.Minecart;
         }
 
         /// <summary>
@@ -27,5 +27,16 @@
         public IWorldObject Copy() {
             return (IWorldObject)MemberwiseClone();
         }
+    }
+
+    public enum MinecartType
+    {
+        Empty = 0,
+        Chest = 1,
+        Furnace = 2,
+        Tnt = 3,
+        Spawner = 4,
+        Hopper = 5,
+        Command = 6
     }
 }

@@ -11,18 +11,13 @@
         /// </summary>
         public IEntityMetadata metadata { get; set; }
 
-        /// <summary>
-        /// Is the player currently crouching.
-        /// </summary>
-        public bool isCrouching { get; set; }
-        /// <summary>
-        /// Is the player currently sprinting.
-        /// </summary>
-        public abstract bool isSprinting { get; }
-
         public abstract bool IsBot();
         public abstract string GetName();
         public abstract string GetUuid();
+
+        public abstract bool IsCrouched();
+        public abstract bool IsSprinting();
+        public abstract bool IsSwimming();
     }
 
     public enum Directions

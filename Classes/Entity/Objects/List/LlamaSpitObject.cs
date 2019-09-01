@@ -1,12 +1,6 @@
-﻿namespace OQ.MineBot.PluginBase.Classes.Objects.List
+﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Objects.List
 {
-    public class MinecartObject : IWorldObject
-    {
-        /// <summary>
-        /// What's the functionallity of the minecart.
-        /// </summary>
-        public Type MinecartType { get; set; }
-
+    public class LlamaSpitObject : IWorldObject {
         /// <summary>
         /// Entity id of this object.
         /// </summary>
@@ -17,7 +11,7 @@
         /// </summary>
         /// <returns></returns>
         public ObjectTypes GetType() {
-            return ObjectTypes.Minecart;
+            return ObjectTypes.LlamaSpit;
         }
 
         /// <summary>
@@ -27,16 +21,5 @@
         public IWorldObject Copy() {
             return (IWorldObject)MemberwiseClone();
         }
-    }
-
-    public enum Type
-    {
-        Empty = 0,
-        Chest = 1,
-        Furnace = 2,
-        Tnt = 3,
-        Spawner = 4,
-        Hopper = 5,
-        Command = 6
     }
 }

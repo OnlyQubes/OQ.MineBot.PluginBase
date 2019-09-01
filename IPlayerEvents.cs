@@ -2,8 +2,8 @@
 using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Base;
 using OQ.MineBot.PluginBase.Classes.Entity;
+using OQ.MineBot.PluginBase.Classes.Entity.Objects;
 using OQ.MineBot.PluginBase.Classes.Entity.Player;
-using OQ.MineBot.PluginBase.Classes.Objects;
 
 namespace OQ.MineBot.PluginBase
 {

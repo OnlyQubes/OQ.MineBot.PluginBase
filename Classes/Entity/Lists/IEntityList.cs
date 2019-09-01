@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using OQ.MineBot.PluginBase.Classes.Base;
 using OQ.MineBot.PluginBase.Classes.Entity.Filter;
 using OQ.MineBot.PluginBase.Classes.Entity.Mob;
+using OQ.MineBot.PluginBase.Classes.Entity.Objects;
 using OQ.MineBot.PluginBase.Classes.Entity.Player;
 using OQ.MineBot.PluginBase.Classes.Physics;
 
@@ -56,6 +57,13 @@ namespace OQ.MineBot.PluginBase.Classes.Entity.Lists
         IMobEntity GetClosestMob(IPosition position, MobType type = MobType.All, Func<IMobEntity, bool> optionalValidityCheck = null);
         IMobEntity GetClosestMob(ILocation position, MobType type = MobType.All, Func<IMobEntity, bool> optionalValidityCheck = null);
         IMobEntity GetClosestMob(double x, double y, double z, MobType type = MobType.All, Func<IMobEntity, bool> optionalValidityCheck = null);
+
+        IEnumerable<IObjectEntity> GetObjects(ObjectTypes type = ObjectTypes.All);
+        IEnumerable<IObjectEntity> GetItemStackObjects();
+        IObjectEntity GetClosestObject(ObjectTypes type = ObjectTypes.All, Func<IObjectEntity, bool> optionalValidityCheck = null);
+        IObjectEntity GetClosestObject(IPosition position, ObjectTypes type = ObjectTypes.All, Func<IObjectEntity, bool> optionalValidityCheck = null);
+        IObjectEntity GetClosestObject(ILocation position, ObjectTypes type = ObjectTypes.All, Func<IObjectEntity, bool> optionalValidityCheck = null);
+        IObjectEntity GetClosestObject(double x, double y, double z, ObjectTypes type = ObjectTypes.All, Func<IObjectEntity, bool> optionalValidityCheck = null);
 
         void _AddEntity(ILiving entity);
         void _RemoveEntity(int entityId);

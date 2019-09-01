@@ -1,13 +1,7 @@
-﻿namespace OQ.MineBot.PluginBase.Classes.Objects.List
+﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Objects.List
 {
-    // Includes also spectal arrows.
-    public class ArrowObject : IWorldObject
+    public class ItemObject : IWorldObject
     {
-        /// <summary>
-        /// The entity ID of the shooter + 1 (Subtract 1 to get the actual entity ID)
-        /// </summary>
-        public int EntityId { get; set; }
-
         /// <summary>
         /// Entity id of this object.
         /// </summary>
@@ -18,7 +12,7 @@
         /// </summary>
         /// <returns></returns>
         public ObjectTypes GetType() {
-            return ObjectTypes.TippedArrow;
+            return ObjectTypes.ItemStack;
         }
 
         /// <summary>
