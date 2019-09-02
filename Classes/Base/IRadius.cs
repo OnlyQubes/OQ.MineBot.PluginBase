@@ -74,7 +74,7 @@ namespace OQ.MineBot.PluginBase.Classes.Base
                 for (int z = start.Z; z <= start.Z + zSize; z++) {
                     for (int y = (int) start.Y + height; y >= (int) start.Y; y--) {
                         var temp = new Location(x, y, z);
-                        if (world.IsWalkable(temp) &&
+                        if (((IWorld)world).IsWalkable(temp) &&
                             (currentClosest == null || (distance > (tempDistance = toLocation.Distance(temp)) &&
                                                         (!highestOnly || currentClosest.Y <= temp.Y)))) {
                             currentClosest = temp;

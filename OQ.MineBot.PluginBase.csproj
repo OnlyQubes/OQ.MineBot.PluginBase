@@ -100,7 +100,7 @@
     <Compile Include="Classes\Base\RayHit.cs" />
     <Compile Include="Classes\Base\UUID.cs" />
     <Compile Include="Classes\Blocks\BlocksGlobal.cs" />
-    <Compile Include="Classes\Blocks\IBlock.cs" />
+    <Compile Include="Classes\Blocks\IBlockData.cs" />
     <Compile Include="Classes\Blocks\IBlockHolder.cs" />
     <Compile Include="Classes\Blocks\IDigAction.cs" />
     <Compile Include="Classes\Crafting\ICrafting.cs" />
@@ -161,8 +161,10 @@
     <Compile Include="Classes\Window\Containers\Subcontainers\IPlayerHotbarSlots.cs" />
     <Compile Include="Classes\Window\IWindow.cs" />
     <Compile Include="Classes\Window\IWindowContainer.cs" />
+    <Compile Include="Classes\World\IBlock.cs" />
     <Compile Include="Classes\World\IChunk.cs" />
     <Compile Include="Classes\World\IChunkColumb.cs" />
+    <Compile Include="Classes\World\FaceData.cs" />
     <Compile Include="Classes\World\IWorld.cs" />
     <Compile Include="IControls.cs" />
     <Compile Include="IBotContext.cs" />

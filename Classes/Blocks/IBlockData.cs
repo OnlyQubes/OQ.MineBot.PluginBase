@@ -3,7 +3,7 @@ using OQ.MineBot.PluginBase.Classes.Physics.Colliders;
 
 namespace OQ.MineBot.PluginBase.Classes.Blocks
 {
-    public interface IBlock
+    public interface IBlockData
     {
         /// <summary>
         /// Id of the block.

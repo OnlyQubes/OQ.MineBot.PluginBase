@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace OQ.MineBot.PluginBase.Classes.Blocks
 {
@@ -35,7 +36,9 @@ namespace OQ.MineBot.PluginBase.Classes.Blocks
         /// digging is cancelled.
         /// </summary>
         Action<IDigAction> onStateChanged { get; set; }
-        
+
+        Task<IDigAction> DigTask { get; set; }
+
         /// <summary>
         /// Cancels the event.
         /// </summary>
