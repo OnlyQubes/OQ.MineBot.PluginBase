@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using OQ.MineBot.PluginBase.Classes.Blocks;
 using OQ.MineBot.PluginBase.Classes.Entity;
 
 namespace OQ.MineBot.PluginBase.Classes.World
@@ -7,6 +8,7 @@ namespace OQ.MineBot.PluginBase.Classes.World
     {
         ushort GetId();
         byte GetMetadata();
+        ILocation GetLocation();
 
         bool IsBotStandingOn();
         bool IsEntityStandingOn(out IEntity[] entities);
@@ -29,11 +31,14 @@ namespace OQ.MineBot.PluginBase.Classes.World
         bool IsUndesirableForPath();
 
         Task Use();
-        Task Break();
+        Task<IDigAction> Dig(); // "await result.DigTask" required!
+        Task<IDigAction> Dig(sbyte face);
+        Task<IDigAction> Dig(FaceData faceData);
         Task Hit();
         Task LookAt(FaceData faceData = null);
         Task LookAt(sbyte face);
         Task PlaceOn(FaceData faceData);
+        Task PlaceOn(sbyte face);
         Task<bool> PlaceAt();
     }
 }

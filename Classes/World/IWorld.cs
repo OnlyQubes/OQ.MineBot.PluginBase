@@ -31,6 +31,10 @@ namespace OQ.MineBot.PluginBase.Classes.World
         {
             return this.X * 16 + Z * 47;
         }
+
+        public static int GetHashCode(int x, int z) {
+            return x * 16 + z * 47;
+        }
     }
 
     public interface IWorld
@@ -52,7 +56,8 @@ namespace OQ.MineBot.PluginBase.Classes.World
         byte GetBlockMetadata(int x, int y, int z);
 
         IBlock GetLookingAt(); // may be null.
-
+        
+        Task<IEnumerable<IBlock>> GetPathableBlocksFrom(uint range, MapOptions mapOptions = null);
         Task<IEnumerable<IBlock>> GetPathableBlocksFrom(ILocation location, uint range, MapOptions mapOptions = null);
         Task<IEnumerable<IBlock>> GetPathableBlocksFrom(IPosition position, uint range, MapOptions mapOptions = null);
         Task<IEnumerable<IBlock>> GetPathableBlocksFrom(int x, int y, int z, uint range, MapOptions mapOptions = null);
@@ -60,26 +65,33 @@ namespace OQ.MineBot.PluginBase.Classes.World
         Task<bool> PlaceAt(ILocation location);
         Task<bool> PlaceAt(IPosition position);
         Task<bool> PlaceAt(int x, int y, int z);
-        Task<bool> PlaceOn(FaceData faceData);
-        Task<bool> PlaceOn(ILocation location,  sbyte face);
-        Task<bool> PlaceOn(IPosition position,  sbyte face);
-        Task<bool> PlaceOn(int x, int y, int z, sbyte face);
+        Task PlaceOn(FaceData faceData);
+        Task PlaceOn(ILocation location,  sbyte face);
+        Task PlaceOn(IPosition position,  sbyte face);
+        Task PlaceOn(int x, int y, int z, sbyte face);
 
-        Task<IDigAction> Dig(FaceData fadeData);
+        Task<IDigAction> Dig(FaceData faceData);
         Task<IDigAction> Dig(ILocation location, sbyte face);
         Task<IDigAction> Dig(ILocation location);
         Task<IDigAction> Dig(IPosition position);
         Task<IDigAction> Dig(int x, int y, int z);
 
-        Task<IBlock[]> FindFrom(ILocation location, int width, int height, ushort id, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock[]> FindFrom(ILocation location, int width, int height, ushort[] ids, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock> FindClosestTo(ILocation location, int width, int height, ushort id, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock> FindClosestTo(ILocation location, int width, int height, ushort[] ids, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock[]> Find(int width, int height, ushort id, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock[]> Find(int width, int height, ushort[] ids, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock> FindClosest(int width, int height, ushort id, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock> FindClosest(int width, int height, ushort[] ids, Func<IBlock, bool> optionalIsPickable = null);
-
+        Task<IBlock[]> FindFrom(ILocation location, int width, int height, ushort id, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock[]> FindFrom(ILocation location, int width, int height, ushort[] ids, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock> FindClosestTo(ILocation location, int width, int height, ushort id, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock> FindClosestTo(ILocation location, int width, int height, ushort[] ids, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock[]> Find(int width, int height, ushort id, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock[]> Find(int width, int height, ushort[] ids, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock> FindClosest(int width, int height, ushort id, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock> FindClosest(int width, int height, ushort[] ids, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
+        
         bool IsWalkable(ILocation location); // Internal legacy requirement, mark as _IsWalkable
+    }
+
+    public enum CpuMode
+    {
+        High_Usage = 50,
+        Medium_Usage = 25,
+        Low_Usage = 10
     }
 }
