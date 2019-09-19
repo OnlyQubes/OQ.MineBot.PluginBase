@@ -39,6 +39,8 @@ namespace OQ.MineBot.PluginBase.Classes.Blocks
 
         Task<IDigAction> DigTask { get; set; }
 
+        bool Look { get; set; }
+
         /// <summary>
         /// Cancels the event.
         /// </summary>

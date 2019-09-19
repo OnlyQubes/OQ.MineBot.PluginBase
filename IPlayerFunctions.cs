@@ -12,6 +12,7 @@ using OQ.MineBot.PluginBase.Classes.Items;
 using OQ.MineBot.PluginBase.Classes.Physics;
 using OQ.MineBot.PluginBase.Classes.Window;
 using OQ.MineBot.PluginBase.Classes.Window.Containers.Subcontainers;
+using OQ.MineBot.PluginBase.Classes.World;
 using OQ.MineBot.PluginBase.Movement.Events;
 using OQ.MineBot.PluginBase.Movement.Maps;
 using OQ.MineBot.PluginBase.Pathfinding;
@@ -343,7 +344,7 @@ namespace OQ.MineBot.PluginBase
         /// Equips best tool that we have in
         /// the inventory for the target block.
         /// </summary>
-        void SelectBestTool(ILocation target);
+        Task<bool> SelectBestTool(ILocation target);
 
         /// <summary>
         /// Places the block ('blockData') on the
@@ -396,7 +397,7 @@ namespace OQ.MineBot.PluginBase
         /// Attempt to eat the item
         /// that is currently held.
         /// </summary>
-        void EatAsync();
+        Task<bool> EatAsync();
         /// <summary>
         /// Select food and attempt to eat the item.
         /// </summary>
@@ -539,6 +540,8 @@ namespace OQ.MineBot.PluginBase
         bool WaitMoveDirection(IStopToken token, Direction direction, MapOptions options = null);
 
         IMoveTask MoveToAsyncTask(IPosition startLocation, IPosition target, MapOptions options = null);
+        IMoveTask MoveToRangeAsyncTask(IPosition startLocation, IPosition target, int maxRange, Func<IBlock, bool> canBlockBePicked, MapOptions options = null);
+        IMoveTask MoveToRangeAsyncTask(IPosition startLocation, IPosition target, int maxRange, int minRange, Func<IBlock, bool> canBlockBePicked, MapOptions options = null);
 
         /// <summary>
         /// Get the closest face of a block
@@ -560,7 +563,7 @@ namespace OQ.MineBot.PluginBase
         /// <returns>RayHit if hit anything, else null</returns>
         RayHit Raycast(bool entity = true, bool world = true);
         RayHit RaycastTowards(IPosition target, bool entity = true, bool world = true, double? reach = null);
-
+        
         /// <summary>
         /// Sets the given slotIndex to the given slotData.
         /// In minecraft this acts as taking an item from the creative

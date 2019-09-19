@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using OQ.MineBot.PluginBase.Classes.Window.Containers;
 
 namespace OQ.MineBot.PluginBase.Classes.Window
@@ -12,47 +13,27 @@ namespace OQ.MineBot.PluginBase.Classes.Window
         /// <summary>
         /// Players inventory.
         /// </summary>
-        IInventory inventory { get; set; }
-
+        IInventory GetInventory();
         /// <summary>
-        /// Opened windows.
+        /// Gets the currently open window. This does not return IInventory, that should be kept track of manually as the notchian server
+        /// does not keep track of the players inventory.
+        /// This can return null if no open window is found.
         /// </summary>
-        Dictionary<int, IWindow> openWindows { get; set; }
+        IWindow GetOpenWindow();
 
         /// <summary>
         /// Get window by id.
         /// </summary>
         /// <param name="id">If id is 0 then 'inventory' is returned.</param>
-        /// <returns></returns>
         IWindow GetWindow(int id);
-        /// <summary>
-        /// Get window by name.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        IWindow GetWindow(string name);
-        /// <summary>
-        /// Adds a window to the container.
-        /// </summary>
-        /// <param name="window"></param>
-        /// <returns></returns>
-        IWindow AddWindow(IWindow window);
-        /// <summary>
-        /// "Closes" a window.
-        /// </summary>
-        /// <param name="id"></param>
-        void RemoveWindow(int id);
-        /// <summary>
-        /// Gets window from openWindows at index i.
-        /// </summary>
-        IWindow GetWindowAt(int i);
+        IWindow GetWindowByTitle(string title);
+        IWindow GetWindowByType (string type);
 
         /// <summary>
         /// Closes all windows one by one. 
         /// Calls callback once done.
         /// </summary>
-        /// <param name="callback"></param>
-        void CloseAllWindowsAsync(Action callback);
+        Task CloseWindows();
     }
 
     public class WindowContainerDelegates

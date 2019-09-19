@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
+using OQ.MineBot.GUI.Protocol.Movement.Maps;
 using OQ.MineBot.PluginBase.Classes.Blocks;
 using OQ.MineBot.PluginBase.Classes.Entity;
+using OQ.MineBot.PluginBase.Movement.Events;
 
 namespace OQ.MineBot.PluginBase.Classes.World
 {
@@ -40,5 +42,13 @@ namespace OQ.MineBot.PluginBase.Classes.World
         Task PlaceOn(FaceData faceData);
         Task PlaceOn(sbyte face);
         Task<bool> PlaceAt();
+        bool CanPlaceAt();
+        Task<bool> SelectTool();
+
+        IMoveTask MoveTo(MapOptions options = null);
+        IMoveTask MoveToRange(int maxRange, MapOptions options = null);
+        IMoveTask MoveToInteractionRange(MapOptions options = null);
+
+        Task<bool> AwaitBlockUpdateOrTimeout(int timeOutMs);
     }
 }

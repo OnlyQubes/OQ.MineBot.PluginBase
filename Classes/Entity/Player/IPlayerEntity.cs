@@ -4,7 +4,7 @@
      * Entity used to describe OTHER players.
      */
 
-    public abstract class IPlayerEntity : ILiving
+    public abstract class IPlayerEntity : Living
     {
         /// <summary>
         /// Metadata of the player.

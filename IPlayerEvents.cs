@@ -183,5 +183,8 @@ namespace OQ.MineBot.PluginBase
         public delegate void OnResourcePackReceived(string url, string hash);
 
         public delegate void OnEntityAttached(int entityId, int vehicleId, bool leash);
+
+        public delegate void OnEntityEvent();
+
     }
 }

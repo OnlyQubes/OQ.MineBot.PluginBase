@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using OQ.MineBot.GUI.Protocol.Movement.Maps;
 using OQ.MineBot.PluginBase.Classes.Enums;
 using OQ.MineBot.PluginBase.Movement.Events;
 
@@ -7,6 +8,8 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
 {
     public abstract class IEntity
     {
+        public event IPlayerDelegates.OnEntityEvent OnDespawned;
+
         /// <summary>
         /// Id of the entity.
         /// </summary>
@@ -20,7 +23,12 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
         /// <summary>
         /// Is this entity unloaded?
         /// </summary>
-        public bool HasDespawned { get; set; }
+        public bool HasDespawned
+        {
+            get => _hasDespawned;
+            set { _hasDespawned = value; if(value) OnDespawned?.Invoke(); }
+        }
+        private bool _hasDespawned = false;
 
         /// <summary>
         /// Time that this entity has existed for the bot.
@@ -34,6 +42,10 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
         public abstract Task LookAt(BodyParts bodyPart = BodyParts.Body);
         public abstract bool HasLineOfSight(BodyParts bodyPart = BodyParts.Body);
 
-        public abstract IMoveTask MoveTo();
+        public abstract IMoveTask MoveTo(MapOptions options = null);
+        public abstract IMoveTask MoveToRange(int maxRange, MapOptions options = null);
+        public abstract IMoveTask Follow(MapOptions options = null);
+        public abstract IMoveTask Follow(int maxRange, MapOptions options = null);
+        public abstract IMoveTask Follow(int maxRange, int minRange, MapOptions options = null);
     }
 }

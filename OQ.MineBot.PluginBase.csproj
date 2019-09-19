@@ -133,6 +133,7 @@
     <Compile Include="Classes\Items\IStackable.cs" />
     <Compile Include="Classes\Items\ItemsGlobal.cs" />
     <Compile Include="Classes\Items\IUpgradable.cs" />
+    <Compile Include="Classes\Living.cs" />
     <Compile Include="Classes\Materials\IMaterial.cs" />
     <Compile Include="Classes\Materials\IMaterialHolder.cs" />
     <Compile Include="Classes\Entity\Objects\IWorldObject.cs" />

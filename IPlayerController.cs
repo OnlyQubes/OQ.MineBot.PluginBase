@@ -1,9 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using OQ.MineBot.GUI.Protocol.Movement.Maps;
 using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Crafting;
 using OQ.MineBot.PluginBase.Classes.Entity;
 using OQ.MineBot.PluginBase.Classes.Physics;
+using OQ.MineBot.PluginBase.Classes.World;
+using OQ.MineBot.PluginBase.Movement.Events;
 using OQ.MineBot.PluginBase.Pathfinding;
 
 namespace OQ.MineBot.PluginBase
@@ -40,9 +43,33 @@ namespace OQ.MineBot.PluginBase
         public abstract bool IsCrouching();
 
         public abstract Task Respawn();
+        public abstract void Chat(string message);
+
+        public abstract IMoveTask MoveDirection(Direction direction, MapOptions options = null);
+
+        public abstract IMoveTask MoveTo(ILocation location, MapOptions options = null);
+        public abstract IMoveTask MoveTo(IPosition position, MapOptions options = null);
+        public abstract IMoveTask MoveTo(int x, int y, int z, MapOptions options = null);
+
+        public abstract IMoveTask MoveToRange(ILocation location, int range, MapOptions options = null);
+        public abstract IMoveTask MoveToRange(IPosition position, int range, MapOptions options = null);
+        public abstract IMoveTask MoveToRange(int x, int y, int z, int range, MapOptions options = null);
+
+        public abstract IMoveTask MoveToRangeCustom(ILocation location, int range, Func<IBlock, bool> canBlockBePicked, MapOptions options = null);
+        public abstract IMoveTask MoveToRangeCustom(IPosition position, int range, Func<IBlock, bool> canBlockBePicked, MapOptions options = null);
+        public abstract IMoveTask MoveToRangeCustom(int x, int y, int z, int range, Func<IBlock, bool> canBlockBePicked, MapOptions options = null);
+
+        public abstract IMoveTask MoveToInteractionRange(ILocation location, MapOptions options = null);
+        public abstract IMoveTask MoveToInteractionRange(IPosition position, MapOptions options = null);
+        public abstract IMoveTask MoveToInteractionRange(int x, int y, int z, MapOptions options = null);
+
+        public abstract IMoveTask FollowEntity(IEntity entity, MapOptions options = null);
+        public abstract IMoveTask FollowEntity(IEntity entity, int maxRange, MapOptions options = null);
+        public abstract IMoveTask FollowEntity(IEntity entity, int maxRange, int minRange, MapOptions options = null);
 
         public abstract Task<ICachedPath> CreateReusablePath(IPosition start, IPosition end, MapOptions options = null);
         public abstract Task<ICachedPath> CreateReusablePath(ILocation start, ILocation end, MapOptions options = null);
+        public abstract IMoveTask ExecuteReusablePath (ICachedPath path);
     }
 
     public enum CrouchStates

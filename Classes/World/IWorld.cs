@@ -57,11 +57,6 @@ namespace OQ.MineBot.PluginBase.Classes.World
 
         IBlock GetLookingAt(); // may be null.
         
-        Task<IEnumerable<IBlock>> GetPathableBlocksFrom(uint range, MapOptions mapOptions = null);
-        Task<IEnumerable<IBlock>> GetPathableBlocksFrom(ILocation location, uint range, MapOptions mapOptions = null);
-        Task<IEnumerable<IBlock>> GetPathableBlocksFrom(IPosition position, uint range, MapOptions mapOptions = null);
-        Task<IEnumerable<IBlock>> GetPathableBlocksFrom(int x, int y, int z, uint range, MapOptions mapOptions = null);
-
         Task<bool> PlaceAt(ILocation location);
         Task<bool> PlaceAt(IPosition position);
         Task<bool> PlaceAt(int x, int y, int z);
@@ -76,15 +71,19 @@ namespace OQ.MineBot.PluginBase.Classes.World
         Task<IDigAction> Dig(IPosition position);
         Task<IDigAction> Dig(int x, int y, int z);
 
-        Task<IBlock[]> FindFrom(ILocation location, int width, int height, ushort id, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock[]> FindFrom(ILocation location, int width, int height, ushort[] ids, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock> FindClosestTo(ILocation location, int width, int height, ushort id, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock> FindClosestTo(ILocation location, int width, int height, ushort[] ids, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock[]> Find(int width, int height, ushort id, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock[]> Find(int width, int height, ushort[] ids, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock> FindClosest(int width, int height, ushort id, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
-        Task<IBlock> FindClosest(int width, int height, ushort[] ids, CpuMode cpuMode, Func<IBlock, bool> optionalIsPickable = null);
-        
+        Task<IBlock[]> FindFrom(ILocation location, int width, int height, ushort id, CpuMode cpuMode = CpuMode.Medium_Usage, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock[]> FindFrom(ILocation location, int width, int height, ushort[] ids, CpuMode cpuMode = CpuMode.Medium_Usage, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock> FindClosestTo(ILocation location, int width, int height, ushort id, CpuMode cpuMode = CpuMode.Medium_Usage, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock> FindClosestTo(ILocation location, int width, int height, ushort[] ids, CpuMode cpuMode = CpuMode.Medium_Usage, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock[]> Find(int width, int height, ushort id, CpuMode cpuMode = CpuMode.Medium_Usage, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock[]> Find(int width, int height, ushort[] ids, CpuMode cpuMode = CpuMode.Medium_Usage, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock> FindClosest(int width, int height, ushort id, CpuMode cpuMode = CpuMode.Medium_Usage, Func<IBlock, bool> optionalIsPickable = null);
+        Task<IBlock> FindClosest(int width, int height, ushort[] ids, CpuMode cpuMode = CpuMode.Medium_Usage, Func<IBlock, bool> optionalIsPickable = null);
+
+        Task<ILocation[]> GetPathableLocationsFrom(IPosition position, uint range, MapOptions options = null); // ciruclar range, shouldn't be used with more than >15 range on same thread.
+        Task<ILocation[]> GetPathableLocationsFrom(ILocation location, uint range, MapOptions options = null);
+        Task<ILocation[]> GetPathableLocationsFrom(int x, int y, int z, uint range, MapOptions options = null);
+
         bool IsWalkable(ILocation location); // Internal legacy requirement, mark as _IsWalkable
     }
 

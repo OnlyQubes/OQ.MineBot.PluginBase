@@ -1,6 +1,6 @@
 ﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Mob
 {
-    public abstract class IMobEntity : ILiving
+    public abstract class IMobEntity : Living
     {
         /// <summary>
         /// Type of the monster entity.

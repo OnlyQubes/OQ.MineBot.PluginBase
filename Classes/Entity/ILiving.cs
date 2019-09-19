@@ -3,6 +3,9 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
 {
     public abstract class ILiving : IEntity
     {
+        public event IPlayerDelegates.OnEntityEvent OnDeath;
+        public event IPlayerDelegates.OnEntityEvent OnMoved;
+
         /// <summary>
         /// Rotation of the entity.
         /// </summary>
@@ -28,5 +31,9 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
 
         public abstract void Attack();
         public abstract void Interact();
+
+        protected void InvokeOnDeath() { this.OnDeath?.Invoke(); }
+        protected void InvokeOnMoved() { this.OnMoved?.Invoke(); }
+
     }
 }

@@ -32,6 +32,11 @@ namespace OQ.MineBot.PluginBase.Classes.Items
         Dictionary<short, IItem> leggings { get; set; }
         Dictionary<short, IItem> boots { get; set; }
 
+        bool IsHelmet(short id);
+        bool IsChestplate(short id);
+        bool IsLeggings(short id);
+        bool IsBoots(short id);
+
 
         /// <summary>
         /// Gets item by id.
