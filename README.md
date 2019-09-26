@@ -1,3 +1,12 @@
+## Check out https://docs.minecraftbot.com for documentation!
+## Check out https://docs.minecraftbot.com for documentation!
+## Check out https://docs.minecraftbot.com for documentation!
+#### The documentation below is outdated and should no longer be used as reference. Please go to https://docs.minecraftbot.com for the up to date documentation.
+
+##
+## 
+## 
+
 # Plugin attribute
 ### Description
 The plugin attribute is used to define the name, description and current version of the plugin. The version is also used for plugin update notifications, thus increasing the version by 1 every update is a good idea. The following code snippet shows the snippet of the plugin attribute:
