@@ -8,6 +8,7 @@ using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Base;
 using OQ.MineBot.PluginBase.Classes.Blocks;
 using OQ.MineBot.PluginBase.Classes.Entity;
+using OQ.MineBot.PluginBase.Classes.Enums;
 using OQ.MineBot.PluginBase.Classes.Items;
 using OQ.MineBot.PluginBase.Classes.Physics;
 using OQ.MineBot.PluginBase.Classes.Window;
@@ -375,12 +376,14 @@ namespace OQ.MineBot.PluginBase
         /// </summary>
         /// <param name="targetId"></param>
         void EntityAttack(int targetId);
+        void EntityAttack(int targetId, Hands hand);
         /// <summary>
         /// Sends a "right click" packet
         /// to the server.
         /// </summary>
         /// <param name="targetId"></param>
         void EntityInteract(int targetId);
+        void EntityInteract(int targetId, Hands hand);
 
         /// <summary>
         /// Finds and equips the best
@@ -581,6 +584,8 @@ namespace OQ.MineBot.PluginBase
         /// <param name="forward">Positive forward</param>
         /// <param name="flags">1: jump, 2: unmount</param>
         void SteerVehicle(float sideway, float forward, byte flags);
+
+        void SwapItemInHands();
     }
 
     public enum LookSpeed

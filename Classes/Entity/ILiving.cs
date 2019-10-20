@@ -1,4 +1,7 @@
 ﻿
+using OQ.MineBot.PluginBase.Classes.Entity.Equipment;
+using OQ.MineBot.PluginBase.Classes.Enums;
+
 namespace OQ.MineBot.PluginBase.Classes.Entity
 {
     public abstract class ILiving : IEntity
@@ -22,6 +25,11 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
         public IEffectContainer Effects { get; set; }
 
         /// <summary>
+        /// Items that the entity is wearing/holding.
+        /// </summary>
+        public EntityEquipment Equipment { get; set; } = new EntityEquipment();
+
+        /// <summary>
         /// Vehicle that the entity is attached to.
         /// </summary>
         public int VehicleId { get; set; }
@@ -30,7 +38,9 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
         public abstract bool IsDead();
 
         public abstract void Attack();
+        public abstract void Attack(Hands hand);
         public abstract void Interact();
+        public abstract void Interact(Hands hand);
 
         protected void InvokeOnDeath() { this.OnDeath?.Invoke(); }
         protected void InvokeOnMoved() { this.OnMoved?.Invoke(); }

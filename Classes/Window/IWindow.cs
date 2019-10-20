@@ -18,7 +18,7 @@ namespace OQ.MineBot.PluginBase.Classes.Window
         ISlot GetAt(int index);
         ISlot GetAt(EquipmentSlots equipmentSlot);
         ISlot[] GetSlots(bool includeEmpty = false);
-
+        
         bool IsOpen();
         Task Close ();
 
@@ -59,6 +59,8 @@ namespace OQ.MineBot.PluginBase.Classes.Window
 
         Task<bool> Deposit(ushort id, Func<ISlot, bool> optionalCanPickSlot = null);
         Task<bool> Deposit(ushort[] ids = null, Func<ISlot, bool> optionalCanPickSlot = null);
+
+        ISlot GetHeldSlot();
     }
 
     public enum EquipmentType

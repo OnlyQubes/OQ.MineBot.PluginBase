@@ -4,6 +4,7 @@ using OQ.MineBot.GUI.Protocol.Movement.Maps;
 using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Crafting;
 using OQ.MineBot.PluginBase.Classes.Entity;
+using OQ.MineBot.PluginBase.Classes.Entity.Player;
 using OQ.MineBot.PluginBase.Classes.Physics;
 using OQ.MineBot.PluginBase.Classes.World;
 using OQ.MineBot.PluginBase.Movement.Events;
@@ -44,7 +45,26 @@ namespace OQ.MineBot.PluginBase
 
         public abstract Task Respawn();
         public abstract void Chat(string message);
+        public abstract Task<bool> Eat();
 
+        public abstract Task SetLook(IRotation rotation);
+        public abstract Task SetLook(Directions direction);
+        public abstract Task LookAt(IPosition position);
+        public abstract Task LookAt(ILocation location);
+
+        public abstract Task SwapItemInHands();
+
+        public abstract Task Swing();
+        public abstract Task UseHeld();
+
+        public abstract int GetVehicleId();
+        public abstract int GetEntityId();
+        public abstract Gamemodes GetGamemode();
+
+        public abstract ISlot GetHeldSlot();
+        public abstract short GetHeldIndex();
+
+        public abstract void Jump();
         public abstract IMoveTask MoveDirection(Direction direction, MapOptions options = null);
 
         public abstract IMoveTask MoveTo(ILocation location, MapOptions options = null);
@@ -70,6 +90,9 @@ namespace OQ.MineBot.PluginBase
         public abstract Task<ICachedPath> CreateReusablePath(IPosition start, IPosition end, MapOptions options = null);
         public abstract Task<ICachedPath> CreateReusablePath(ILocation start, ILocation end, MapOptions options = null);
         public abstract IMoveTask ExecuteReusablePath (ICachedPath path);
+
+        public abstract void Disconnect(string message = null);
+
     }
 
     public enum CrouchStates

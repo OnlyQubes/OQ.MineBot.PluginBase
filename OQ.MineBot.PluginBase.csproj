@@ -36,6 +36,9 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>OQStudios.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -98,6 +101,7 @@
     <Compile Include="Classes\Base\Location.cs" />
     <Compile Include="Classes\Base\Position.cs" />
     <Compile Include="Classes\Base\RayHit.cs" />
+    <Compile Include="Classes\Base\Rotation.cs" />
     <Compile Include="Classes\Base\UUID.cs" />
     <Compile Include="Classes\Blocks\BlocksGlobal.cs" />
     <Compile Include="Classes\Blocks\IBlockData.cs" />
@@ -108,6 +112,7 @@
     <Compile Include="Classes\Crafting\RecipeDictionary.cs" />
     <Compile Include="Classes\Entity\Effects\Effect.cs" />
     <Compile Include="Classes\Entity\Effects\IEffectContainer.cs" />
+    <Compile Include="Classes\Entity\Equipment\EntityEquipment.cs" />
     <Compile Include="Classes\Entity\Filter\TargetFilter.cs" />
     <Compile Include="Classes\Entity\IEntity.cs" />
     <Compile Include="Classes\Entity\IEntityMetadata.cs" />
@@ -118,6 +123,7 @@
     <Compile Include="Classes\Entity\Player\IPlayerEntity.cs" />
     <Compile Include="Classes\Entity\Player\ISelfPlayerEntity.cs" />
     <Compile Include="Classes\Enums\BodyParts.cs" />
+    <Compile Include="Classes\Enums\Hands.cs" />
     <Compile Include="Classes\Items\Groups\Equipment\IBoots.cs" />
     <Compile Include="Classes\Items\Groups\Equipment\IChestplate.cs" />
     <Compile Include="Classes\Items\Groups\Equipment\IHelmet.cs" />
@@ -160,6 +166,7 @@
     <Compile Include="Classes\Window\Containers\Subcontainers\IPlayerCraftingSlots.cs" />
     <Compile Include="Classes\Window\Containers\Subcontainers\IPlayerEquipmentSlots.cs" />
     <Compile Include="Classes\Window\Containers\Subcontainers\IPlayerHotbarSlots.cs" />
+    <Compile Include="Classes\Window\Containers\Subcontainers\IPlayerOffhandSlot.cs" />
     <Compile Include="Classes\Window\IWindow.cs" />
     <Compile Include="Classes\Window\IWindowContainer.cs" />
     <Compile Include="Classes\World\IBlock.cs" />
@@ -181,6 +188,7 @@
     <Compile Include="Movement\Maps\IAreaMap.cs" />
     <Compile Include="Movement\Maps\IAsyncMap.cs" />
     <Compile Include="Movement\Maps\MapOptions.cs" />
+    <Compile Include="Movement\Maps\MapOptionWeights.cs" />
     <Compile Include="Pathfinding\HeapItem.cs" />
     <Compile Include="Pathfinding\ICachedPath.cs" />
     <Compile Include="Pathfinding\IPathNode.cs" />
@@ -191,12 +199,16 @@
     <Compile Include="Utility\DiscordHelper.cs" />
     <Compile Include="Utility\ExtensionManager.cs" />
     <Compile Include="Utility\ITickManager.cs" />
+    <Compile Include="Utility\LocationBlacklistCollection.cs" />
+    <Compile Include="Utility\LocationWhitelistCollection.cs" />
     <Compile Include="Utility\NameHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OQStudios.pfx" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

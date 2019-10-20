@@ -14,7 +14,7 @@
         AreaEffectCloud = 3,
         Minecart = 10,
         ActivatedTNT = 50,
-        EncerCrystal = 51,
+        EnderCrystal = 51,
         TippedArrow = 60, // Projectile
         Snowball = 61, // Projectile
         Egg = 62, // Projectile

@@ -1,4 +1,7 @@
-﻿namespace OQ.MineBot.GUI.Protocol.Movement.Maps
+﻿using OQ.MineBot.PluginBase.Classes;
+using OQ.MineBot.PluginBase.Movement.Maps;
+
+namespace OQ.MineBot.GUI.Protocol.Movement.Maps
 {
     public class MapOptions
     {
@@ -8,6 +11,17 @@
         /// </summary>
         public static bool DefaultNoSlowdown { get; set; } = false;
 
+
+        /// <summary>
+        /// You can set custom weights for path finding here.
+        /// E.g.: Jump costs 50, which would make it jump only in critical situations.
+        /// </summary>
+        public MapOptionWeights AdditionalWeights { get; set; } = new MapOptionWeights();
+
+        /// <summary>
+        /// Allows you to move to the edge's of blocks.
+        /// </summary>
+        public IPosition Offset { get; set; }
 
         /// <summary>
         /// Should the bot not walk
@@ -70,6 +84,10 @@
         /// Can mine through blocks.
         /// </summary>
         public bool Mine { get; set; } = false;
+        /// <summary>
+        /// Can build blocks.
+        /// </summary>
+        public bool Build { get; set; } = false;
         /// <summary>
         /// Avoid mining into water/lava.
         /// </summary>

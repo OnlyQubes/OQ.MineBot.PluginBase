@@ -14,6 +14,15 @@ namespace OQ.MineBot.PluginBase.Classes.Base
         public IRadius() {
         }
 
+        public bool IsInside(ILocation location) {
+            return start.X + xSize >= location.X &&
+                   start.X <= location.X &&
+                   start.Y + height >= location.Y &&
+                   start.Y <= location.Y &&
+                   start.Z + zSize >= location.Z &&
+                   start.Z <= location.Z;
+        }
+
         public IRadius(ILocation start, ILocation end) {
 
             //Update values.

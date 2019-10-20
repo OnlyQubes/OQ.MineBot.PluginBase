@@ -23,6 +23,8 @@
         All = int.MaxValue,
         Passive = int.MaxValue-1,
         Aggressive = int.MaxValue-2,
+        Donkey = 31,
+        Mule = 32,
         Mob = 48,
         Monster = 49,
         Creeper = 50,

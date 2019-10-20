@@ -29,15 +29,25 @@ namespace OQ.MineBot.PluginBase
         /// Is the player currently eating?
         /// </summary>
         public bool Eating { get; protected set; }
+        public bool EatRequestQueued { get; protected set; }
 
         /// <summary>
         /// Currently selected hand.
         /// </summary>
-        public int Hand { get; protected set; }
+        public int Hand { get; protected set; } = 0;
 
         /// <summary>
         /// Is the player currently crouching?
         /// </summary>
         public bool IsCrouching { get; set; }
+
+        /// <summary>
+        /// Is the player still connected to the server.
+        /// </summary>
+        public bool IsConnected { get; protected set; }
+
+        public void _SetEatRequestState(bool EatRequestQueued) {
+            this.EatRequestQueued = EatRequestQueued;
+        }
     }
 }

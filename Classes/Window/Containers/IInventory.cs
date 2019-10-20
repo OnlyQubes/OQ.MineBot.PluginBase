@@ -27,8 +27,12 @@ namespace OQ.MineBot.PluginBase.Classes.Window.Containers
         /// </summary>
         IPlayerInnerInventory inner { get; set; }
 
+        IPlayerOffhandSlot offhand { get; set; }
+
+
         Task<bool> Select(ushort id);
         Task<bool> Select(ushort[] ids);
+        Task<bool> Select(ushort id, short[] metadata);
 
         /// <param name="hotbarIndex">Index of hotbar (0-8)</param>
         /// <param name="index">Index of item in inventory.</param>

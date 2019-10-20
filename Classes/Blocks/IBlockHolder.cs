@@ -90,5 +90,6 @@ namespace OQ.MineBot.PluginBase.Classes.Blocks
         bool IsDanger(ushort getBlockId);
 
         bool IsBlockSubset(ushort id1, ushort id2);
+        bool SimilarBlockProperties(ushort oldid, ushort newid);
     }
 }

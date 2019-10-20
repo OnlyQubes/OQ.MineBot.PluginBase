@@ -42,6 +42,11 @@ namespace OQ.MineBot.PluginBase.Movement.Maps
         /// </summary>
         IStopToken Token { get; set; }
 
+        /// <summary>
+        /// Is the path paused in order to finish eating.
+        /// </summary>
+        bool IsAwaitingFood { get; set; }
+
         #region Events
 
         

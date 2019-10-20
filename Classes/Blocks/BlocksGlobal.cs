@@ -9,6 +9,10 @@
         {
             64, 71, 193, 194, 195, 196, 197
         };
+        public static int[] LAVA =
+        {
+            10, 11
+        };
         public static int[] GATES =
         {
             107, 183, 184, 185, 186, 187

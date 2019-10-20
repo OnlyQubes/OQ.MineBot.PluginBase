@@ -17,6 +17,7 @@ namespace OQ.MineBot.PluginBase.Movement.Events
     {
         PathNotFound,
         Cancelled,
-        Completed
+        Completed,
+        Stuck
     }
 }

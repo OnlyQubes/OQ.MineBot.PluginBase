@@ -11,6 +11,11 @@
     {
         ControlState state { get; set; }
 
+        void KeyboardKeyMode(KeyboardKeyMode mode);
+        void KeyboardHoldKey(KeyboardKey key);
+        void KeyboardReleaseKeys();
+        void KeyboardReleaseKey(KeyboardKey key);
+
         /// <summary>
         /// Single click of button button.
         /// </summary>
@@ -51,6 +56,12 @@
 
         // Should the bot select the best tool when mining/attacking entity.
         public bool selectBestTool { get; set; }
+
+        public KeyboardKeyMode keyboardMode;
+        public bool keyboardForwardHeld { get; set; }
+        public bool keyboardLeftHeld { get; set; }
+        public bool keyboardRightHeld { get; set; }
+        public bool keyboardBackHeld { get; set; }
     }
 
     public class MouseClickMod
@@ -72,5 +83,19 @@
     {
         Left,
         Right
+    }
+
+    public enum KeyboardKey
+    {
+        FORWARD,
+        LEFT,
+        RIGHT,
+        BACK
+    }
+
+    public enum KeyboardKeyMode
+    {
+        OVERRIDE_MAP,
+        RUN_IF_NO_MAP,
     }
 }

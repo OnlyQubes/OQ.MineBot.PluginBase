@@ -2,10 +2,6 @@
 {
     public static class WindowHelper
     {
-        public static void DropSingleItemAction(IWindow window, short index) {
-            
-            window.SetAt(new Slot());
 
-        }
     }
 }

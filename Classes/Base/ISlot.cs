@@ -94,6 +94,7 @@ namespace OQ.MineBot.PluginBase.Classes
         Task<bool> Eat ();
 
         Task<bool> Select();
+        Task<bool> SelectOffhand();
         Task<bool> Use();
 
         Task<bool> Transfer (ISlot other);

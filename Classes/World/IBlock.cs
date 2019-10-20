@@ -29,6 +29,7 @@ namespace OQ.MineBot.PluginBase.Classes.World
         bool IsMineable();
         bool IsAir();
         bool IsTransparent();
+        bool CanBreak();
 
         bool IsUndesirableForPath();
 
