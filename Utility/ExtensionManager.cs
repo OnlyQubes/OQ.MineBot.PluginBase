@@ -7,6 +7,11 @@ namespace OQ.MineBot.PluginBase.Utility
 {
     public static class ExtensionManager
     {
+        public static bool? IsBitSet(this byte? b, int pos) {
+            if (b == null) return null;
+            return (b & (1 << pos)) != 0;
+        }
+
         public static T[,] ResizeArray<T>(this T[,] original, int rows, int cols)
         {
             var newArray = new T[rows, cols];

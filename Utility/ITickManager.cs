@@ -1,11 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using OQ.MineBot.PluginBase.Classes;
 
 namespace OQ.MineBot.PluginBase.Utility
 {
     public interface ITickManager
     {
+        /// <summary>
+        /// This function will sleep for X amount of ticks
+        /// and allows to work with ticks instead of milliseconds.
+        /// 
+        /// Should be called like this:
+        /// await Context.TickManager.Sleep(10);
+        /// </summary>
+        /// <returns></returns>
+        Task Sleep(int ticks);
+
         /// <summary>
         /// Registers an action to the tick counter,
         /// which will execute the action once enough
@@ -24,7 +35,7 @@ namespace OQ.MineBot.PluginBase.Utility
         /// <param name="count">How many ticks need to pass until the action will be executed.</param>
         /// <param name="action">Action that will be executed after the amount of ticks.</param>
         /// <param name="canTick">Called between a tick is added to the counter.</param>
-        void Register(int count, Action action, Func<IPlayer, bool> canTick);
+        void Register(int count, Action action, Func<IBotContext, bool> canTick);
 
         /// <summary>
         /// Registers an action to the tick counter,
@@ -49,7 +60,7 @@ namespace OQ.MineBot.PluginBase.Utility
         /// <param name="action">Action that will be executed after the amount of ticks.</param>
         /// <param name="canTick">Called between a tick is added to the counter.</param>
         /// <returns>Token used to remove recurrence.</returns>
-        IStopToken RegisterReocurring(int count, Action action, Func<IPlayer, bool> canTick);
+        IStopToken RegisterReocurring(int count, Action action, Func<IBotContext, bool> canTick);
 
         /// <summary>
         /// Registers an action to the tick counter,
@@ -84,6 +95,6 @@ namespace OQ.MineBot.PluginBase.Utility
     /// </summary>
     public static class TickManagerExtensionFunctions
     {
-        public static bool NotEating(IPlayer player) { return !player.status.eating; }
+        public static bool NotEating(IBotContext context) { return !context.Player.State.Eating; }
     }
 }

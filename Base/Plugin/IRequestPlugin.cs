@@ -17,10 +17,10 @@
         /// Called once the user requested
         /// for the plugin to start on this player.
         /// </summary>
-        /// <param name="player"></param>
+        /// <param name="context"></param>
         /// <param name="macro">Did a macro invoke this call.</param>
         /// <returns></returns>
-        PluginResponse OnRequest(IPlayer player, bool macro = false);
+        PluginResponse OnRequest(IBotContext context, bool macro = false);
 
         /// <summary>
         /// Called once the user requested
@@ -28,8 +28,8 @@
         /// (This should not limit you to handle all player.
         /// You can choose to handle each seperartly)
         /// </summary>
-        /// <param name="players"></param>
+        /// <param name="contexts"></param>
         /// <returns></returns>
-        PluginResponse OnRequest(IPlayer[] players);
+        PluginResponse OnRequest(IBotContext[] contexts);
     }
 }

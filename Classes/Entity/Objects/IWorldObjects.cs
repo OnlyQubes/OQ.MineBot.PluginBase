@@ -1,4 +1,4 @@
-﻿namespace OQ.MineBot.PluginBase.Classes.Objects
+﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Objects
 {
     public interface IWorldObjects
     {
@@ -7,12 +7,14 @@
 
     public enum ObjectTypes
     {
+        All = int.MaxValue,
+
         Boat = 1,
         ItemStack = 2,
         AreaEffectCloud = 3,
         Minecart = 10,
         ActivatedTNT = 50,
-        EncerCrystal = 51,
+        EnderCrystal = 51,
         TippedArrow = 60, // Projectile
         Snowball = 61, // Projectile
         Egg = 62, // Projectile
@@ -34,5 +36,6 @@
         FishingHook = 90,
         SpectralArrow = 91,
         DragonFireball = 93,
+        Trident = 94,
     }
 }

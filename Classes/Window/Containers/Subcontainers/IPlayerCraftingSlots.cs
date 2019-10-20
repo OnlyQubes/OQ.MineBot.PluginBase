@@ -2,7 +2,7 @@
 
 namespace OQ.MineBot.PluginBase.Classes.Window.Containers.Subcontainers
 {
-    public interface IPlayerCraftingSlots : ISearchableContainer
+    public interface IPlayerCraftingSlots : IWindow
     {
         /// <summary>
         /// Assign a parent container for this class.
@@ -29,35 +29,6 @@ namespace OQ.MineBot.PluginBase.Classes.Window.Containers.Subcontainers
         /// </summary>
         /// <returns></returns>
         ISlot GetCraftedSlot();
-
-        /// <summary>
-        /// Drops a single item from the window.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns>Returns the action id.</returns>
-        short DropItem(CraftingSlots index);
-        /// <summary>
-        /// Drops a single item from the window and
-        /// does a callback with the success state.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        short DropItemAsync(CraftingSlots index, Action<bool> callback);
-        /// <summary>
-        /// Drops a full stack from the window.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns>Returns the action id.</returns>
-        short DropItemStack(CraftingSlots index);
-        /// <summary>
-        /// Drops a full stack from the window and
-        /// does a callback with the success state.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        short DropItemStackAsync(CraftingSlots index, Action<bool> callback);
     }
 
     public enum CraftingSlots

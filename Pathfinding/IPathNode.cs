@@ -1,5 +1,6 @@
 ﻿using System;
 using OQ.MineBot.PluginBase.Classes;
+using OQ.MineBot.PluginBase.Classes.World;
 
 namespace OQ.MineBot.PluginBase.Pathfinding
 {
@@ -72,5 +73,7 @@ namespace OQ.MineBot.PluginBase.Pathfinding
         /// </summary>
         /// <returns></returns>
         IPosition ToPosition();
+
+        bool RequiresMining(IWorld world);
     }
 }

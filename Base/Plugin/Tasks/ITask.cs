@@ -1,4 +1,5 @@
-﻿using OQ.MineBot.PluginBase.Classes;
+﻿using System.Threading.Tasks;
+using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Window.Containers;
 using OQ.MineBot.PluginBase.Classes.World;
 
@@ -10,21 +11,20 @@ namespace OQ.MineBot.PluginBase.Base.Plugin.Tasks
         /// This token can be used to check if the
         /// plugin has been disabled.
         /// </summary>
-        public IStopToken token { get; set; }
+        public IStopToken Token { get; set; }
 
-        public IPlayer player { get; set; }
+        public IBotContext Context { get; set; }
 
-        public IPlayerStatus    status      { get; set; }   // Refference to quickly access players status.
-        public IPlayerFunctions actions     { get; set; }   // Refference to quickly access player functions.
-        public IWorld           world       { get; set; }   // Refference to quickly access players world.
-        public IInventory       inventory
+        public IPlayerState     State      { get; set; }   // Reference to quickly access players status.
+        public IPlayerFunctions Actions     { get; set; }   // Reference to quickly access player functions.
+        public IWorld           World       { get; set; }   // Reference to quickly access players world.
+        public IInventory       Inventory
         {
-            get { return player.status.containers.inventory; }
-            set { player.status.containers.inventory = value; }
+            get { return Context.Containers.GetInventory(); }
         } // Refference to quickly access players inventory.
 
-        public virtual void Start()     { }
-        public virtual void Stop()      { }
+        public virtual async Task Start()     { }
+        public virtual async Task Stop()      { }
 
         /// <summary>
         /// Determines if any of the listeners will be

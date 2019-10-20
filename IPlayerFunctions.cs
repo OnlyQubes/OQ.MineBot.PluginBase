@@ -8,10 +8,13 @@ using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Base;
 using OQ.MineBot.PluginBase.Classes.Blocks;
 using OQ.MineBot.PluginBase.Classes.Entity;
+using OQ.MineBot.PluginBase.Classes.Enums;
 using OQ.MineBot.PluginBase.Classes.Items;
 using OQ.MineBot.PluginBase.Classes.Physics;
 using OQ.MineBot.PluginBase.Classes.Window;
 using OQ.MineBot.PluginBase.Classes.Window.Containers.Subcontainers;
+using OQ.MineBot.PluginBase.Classes.World;
+using OQ.MineBot.PluginBase.Movement.Events;
 using OQ.MineBot.PluginBase.Movement.Maps;
 using OQ.MineBot.PluginBase.Pathfinding;
 using OQ.MineBot.PluginBase.Pathfinding.Sub;
@@ -32,8 +35,8 @@ namespace OQ.MineBot.PluginBase
         /// Set the player for this
         /// class.
         /// </summary>
-        /// <param name="player"></param>
-        void RegisterPlayer(IPlayer player);
+        /// <param name="context"></param>
+        void RegisterPlayer(IBotContext context);
 
         /// <summary>
         /// Start the packet compression/decompression
@@ -342,7 +345,7 @@ namespace OQ.MineBot.PluginBase
         /// Equips best tool that we have in
         /// the inventory for the target block.
         /// </summary>
-        void SelectBestTool(ILocation target);
+        Task<bool> SelectBestTool(ILocation target);
 
         /// <summary>
         /// Places the block ('blockData') on the
@@ -373,12 +376,14 @@ namespace OQ.MineBot.PluginBase
         /// </summary>
         /// <param name="targetId"></param>
         void EntityAttack(int targetId);
+        void EntityAttack(int targetId, Hands hand);
         /// <summary>
         /// Sends a "right click" packet
         /// to the server.
         /// </summary>
         /// <param name="targetId"></param>
         void EntityInteract(int targetId);
+        void EntityInteract(int targetId, Hands hand);
 
         /// <summary>
         /// Finds and equips the best
@@ -395,7 +400,7 @@ namespace OQ.MineBot.PluginBase
         /// Attempt to eat the item
         /// that is currently held.
         /// </summary>
-        void EatAsync();
+        Task<bool> EatAsync();
         /// <summary>
         /// Select food and attempt to eat the item.
         /// </summary>
@@ -537,6 +542,10 @@ namespace OQ.MineBot.PluginBase
         /// <returns>Was the path reached.</returns>
         bool WaitMoveDirection(IStopToken token, Direction direction, MapOptions options = null);
 
+        IMoveTask MoveToAsyncTask(IPosition startLocation, IPosition target, MapOptions options = null);
+        IMoveTask MoveToRangeAsyncTask(IPosition startLocation, IPosition target, int maxRange, Func<IBlock, bool> canBlockBePicked, MapOptions options = null);
+        IMoveTask MoveToRangeAsyncTask(IPosition startLocation, IPosition target, int maxRange, int minRange, Func<IBlock, bool> canBlockBePicked, MapOptions options = null);
+
         /// <summary>
         /// Get the closest face of a block
         /// from our location.
@@ -556,7 +565,8 @@ namespace OQ.MineBot.PluginBase
         /// <param name="world">Can the raycast include blocks.</param>
         /// <returns>RayHit if hit anything, else null</returns>
         RayHit Raycast(bool entity = true, bool world = true);
-
+        RayHit RaycastTowards(IPosition target, bool entity = true, bool world = true, double? reach = null);
+        
         /// <summary>
         /// Sets the given slotIndex to the given slotData.
         /// In minecraft this acts as taking an item from the creative
@@ -574,6 +584,8 @@ namespace OQ.MineBot.PluginBase
         /// <param name="forward">Positive forward</param>
         /// <param name="flags">1: jump, 2: unmount</param>
         void SteerVehicle(float sideway, float forward, byte flags);
+
+        void SwapItemInHands();
     }
 
     public enum LookSpeed

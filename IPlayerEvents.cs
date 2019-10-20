@@ -2,8 +2,8 @@
 using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Base;
 using OQ.MineBot.PluginBase.Classes.Entity;
+using OQ.MineBot.PluginBase.Classes.Entity.Objects;
 using OQ.MineBot.PluginBase.Classes.Entity.Player;
-using OQ.MineBot.PluginBase.Classes.Objects;
 
 namespace OQ.MineBot.PluginBase
 {
@@ -149,27 +149,27 @@ namespace OQ.MineBot.PluginBase
 
     public class IPlayerDelegates
     {
-        public delegate void PlayerDelegate(IPlayer player);
-        public delegate void PlayerReasonDelegate(IPlayer player, string reason);
-        public delegate void OnGameJoinedDelegate(IPlayer player, int entityId, Dimensions dimension, Gamemodes gamemode);
-        public delegate void OnEncryptionBegin(IPlayer player, string serverId, byte[] key, byte[] token);
-        public delegate void OnSpawnedDelegate(IPlayer player);
+        public delegate void PlayerDelegate(IBotContext context);
+        public delegate void PlayerReasonDelegate(IBotContext context, string reason);
+        public delegate void OnGameJoinedDelegate(IBotContext context, int entityId, Dimensions dimension, Gamemodes gamemode);
+        public delegate void OnEncryptionBegin(IBotContext context, string serverId, byte[] key, byte[] token);
+        public delegate void OnSpawnedDelegate(IBotContext context);
 
-        public delegate void OnChatDelegate(IPlayer player, IChat message, byte position);
+        public delegate void OnChatDelegate(IBotContext context, IChat message, byte position);
 
-        public delegate void OnHealthUpdateDelegate(IPlayer player, float health, int food, float foodSaturation);
-        public delegate void OnDeathDelegate(IPlayer player);
-        public delegate void OnStartedStartvingDelegate(IPlayer player);
+        public delegate void OnHealthUpdateDelegate(IBotContext context, float health, int food, float foodSaturation);
+        public delegate void OnDeathDelegate(IBotContext context);
+        public delegate void OnStartedStartvingDelegate(IBotContext context);
 
-        public delegate void OnBlockChangedDelegate(IPlayer player, ILocation location, ushort oldId, ushort newId);
-        public delegate void OnChunlLoadedDelegate(IPlayer player, ILocation location);
+        public delegate void OnBlockChangedDelegate(IBotContext context, ILocation location, ushort oldId, ushort newId);
+        public delegate void OnChunlLoadedDelegate(IBotContext context, ILocation location);
 
-        public delegate void OnPlayerMovedDelegate(IPlayer player);
-        public delegate void OnPlayerSprintUpdateDelegate(IPlayer player, bool isSprinting);
+        public delegate void OnPlayerMovedDelegate(IBotContext context);
+        public delegate void OnPlayerSprintUpdateDelegate(IBotContext context, bool isSprinting);
 
-        public delegate void OnInventoryChangedDelegate(IPlayer player, bool changed, bool removed, ushort id, int countDifference, ISlot slot);
+        public delegate void OnInventoryChangedDelegate(IBotContext context, bool changed, bool removed, ushort id, int countDifference, ISlot slot);
 
-        public delegate void OnExplosionDelegate(IPlayer player, float X, float Y, float Z);
+        public delegate void OnExplosionDelegate(IBotContext context, float X, float Y, float Z);
 
         public delegate void OnEntityEffect(ILiving living, Effect effect);
 
@@ -183,5 +183,8 @@ namespace OQ.MineBot.PluginBase
         public delegate void OnResourcePackReceived(string url, string hash);
 
         public delegate void OnEntityAttached(int entityId, int vehicleId, bool leash);
+
+        public delegate void OnEntityEvent();
+
     }
 }

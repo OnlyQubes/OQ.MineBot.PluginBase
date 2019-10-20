@@ -1,6 +1,12 @@
-﻿namespace OQ.MineBot.PluginBase.Classes.Objects.List
+﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Objects.List
 {
-    public class ExpBottleObject : IWorldObject {
+    public class FishingFloatObject : IWorldObject
+    {
+        /// <summary>
+        /// Entity id of the owner.
+        /// </summary>
+        public int Owner { get; set; }
+
         /// <summary>
         /// Entity id of this object.
         /// </summary>
@@ -11,7 +17,7 @@
         /// </summary>
         /// <returns></returns>
         public ObjectTypes GetType() {
-            return ObjectTypes.ThrownExpBottle;
+            return ObjectTypes.FishingHook;
         }
 
         /// <summary>

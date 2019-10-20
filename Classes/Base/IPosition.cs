@@ -25,5 +25,6 @@
         double Distance(IPosition target);
 
         IPosition Offset(IPosition offset);
+        IPosition Offset(double   yOffset);
     }
 }

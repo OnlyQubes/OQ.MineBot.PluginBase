@@ -5,36 +5,16 @@ namespace OQ.MineBot.PluginBase.Classes.Entity
     public interface IEffectContainer
     {
         /// <summary>
-        /// List of all effects on the entity.
-        ///
-        /// Format: 
-        /// byte - id
-        /// IEffect - effect
-        /// </summary>
-        Dictionary<Effects, Effect> List { get; set; }
-
-        /// <summary>
-        /// Adds an effect to the entity.
-        /// </summary>
-        /// <param name="effect"></param>
-        void Add(Effect effect);
-        /// <summary>
-        /// Removes an effect with the id.
-        /// </summary>
-        /// <param name="id"></param>
-        void Remove(Effects id);
-
-        /// <summary>
-        /// Get an effect by id.
+        /// Get an effect on entity by id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns>NULL if not found.</returns>
         Effect Get(Effects id);
 
         /// <summary>
-        /// Clears all the effects.
+        /// Does this entity have the specific effect applied?
         /// </summary>
-        void Clear();
+        bool HasEffect(Effects id);
     }
 
     public enum Effects

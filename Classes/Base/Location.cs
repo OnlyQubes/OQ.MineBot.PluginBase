@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
 using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Protocol;
@@ -13,28 +12,28 @@ namespace OQ.MineBot.Protocols.Classes.Base
         public delegate byte[] ConvertToBytes(long value);
         public static ConvertToBytes GetEndianedBytes { get; set; }
 
-        public int x { get; set; }
-        public float y { get; set; }
-        public int z { get; set; }
+        public int X { get; set; }
+        public float Y { get; set; }
+        public int Z { get; set; }
         public static IEqualityComparer<ILocation> Comparer { get; set; } = new LocationComparer();
 
         public Location(int x, float y, int z)
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
         }
         public Location(long data)
         {
             if (ProtocolGlobalSettings.PROTOCOL > 477) {
-                this.x = (int)(data >> 38);
-                this.y = data & 0xFFF;
-                this.z = (int)((data << 26 >> 38));
+                this.X = (int)(data >> 38);
+                this.Y = data & 0xFFF;
+                this.Z = (int)((data << 26 >> 38));
             }
             else {
-                this.x = (int)(data >> 38);
-                this.y = ((data >> 26) & 0xFFF);
-                this.z = (int)((data << 38 >> 38));
+                this.X = (int)(data >> 38);
+                this.Y = ((data >> 26) & 0xFFF);
+                this.Z = (int)((data << 38 >> 38));
             }
         }
 
@@ -47,9 +46,9 @@ namespace OQ.MineBot.Protocols.Classes.Base
         public float Distance(ILocation other) {
             if (other == null) return 0;
 
-            var _x = x - other.x;
-            var _y = y - other.y;
-            var _z = z - other.z;
+            var _x = X - other.X;
+            var _y = Y - other.Y;
+            var _z = Z - other.Z;
 
             return (float)Math.Abs(Math.Sqrt(Math.Pow(_x, 2) + Math.Pow(_y, 2) + Math.Pow(_z, 2)));
         }
@@ -57,8 +56,8 @@ namespace OQ.MineBot.Protocols.Classes.Base
         public float DistanceHorizontal(ILocation other) {
             if (other == null) return 0;
 
-            var _x = x - other.x;
-            var _z = z - other.z;
+            var _x = X - other.X;
+            var _z = Z - other.Z;
 
             return (float)Math.Abs(Math.Sqrt(Math.Pow(_x, 2) + Math.Pow(_z, 2)));
         }
@@ -71,7 +70,7 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// <returns></returns>
         public bool Compare(ILocation other) {
             if (other == null) return false;
-            return x == other.x && y == other.y && z == other.z;
+            return X == other.X && Y == other.Y && Z == other.Z;
         }
 
         /// <summary>
@@ -80,8 +79,8 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// <returns></returns>
         public byte[] ToBytes() {
             var tempValue = ProtocolGlobalSettings.PROTOCOL > 477
-                ? ((((long) x & 0x3FFFFFF) << 38) | (((long)z & 0x3FFFFFF) << 12) | ((long)y & 0xFFF))
-                : ((((long) x & 0x3FFFFFF) << 38) | (((long) y & 0xFFF) << 26) | ((long) z & 0x3FFFFFF));
+                ? ((((long) X & 0x3FFFFFF) << 38) | (((long)Z & 0x3FFFFFF) << 12) | ((long)Y & 0xFFF))
+                : ((((long) X & 0x3FFFFFF) << 38) | (((long) Y & 0xFFF) << 26) | ((long) Z & 0x3FFFFFF));
             return GetEndianedBytes(tempValue);
         }
 
@@ -90,7 +89,7 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// </summary>
         /// <returns></returns>
         public IPosition ToPosition(double addY = Double.NaN) {
-            return new Position(x+0.5, y + (double.IsNaN(addY)?0:addY), z+0.5);
+            return new Position(X+0.5, Y + (double.IsNaN(addY)?0:addY), Z+0.5);
         }
 
         /// <summary>
@@ -99,7 +98,7 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// </summary>
         /// <returns></returns>
         public ILocation Offset(int x, float y, int z) {
-            return new Location(this.x + x, (int)Math.Ceiling(this.y + y), this.z + z);
+            return new Location(this.X + x, (int)Math.Ceiling(this.Y + y), this.Z + z);
         }
 
         /// <summary>
@@ -108,7 +107,7 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// </summary>
         /// <returns></returns>
         public ILocation Offset(float y) {
-            return new Location(this.x, (int)Math.Ceiling(this.y + y), this.z);
+            return new Location(this.X, (int)Math.Ceiling(this.Y + y), this.Z);
         }
 
         /// <summary>
@@ -117,11 +116,11 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// </summary>
         /// <returns></returns>
         public ILocation Offset(ILocation l) {
-            return new Location(this.x + l.x, (int)Math.Ceiling(this.y + l.y), this.z + l.z);
+            return new Location(this.X + l.X, (int)Math.Ceiling(this.Y + l.Y), this.Z + l.Z);
         }
 
         public ILocation Multiply(int mult) {
-            return new Location(this.x * mult, this.y * mult, this.z * mult);
+            return new Location(this.X * mult, this.Y * mult, this.Z * mult);
         }
 
         /// <summary>
@@ -133,7 +132,7 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// <param name="x">The first object of type <paramref name="T"/> to compare.</param><param name="y">The second object of type <paramref name="T"/> to compare.</param>
         public bool Equals(ILocation x, ILocation y)
         {
-            return x.x == y.x && x.y == y.y && x.z == y.z;
+            return x.X == y.X && x.Y == y.Y && x.Z == y.Z;
         }
 
         /// <summary>
@@ -145,7 +144,7 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// <param name="obj">The <see cref="T:System.Object"/> for which a hash code is to be returned.</param><exception cref="T:System.ArgumentNullException">The type of <paramref name="obj"/> is a reference type and <paramref name="obj"/> is null.</exception>
         public int GetHashCode(ILocation obj)
         {
-            return obj.x*2 + (int)obj.y*9 + obj.z*34;
+            return obj.X*2 + (int)obj.Y*9 + obj.Z*34;
         }
 
         /// <summary>
@@ -156,7 +155,7 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// </returns>
         public override int GetHashCode()
         {
-            return this.x * 2 + (int)this.y * 9 + this.z * 34;
+            return this.X * 2 + (int)this.Y * 9 + this.Z * 34;
         }
 
         /// <summary>
@@ -173,7 +172,7 @@ namespace OQ.MineBot.Protocols.Classes.Base
             if (loc == null)
                 return false;
 
-            return loc.x == this.x && loc.y == this.y && loc.z == this.z;
+            return loc.X == this.X && loc.Y == this.Y && loc.Z == this.Z;
         }
 
         /// <summary>
@@ -183,7 +182,7 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// A string that represents the current object.
         /// </returns>
         public override string ToString() {
-            return this.x + "/" + this.y + "/" + this.z;
+            return this.X + "/" + this.Y + "/" + this.Z;
         }
 
         public static ILocation Parse(string value) {
@@ -207,7 +206,7 @@ namespace OQ.MineBot.Protocols.Classes.Base
         public bool Equals(ILocation x, ILocation y) {
 
             if (x == null || y == null) return false;
-            return x.x == y.x && x.z == y.z && Math.Abs(x.y - y.y) <= 1;
+            return x.X == y.X && x.Z == y.Z && Math.Abs(x.Y - y.Y) <= 1;
         }
 
         /// <summary>
@@ -218,7 +217,7 @@ namespace OQ.MineBot.Protocols.Classes.Base
         /// </returns>
         /// <param name="obj">The <see cref="T:System.Object"/> for which a hash code is to be returned.</param><exception cref="T:System.ArgumentNullException">The type of <paramref name="obj"/> is a reference type and <paramref name="obj"/> is null.</exception>
         public int GetHashCode(ILocation obj) {
-            return obj.x * 2 + (int)obj.y * 9 + obj.z * 34;
+            return obj.X * 2 + (int)obj.Y * 9 + obj.Z * 34;
         }
     }
 }

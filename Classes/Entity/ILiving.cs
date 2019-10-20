@@ -1,34 +1,49 @@
 ﻿
+using OQ.MineBot.PluginBase.Classes.Entity.Equipment;
+using OQ.MineBot.PluginBase.Classes.Enums;
+
 namespace OQ.MineBot.PluginBase.Classes.Entity
 {
-    public interface ILiving : IEntity
+    public abstract class ILiving : IEntity
     {
+        public event IPlayerDelegates.OnEntityEvent OnDeath;
+        public event IPlayerDelegates.OnEntityEvent OnMoved;
+
         /// <summary>
         /// Rotation of the entity.
         /// </summary>
-        IRotation rotation { get; set; }
+        public IRotation Rotation { get; set; }
 
         /// <summary>
-        /// How many ticks is the entity
-        /// alive for.
+        /// Has this entity been moved at least once?
         /// </summary>
-        int ticks { get; }
+        public bool HasMoved { get; set; }
 
         /// <summary>
-        /// Has this entity been moved
-        /// at least once?
+        /// All effects on the entity are stored here.
         /// </summary>
-        bool moved { get; set; }
+        public IEffectContainer Effects { get; set; }
 
         /// <summary>
-        /// All effects on the entity
-        /// are stored here.
+        /// Items that the entity is wearing/holding.
         /// </summary>
-        IEffectContainer effects { get; set; }
+        public EntityEquipment Equipment { get; set; } = new EntityEquipment();
 
         /// <summary>
         /// Vehicle that the entity is attached to.
         /// </summary>
-        int vehicleId { get; set; }
+        public int VehicleId { get; set; }
+
+        public abstract float GetHealth();
+        public abstract bool IsDead();
+
+        public abstract void Attack();
+        public abstract void Attack(Hands hand);
+        public abstract void Interact();
+        public abstract void Interact(Hands hand);
+
+        protected void InvokeOnDeath() { this.OnDeath?.Invoke(); }
+        protected void InvokeOnMoved() { this.OnMoved?.Invoke(); }
+
     }
 }

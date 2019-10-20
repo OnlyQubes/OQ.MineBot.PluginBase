@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using OQ.MineBot.PluginBase.Classes;
 using OQ.MineBot.PluginBase.Classes.Window;
 
@@ -9,7 +10,7 @@ namespace OQ.MineBot.PluginBase.Pathfinding.Sub
         /// <summary>
         /// Finds all chest near the player.
         /// </summary>
-        void UpdateChestList(IPlayer player, Action callback);
+        Task UpdateChestList();
 
         /// <summary>
         /// Attempts to find/path to/open a
@@ -17,8 +18,8 @@ namespace OQ.MineBot.PluginBase.Pathfinding.Sub
         /// </summary>
         /// <returns>True if found empty chest 
         /// and opened it, else false</returns>
-        IWindow Open(IPlayer player, IStopToken token, ChestStatus status);
-
+        Task<IWindow> Open(ChestStatus status);
+        Task<IWindow> Open(IStopToken token, ChestStatus status);
     }
 
     public enum ChestStatus

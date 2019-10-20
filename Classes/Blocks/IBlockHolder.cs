@@ -9,14 +9,14 @@ namespace OQ.MineBot.PluginBase.Classes.Blocks
         /// All known blocks are stored
         /// here by id.
         /// </summary>
-        IBlock[] blocks { get; set; }
+        IBlockData[] BlocksData { get; set; }
 
         /// <summary>
         /// Get block by id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        IBlock GetBlock(ushort id);
+        IBlockData GetBlock(ushort id);
         /// <summary>
         /// Get block colliders
         /// by id.
@@ -90,5 +90,6 @@ namespace OQ.MineBot.PluginBase.Classes.Blocks
         bool IsDanger(ushort getBlockId);
 
         bool IsBlockSubset(ushort id1, ushort id2);
+        bool SimilarBlockProperties(ushort oldid, ushort newid);
     }
 }

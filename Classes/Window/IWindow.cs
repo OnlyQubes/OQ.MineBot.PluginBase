@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using OQ.MineBot.PluginBase.Classes.Base;
+using OQ.MineBot.PluginBase.Classes.Window.Containers.Subcontainers;
 
 namespace OQ.MineBot.PluginBase.Classes.Window
 {
@@ -8,136 +11,69 @@ namespace OQ.MineBot.PluginBase.Classes.Window
         event WindowDelegates.SlotDelegate onSlotChanged;
         event WindowDelegates.DropDelegate onSlotDropped;
 
-        /// <summary>
-        /// Id of this window.
-        /// </summary>
-        int id { get; set; }
+        int    GetId();
+        string GetWindowType();
+        IChat  GetWindowName();
 
-        /// <summary>
-        /// The window type to use for display.
-        /// </summary>
-        string windowType { get; set; }
-        /// <summary>
-        /// The title of the window.
-        /// </summary>
-        string windowTitle { get; set; }
-
-        /// <summary>
-        /// Number of slots in the window (excluding the number of slots in the player inventory)
-        /// </summary>
-        byte slotCount { get; set; }
-        /// <summary>
-        /// (OPTIONAL)
-        /// EntityHorse's EID. Only sent when Window Type is “EntityHorse”.
-        /// </summary>
-        int entityId { get; set; }
+        ISlot GetAt(int index);
+        ISlot GetAt(EquipmentSlots equipmentSlot);
+        ISlot[] GetSlots(bool includeEmpty = false);
         
-        /// <summary>
-        /// Current action id.
-        /// </summary>
-        short m_actionId { get; set; }
+        bool IsOpen();
+        Task Close ();
 
-        /// <summary>
-        /// Each move on the inventory should be
-        /// confirmed by the server, these confirmations
-        /// are awaited here.
-        /// </summary>
-        Dictionary<short, Action<bool>> confirmationCallbacks { get; set; }
+        byte GetSlotCount();
 
-        /// <summary>
-        /// Get a slot at the slot
-        /// position (id).
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        ISlot GetAt(int id);
+        ISlot[] Find(ushort id);
+        ISlot[] Find(ushort[] ids);
+        ISlot[] Find(ushort id, short metadata);
+        ISlot[] Find(ushort[] ids, short[] metadata);
+        ISlot   FindFirst(ushort id);
+        ISlot   FindFirst(ushort[] ids);
+        ISlot   FindFirst(ushort id, short metadata);
+        ISlot   FindFirst(ushort[] ids, short[] metadata);
+        ISlot[] FindByMetadata(short metadata);
+        ISlot   FindFirstByMetadata(short metadata);
 
-        /// <summary>
-        /// Get slots that are not empty.
-        /// </summary>
-        /// <returns></returns>
-        short[] GetNotEmpty();
+        ISlot[] FindByType(EquipmentType type);
+        ISlot   FindBest  (EquipmentType type);
+        ISlot   FindBest  (EquipmentSlots slot);
 
-        /// <summary>
-        /// Set an item (slot) to a
-        /// slot at the position. (index)
-        /// </summary>
-        /// <param name="slot"></param>
-        /// <param name="index"></param>
-        void SetAt(ISlot slot, int index);
+        bool    HasFreeSlots(int minSlotCount = 1);
+        ISlot[] GetFreeSlots(int maxSlotCount = 255);
+        ISlot   GetFreeSlot ();
 
-        /// <summary>
-        /// Drops a single item from the window.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns>Returns the action id.</returns>
-        short DropItem(int index);
-        /// <summary>
-        /// Drops a single item from the window and
-        /// does a callback with the success state.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        short DropItemAsync(int index, Action<bool> callback);
-
-        /// <summary>
-        /// Drops a full stack from the window.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns>Returns the action id.</returns>
-        short DropItemStack(int index);
-        /// <summary>
-        /// Drops a full stack from the window and
-        /// does a callback with the success state.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        short DropItemStackAsync(int index, Action<bool> callback);
-
-        /// <summary>
-        /// Called once a confirmation is reiceved
-        /// to confirm a window action.
-        /// </summary>
-        /// <param name="actionId"></param>
-        void ReceivedConfirmation(short actionId, bool success);
-
-        /// <summary>
-        /// Attempts to retrieve a slot position
-        /// that is currently not occupied.
-        /// </summary>
-        /// <returns></returns>
-        short FindFreeSlot();
-
-        /// <summary>
-        /// Shift clicks an item.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="equipmentSlot">Can this item be equiped, aka can
-        /// this go to the armor slot? If it can then the slot that it can
-        /// go should be specified.</param>
-        /// <returns></returns>
-        short ShiftClickItem(int index, Action<bool> callback, short equipmentSlot = -1);
-
-        /// <summary>
-        /// Performs a keypad (1-9 buttons) click
-        /// on the inventory.
-        /// The keypad button is "hotbarIndex".
-        /// Mouse hovering point is "inventoryIndex".
-        /// </summary>
-        /// <param name="hotbarIndex">0-8.</param>
-        /// <param name="inventoryIndex"></param>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        short ClickHotbarShortcut(short hotbarIndex, short inventoryIndex, Action<bool> callback);
-        
-        void LeftClick(int index, Action<bool> callback);
-        void RightClick(int index, Action<bool> callback);
-        void ShiftLeftClick(int index, Action<bool> callback);
-        bool IsFull();
         bool IsEmpty();
-        ISlot[] GetAll();
+        bool IsFull ();
+
+        int GetAmountOfItem(ushort id);
+
+        Task<bool> MouseLeftClick(int index);
+        Task<bool> MouseRightClick(int index);
+        Task<bool> MouseShiftLeftClick(int index);
+        Task<bool> MouseMiddleClick(int index);
+        Task<bool> ClickHotbarShortcut(int index, int hotbarIndex);
+
+        Task<bool> Take(ushort   id , int maxStacks = -1, Func<ISlot, bool> optionalCanBePicked = null);
+        Task<bool> Take(ushort[] ids = null, int maxStacks = -1, Func<ISlot, bool> optionalCanBePicked = null);
+
+        Task<bool> Deposit(ushort id, Func<ISlot, bool> optionalCanPickSlot = null);
+        Task<bool> Deposit(ushort[] ids = null, Func<ISlot, bool> optionalCanPickSlot = null);
+
+        ISlot GetHeldSlot();
+    }
+
+    public enum EquipmentType
+    {
+        Helmet,
+        Chestplate,
+        Leggings,
+        Boots,
+
+        Sword,
+        Pickaxe,
+        Shovel,
+        Axe
     }
 
     public class WindowDelegates

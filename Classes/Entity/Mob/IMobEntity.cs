@@ -1,25 +1,30 @@
 ﻿namespace OQ.MineBot.PluginBase.Classes.Entity.Mob
 {
-    public interface IMobEntity : ILiving
+    public abstract class IMobEntity : Living
     {
         /// <summary>
         /// Type of the monster entity.
         /// </summary>
-        MobType type { get; set; }
+        public MobType MobType { get; set; }
 
         /// <summary>
         /// Metadata for this monster.
         /// </summary>
-        IEntityMetadata metadata { get; set; }
+        public IEntityMetadata Metadata { get; set; }
 
         /// <summary>
         /// Is this a passive mob.
         /// </summary>
-        bool IsFriendly();
+        public abstract bool IsPassive();
     }
 
     public enum MobType
     {
+        All = int.MaxValue,
+        Passive = int.MaxValue-1,
+        Aggressive = int.MaxValue-2,
+        Donkey = 31,
+        Mule = 32,
         Mob = 48,
         Monster = 49,
         Creeper = 50,

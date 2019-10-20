@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using OQ.MineBot.PluginBase.Classes.Crafting.Exposed;
 
 namespace OQ.MineBot.PluginBase.Classes.Crafting
@@ -22,7 +23,7 @@ namespace OQ.MineBot.PluginBase.Classes.Crafting
         ///     Console.WriteLine("Crafting result: { " + b + (b ? "" : ", " + error) + " }");
         /// }));
         /// </example>
-        void Craft(CraftingTask task);
+        Task<CraftingError> Craft(CraftingTask task);
 
         /// <summary>
         /// Determines how many items it can craft
@@ -43,23 +44,21 @@ namespace OQ.MineBot.PluginBase.Classes.Crafting
 
         // Called once the crafting task is complete or cancelled.
         // * If bool is false then CraftingError is provided.
-        public Action<bool, CraftingError> callback;
+        public TaskCompletionSource<CraftingError> task = new TaskCompletionSource<CraftingError>();
 
-        public static CraftingTask Create(IRecipe recipe, int amount, Action<bool, CraftingError> callback) {
+        public static CraftingTask Create(IRecipe recipe, int amount) {
             return new CraftingTask()
             {
                 amount = amount,
                 recipe = recipe,
-                callback = callback
             };
         }
         // Crafts as many items as it can.
-        public static CraftingTask Create(IRecipe recipe, Action<bool, CraftingError> callback) {
+        public static CraftingTask Create(IRecipe recipe) {
             return new CraftingTask()
             {
                 amount = -1,
                 recipe = recipe,
-                callback = callback
             };
         }
     }

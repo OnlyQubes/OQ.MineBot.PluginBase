@@ -30,7 +30,7 @@ namespace OQ.MineBot.PluginBase.Classes.Physics
         /// <summary>
         /// Called once the players rotation changes.
         /// </summary>
-        event PlayerPhysicsDelegates.RotaionDelegate onRotationChanged;
+        event PlayerPhysicsDelegates.RotationDelegate onRotationChanged;
 
         /// <summary>
         /// Is the player currently jumping?
@@ -140,10 +140,10 @@ namespace OQ.MineBot.PluginBase.Classes.Physics
 
     public class PlayerPhysicsDelegates
     {
-        public delegate void PhysicsPreTickDelegate(IPlayer player);
-        public delegate void PhysicsTickDelegate(IPlayer player, IPosition endPosition);
-        public delegate void FallTickDelegate(IPlayer player, IPosition fallPosition, EventCancelToken token);
-        public delegate void RotaionDelegate(IPlayer player, IRotation rotaion);
+        public delegate void PhysicsPreTickDelegate(IBotContext context);
+        public delegate void PhysicsTickDelegate(IBotContext context, IPosition endPosition);
+        public delegate void FallTickDelegate(IBotContext context, IPosition fallPosition, EventCancelToken token);
+        public delegate void RotationDelegate(IBotContext context, IRotation rotaion);
     }
 
     public class EventCancelToken

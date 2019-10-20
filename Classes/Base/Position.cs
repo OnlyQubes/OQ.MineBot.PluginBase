@@ -63,6 +63,10 @@ namespace OQ.MineBot.Protocols.Classes.Base
             return new Position(this.X + offset.X, this.Y + offset.Y, this.Z + offset.Z);
         }
 
+        public IPosition Offset(double yOffset) {
+            return new Position(this.X, this.Y + yOffset, this.Z);
+        }
+
         /// <summary>
         /// Returns a string that represents the current object.
         /// </summary>

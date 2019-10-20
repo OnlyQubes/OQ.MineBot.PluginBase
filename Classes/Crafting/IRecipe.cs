@@ -43,9 +43,9 @@ namespace OQ.MineBot.PluginBase.Classes.Crafting.Exposed
             if (!requiresCraftingTable && type == CraftingSlotType.Table)
                 return new short[3, 3]
                 {
-                    {0, 0, 0},
                     {inputs[0, 0], inputs[0, 1], 0},
                     {inputs[1, 0], inputs[1, 1], 0},
+                    {0, 0, 0},
                 };
 
             // No conversion required.
